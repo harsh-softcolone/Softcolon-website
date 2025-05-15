@@ -46,8 +46,9 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-black-background: #1e1e1e;
+  --color-black-background: #0d0d0d;
   --color-mint-500: oklch(0.72 0.11 178);
+  --color-paragraph: #c0c0c0;
 }
 
 :root {
@@ -83,7 +84,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  /* --black-background: #1e1e1e; */
 }
 
 .dark {
@@ -127,4 +127,34 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.gradient-color {
+  background: linear-gradient(
+    45deg,
+    #1fb3fd 0%,
+    #8087f2 27%,
+    #e957e7 53%,
+    #f359a5 77%,
+    #fe5c5d 98%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-background {
+  background: linear-gradient(109deg, #050506 19.72%, #22272b 100.49%);
+}
+
+.text-responsive {
+  font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
+  line-height: clamp(2.5rem, 4vw + 1.5rem, 4rem);
+}
+
+.gradient-bg {
+  background: var(
+    --gradiant,
+    linear-gradient(313deg, #1f84fc 16.55%, #c846e4 86.93%)
+  );
 }

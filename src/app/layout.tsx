@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Hanuman, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
+import { Header } from '@/components/Header';
 
 const geistSans = Hanuman({
   variable: '--font-geist-hanuman',
@@ -11,7 +12,7 @@ const geistSans = Hanuman({
 const geistMono = IBM_Plex_Sans({
   variable: '--font-geist-ibm-plex-sans',
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
 });
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black-background`}
       >
+        <Header />
         {children}
       </body>
     </html>
