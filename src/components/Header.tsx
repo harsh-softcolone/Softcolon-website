@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import GradientConnectButton from './buttons/gradient-connect-button';
 import AnimatedSearchButton from './buttons/animated-search-button';
@@ -84,9 +84,13 @@ const services: NavItem[] = [
 ];
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isPlatformOpen, setIsPlatformOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isServicesOpen, setIsServicesOpen] = useState<boolean>(false);
+  const [isPlatformOpen, setIsPlatformOpen] = useState<boolean>(false);
+
+  const [lastScrollY, setLastScrollY] = useState<number>(0);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const scrollThreshold = 250;
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -112,9 +116,30 @@ export const Header = () => {
     { label: 'about', href: '#' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDifference = currentScrollY - lastScrollY;
+      if (currentScrollY < scrollThreshold) {
+        setIsVisible(true);
+      } else if (scrollDifference > 0) {
+        setIsVisible(false);
+      } else if (scrollDifference < 0) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY, scrollThreshold]);
+
   return (
     <div className='relative'>
-      <div className='h-[60px] sm:h-[70px] w-11/12 z-10 absolute top-4 left-1/2 -translate-x-1/2 sm:top-6 max-w-[1440px] mx-auto flex items-center justify-between py-2.5 px-4 sm:px-7.5 bg-[#ffffff1a] backdrop-blur-[100px] rounded-full'>
+      <div
+        className={`h-[60px] sm:h-[70px] w-11/12 z-10 backdrop-blur-[10px] fixed top-4 transition-transform duration-400 left-1/2 -translate-x-1/2 sm:top-6 max-w-[1440px] mx-auto flex items-center justify-between py-2.5 px-4 sm:px-7.5 bg-[#ffffff1a] rounded-full ${isVisible ? ' translate-y-0' : '-translate-y-[115%]'}`}
+      >
         <div className='flex items-center gap-4'>
           <Image
             src='/logo.svg'
@@ -144,6 +169,7 @@ export const Header = () => {
         <div className='flex items-center gap-4 lg:hidden'>
           <AnimatedSearchButton />
           <button
+            type='button'
             onClick={toggleMenu}
             className='flex flex-col justify-center items-center cursor-pointer'
           >
@@ -158,10 +184,6 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* <ServicesNav
-        isOpen={isServicesOpen}
-        onClose={() => setIsServicesOpen(false)}
-      /> */}
       <MegaNav
         isOpen={isServicesOpen}
         onClose={() => setIsServicesOpen(false)}

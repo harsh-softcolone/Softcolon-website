@@ -158,3 +158,10 @@
     linear-gradient(313deg, #1f84fc 16.55%, #c846e4 86.93%)
   );
 }
+
+#service-section {
+  background-image: url('/pages/home/curved-border.svg');
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Hanuman, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
+import LenisProvider from '@/lib/lenis';
 
 const geistSans = Hanuman({
   variable: '--font-geist-hanuman',
@@ -31,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black-background`}
       >
         <Header />
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ const AIGenerationInput = () => {
 
   return (
     <div className='flex flex-col items-center justify-center space-y-7.5'>
-      <p className='text-lg lg:text-2xl text-center text-paragraph font-normal leading-normal font-ibm-plex-sans'>
+      <p className='text-lg lg:text-xl text-center text-paragraph font-normal leading-normal font-ibm-plex-sans'>
         Turn simple imagination into full proof plan with our lightning-fast AI
         content engine.
       </p>
@@ -29,17 +29,14 @@ const AIGenerationInput = () => {
         </div>
 
         {/* Tags */}
-        <div className='flex flex-wrap gap-2 max-w-[600px] mx-auto justify-between'>
-          <p className='text-white text-[16px] font-ibm-plex-sans font-normal leading-normal'>
-            Popular tags:
-          </p>
-          <div className='flex flex-wrap gap-2'>
+        <div className='flex flex-wrap gap-2 max-w-[600px] mx-auto justify-center'>
+          <div className='flex flex-wrap gap-2 items-center'>
             {/* Show only 2 tags on mobile and all on larger screens */}
             {tags.slice(0, 2).map((tag, index) => (
               <Badge
                 key={index}
                 variant='outline'
-                className='bg-transparent border-[#2a2e35] text-gray-400 py-1 px-4 rounded-full'
+                className='border-[#2a2e35] bg-transparent cursor-pointer text-sm font-ibm-plex-sans text-white py-2 px-4 rounded-full transition-colors duration-200 hover:bg-[#2a2e35] hover:text-white hover:border-gray-500'
               >
                 {tag}
               </Badge>
@@ -50,7 +47,7 @@ const AIGenerationInput = () => {
               <Badge
                 key={index + 2}
                 variant='outline'
-                className='bg-transparent border-[#2a2e35] text-gray-400 py-1 px-4 rounded-full hidden sm:inline-block'
+                className='border-[#2a2e35] bg-transparent cursor-pointer text-sm font-ibm-plex-sans text-white py-2 px-4 rounded-full hidden sm:inline-block transition-colors duration-200 hover:bg-[#2a2e35] hover:text-white hover:border-gray-500'
               >
                 {tag}
               </Badge>
