@@ -32,7 +32,7 @@ const ContactForm = () => {
           <h1 className='text-white text-[30px] md:text-[40px] font-normal leading-[39px] sm:leading-[52px]'>
             Success is a Team Play
             <span className='text-[#6F6F70]'>
-              Right Let&apos;s works together!
+              &nbsp;Right Let&apos;s works together!
             </span>
           </h1>
           <Link
