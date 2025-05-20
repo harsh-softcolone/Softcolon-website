@@ -42,7 +42,7 @@ const ServicesSection = () => {
       id='service-section'
     >
       <AbstractBlobBackground
-        className='top-4/5 -left-20 hidden lg:block'
+        className='top-4/5 -left-20 hidden lg:block -translate-x-1/2 -translate-y-1/2'
         fill='#ED58C9'
       />
       <div className='max-w-[1250px] mx-auto space-y-5 px-4 md:px-8 flex flex-col items-center justify-center'>

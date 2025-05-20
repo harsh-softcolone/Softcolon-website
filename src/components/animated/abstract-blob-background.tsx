@@ -11,7 +11,7 @@ const AbstractBlobBackground = ({
     <>
       <div
         className={cn(
-          '-z-10 w-md h-full flex items-center justify-center blur-[200px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+          '-z-10 w-md h-full flex items-center justify-center blur-[200px] absolute',
           className,
         )}
       >
