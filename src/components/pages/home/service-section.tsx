@@ -47,7 +47,7 @@ const ServicesSection = () => {
       />
       <div className='max-w-[1250px] mx-auto space-y-5 px-4 md:px-8 flex flex-col items-center justify-center'>
         <SectionHeader name='Services' />
-        <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+        <h1 className='text-[28px] sm:text-4xl md:text-[60px] text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
           The Way You Work with AI That <br className='hidden lg:block' />
           <span className='gradient-color'> Thinks</span>,
           <span className='gradient-color'> Learns</span>, and Elevates

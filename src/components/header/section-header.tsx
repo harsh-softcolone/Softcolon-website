@@ -1,9 +1,21 @@
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import React from 'react';
 
-const SectionHeader = ({ name = 'Dummy Section' }: { name: string }) => {
+const SectionHeader = ({
+  name = 'Dummy Section',
+  className,
+}: {
+  name: string;
+  className?: string;
+}) => {
   return (
-    <div className='w-fit border-[1px] rounded-full border-[#7B7B7B] px-4 py-2 flex items-center gap-2'>
+    <div
+      className={cn(
+        'w-fit border-[1px] rounded-full border-[#7B7B7B] px-4 py-2 flex items-center gap-2',
+        className,
+      )}
+    >
       <Image
         src='/icons/gradient-star.svg'
         alt='gradient-star'

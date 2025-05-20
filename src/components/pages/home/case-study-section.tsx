@@ -35,10 +35,7 @@ const CaseStudySection = () => {
   ];
 
   return (
-    <section
-      className='min-h-[100vh] relative overflow-hidden w-full'
-      id='case-study-section'
-    >
+    <section className='min-h-[100vh] relative overflow-hidden w-full'>
       <div className='max-w-[1400px] mx-auto space-y-5 px-4 md:px-8 flex flex-col items-center justify-center'>
         <SectionHeader name='Case studies' />
         <h1 className='text-[28px] sm:text-4xl md:text-[60px] text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
@@ -56,7 +53,7 @@ const CaseStudySection = () => {
           <span className='absolute -bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-300 ease-in-out group-hover:w-full'></span>
         </Link>
       </div>
-      <div className='space-y-10 md:space-y-16 mt-10'>
+      <div className='space-y-10 md:space-y-16 mt-20'>
         {caseStudies.map((card, index) => (
           <CaseStudyCard cardNumber={index + 1} key={index} {...card} />
         ))}
