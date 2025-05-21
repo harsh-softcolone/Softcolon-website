@@ -40,7 +40,7 @@ export default function CaseStudyCard({
           </div>
         </div>
       ) : (
-        <div className='absolute -top-50 -left-60 w-[800px] h-[800px] z-100 hidden lg:block'>
+        <div className='absolute -top-50 -left-60 w-[800px] h-[800px] hidden lg:block'>
           <Image
             src='images/square-pattern.svg'
             alt='pattern-image'
