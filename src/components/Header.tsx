@@ -8,6 +8,8 @@ import { Paintbrush, HeadphonesIcon } from 'lucide-react';
 import { Bot, CloudCog, PanelTop, Smartphone } from 'lucide-react';
 import { Code } from 'lucide-react';
 import { NavItem } from '@/interface';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const platforms = [
   {
@@ -84,6 +86,7 @@ const services: NavItem[] = [
 ];
 
 export const Header = () => {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isServicesOpen, setIsServicesOpen] = useState<boolean>(false);
   const [isPlatformOpen, setIsPlatformOpen] = useState<boolean>(false);
@@ -113,7 +116,7 @@ export const Header = () => {
     },
     { label: 'industry', href: '#' },
     { label: 'our work', href: '#' },
-    { label: 'about', href: '#' },
+    { label: 'about', href: 'about-us' },
   ];
 
   useEffect(() => {
@@ -140,7 +143,10 @@ export const Header = () => {
       <div
         className={`h-[60px] sm:h-[70px] w-11/12 z-10 backdrop-blur-[10px] fixed top-4 transition-transform duration-400 left-1/2 -translate-x-1/2 sm:top-6 max-w-[1440px] mx-auto flex items-center justify-between py-2.5 px-4 sm:px-7.5 bg-[#ffffff1a] rounded-full ${isVisible ? ' translate-y-0' : '-translate-y-[115%]'}`}
       >
-        <div className='flex items-center gap-4'>
+        <div
+          className='flex items-center gap-4 cursor-pointer'
+          onClick={() => router.push('/')}
+        >
           <Image
             src='/logo.svg'
             alt='logo'
@@ -152,13 +158,12 @@ export const Header = () => {
         <ul className='items-center gap-6 xl:gap-10 hidden lg:flex'>
           {desktopNavigation.map((item) => (
             <li key={item.label}>
-              <a
+              <Link
                 href={item.href}
-                onClick={item.onClick}
-                className='text-[18px] font-ibm-plex-sans leading-normal font-normal text-white capitalize transition-all duration-300 hover:text-gray-400 hover:scale-105'
+                className='text-[18px] cursor-pointer font-ibm-plex-sans leading-normal font-normal text-white capitalize transition-all duration-300 hover:text-gray-400 hover:scale-105'
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

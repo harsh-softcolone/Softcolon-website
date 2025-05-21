@@ -165,3 +165,11 @@
   background-position: top;
   background-repeat: no-repeat;
 }
+
+.about-us-banner-drop-shadow {
+  background: linear-gradient(
+    0deg,
+    rgb(13, 13, 13) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
