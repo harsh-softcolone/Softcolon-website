@@ -83,6 +83,7 @@ export default function CaseStudyCard({
               {description}
             </p>
             <Link
+              aria-label='read more'
               href={readMoreLink}
               className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-[16px] sm:text-[20px] hover:text-white transition-all duration-300 group w-fit'
             >

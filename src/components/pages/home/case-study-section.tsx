@@ -45,6 +45,7 @@ const CaseStudySection = () => {
           <span className='gradient-color'>AI Solutions</span>
         </h1>
         <Link
+          aria-label='see more case studies'
           href='/'
           className='text-[#1BA1E3] font-medium uppercase text-[20px] hover:text-white transition-all duration-300 ease-in-out leading-normal font-ibm-plex-sans flex gap-2 items-center group relative'
         >

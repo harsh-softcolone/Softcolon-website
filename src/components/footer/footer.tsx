@@ -48,24 +48,28 @@ const Footer = () => {
             </p>
             <div className='flex space-x-4'>
               <Link
+                aria-label='facebook'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
                 <Facebook size={20} />
               </Link>
               <Link
+                aria-label='instagram'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
                 <Instagram size={20} />
               </Link>
               <Link
+                aria-label='twitter'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
                 <Twitter size={20} />
               </Link>
               <Link
+                aria-label='linkedin'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
@@ -83,6 +87,7 @@ const Footer = () => {
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
+                    aria-label={`${link.name} link`}
                     href={link.href}
                     className='hover:text-gray-300 text-lg font-normal text-white transition-colors duration-300 hover:underline'
                   >
@@ -102,6 +107,7 @@ const Footer = () => {
               {serviceLinks.map((link, index) => (
                 <li key={index}>
                   <Link
+                    aria-label={`${link.name} link`}
                     href={link.href}
                     className='hover:text-gray-300 text-lg font-normal text-white transition-colors duration-300 hover:underline'
                   >
@@ -126,6 +132,7 @@ const Footer = () => {
               <div className='flex items-center'>
                 <Mail size={20} className='text-white mr-2' />
                 <Link
+                  aria-label='email'
                   href='mailto:contact@softcolon.com'
                   className='hover:text-gray-300 transition text-lg'
                 >
@@ -135,6 +142,7 @@ const Footer = () => {
               <div className='flex items-center'>
                 <Phone size={20} className='text-white mr-2' />
                 <Link
+                  aria-label='phone'
                   href='tel:+919687119033'
                   className='hover:text-gray-300 transition text-lg'
                 >
@@ -162,24 +170,28 @@ const Footer = () => {
             </p>
             <div className='flex space-x-4'>
               <Link
+                aria-label='facebook'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
                 <Facebook size={20} />
               </Link>
               <Link
+                aria-label='instagram'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
                 <Instagram size={20} />
               </Link>
               <Link
+                aria-label='twitter'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
                 <Twitter size={20} />
               </Link>
               <Link
+                aria-label='linkedin'
                 href='#'
                 className='text-white hover:text-gray-300 transition'
               >
@@ -197,6 +209,7 @@ const Footer = () => {
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
+                    aria-label={`${link.name} link`}
                     href={link.href}
                     className='hover:text-gray-300 text-sm font-normal text-white transition-colors duration-300 hover:underline'
                   >
@@ -216,6 +229,7 @@ const Footer = () => {
               {serviceLinks.map((link, index) => (
                 <li key={index}>
                   <Link
+                    aria-label={`${link.name} link`}
                     href={link.href}
                     className='hover:text-gray-300 text-sm font-normal text-white transition-colors duration-300 hover:underline'
                   >
@@ -270,6 +284,7 @@ const Footer = () => {
                   </svg>
                 </div>
                 <Link
+                  aria-label='email'
                   href='mailto:contact@softcolon.com'
                   className='hover:text-gray-300 transition'
                 >
@@ -293,6 +308,7 @@ const Footer = () => {
                   </svg>
                 </div>
                 <Link
+                  aria-label='phone'
                   href='tel:+919687119033'
                   className='hover:text-gray-300 transition'
                 >
@@ -308,18 +324,21 @@ const Footer = () => {
           <div className='flex flex-col md:flex-row justify-between items-start md:items-center'>
             <div className='flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-6'>
               <Link
+                aria-label='privacy policy'
                 href='#'
                 className='text-sm sm:text-lg hover:text-gray-300 transition'
               >
                 Privacy Policy
               </Link>
               <Link
+                aria-label='terms and condition'
                 href='#'
                 className='text-sm sm:text-lg hover:text-gray-300 transition'
               >
                 Terms and Condition
               </Link>
               <Link
+                aria-label='contact us'
                 href='#'
                 className='text-sm sm:text-lg hover:text-gray-300 transition-all duration-300'
               >

@@ -159,6 +159,7 @@ export const Header = () => {
           {desktopNavigation.map((item) => (
             <li key={item.label}>
               <Link
+                aria-label={`${item.label} link`}
                 href={item.href}
                 className='text-[18px] cursor-pointer font-ibm-plex-sans leading-normal font-normal text-white capitalize transition-all duration-300 hover:text-gray-400 hover:scale-105'
               >
@@ -174,6 +175,7 @@ export const Header = () => {
         <div className='flex items-center gap-4 lg:hidden'>
           <AnimatedSearchButton />
           <button
+            aria-label='toggle menu'
             type='button'
             onClick={toggleMenu}
             className='flex flex-col justify-center items-center cursor-pointer'

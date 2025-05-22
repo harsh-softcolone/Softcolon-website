@@ -88,6 +88,7 @@ const ContactForm = () => {
             </div>
             <div className='flex justify-start mt-8'>
               <button
+                aria-label='send message'
                 type='submit'
                 className='cursor-pointer group font-ibm-plex-sans px-5 py-3.5 rounded-full hover:bg-gradient-to-r hover:from-[#1f84fc] hover:to-[#c846e4] bg-transparent transition-colors duration-300 flex items-center gap-2 text-lg text-white border-[1px] border-white hover:border-transparent'
               >

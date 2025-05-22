@@ -14,6 +14,7 @@ export const PlatformButton = ({
 }) => {
   return (
     <button
+      aria-label='platform button'
       onClick={onClick}
       className={cn(
         'group w-full cursor-pointer flex items-center justify-between p-5 rounded-[20px] transition-colors duration-400 border-[1px] border-[#2E2E2E]',

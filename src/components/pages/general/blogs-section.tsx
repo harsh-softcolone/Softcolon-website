@@ -41,6 +41,7 @@ const BlogsSection = () => {
 
           <div className='flex justify-center'>
             <Link
+              aria-label='read more'
               href='/'
               className='text-[#1BA1E3] font-medium uppercase text-[20px] hover:text-white transition-all duration-300 ease-in-out leading-normal font-ibm-plex-sans flex gap-2 items-center group relative'
             >
@@ -88,6 +89,7 @@ const BlogsSection = () => {
                     ))}
                   </div>
                   <Link
+                    aria-label='read more'
                     href=''
                     className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-md hover:text-white transition-all duration-300 group w-fit'
                   >

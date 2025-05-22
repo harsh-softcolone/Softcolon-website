@@ -26,6 +26,7 @@ const GradientConnectButton = ({
 
   return (
     <button
+      aria-label='connect with us'
       type='button'
       className={`relative overflow-hidden rounded-full py-2.5 px-4 font-ibm-plex-sans font-medium text-sm leading-normal transition-all duration-300 cursor-pointer
         ${isHovered ? hoverTextColor : `${textColor} bg-white`}

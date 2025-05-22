@@ -21,7 +21,10 @@ const AIGenerationInput = () => {
               placeholder='Describe your idea and get ready to make it live.'
               className='w-full bg-[#242E34] border-[#2a2e35] text-white h-14 pl-4 pr-4 rounded-full font-ibm-plex-sans font-normal text-lg leading-normal placeholder:text-[#56636C] placeholder:font-normal placeholder:text-lg placeholder:leading-normal placeholder:font-ibm-plex-sans'
             />
-            <Button className='absolute right-3 h-10 text-white rounded-full px-2 py-2 top-1/2 -translate-y-1/2 gradient-bg hover:bg-amber-300 font-ibm-plex-sans font-medium text-lg leading-normal transition-all duration-300 cursor-pointer w-fit'>
+            <Button
+              aria-label='generate'
+              className='absolute right-3 h-10 text-white rounded-full px-2 py-2 top-1/2 -translate-y-1/2 gradient-bg hover:bg-amber-300 font-ibm-plex-sans font-medium text-lg leading-normal transition-all duration-300 cursor-pointer w-fit'
+            >
               <span className='hidden lg:block'>Generate</span>
               <Sparkle className='text-white' />
             </Button>
