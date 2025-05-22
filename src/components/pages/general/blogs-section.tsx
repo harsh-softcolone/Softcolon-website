@@ -33,7 +33,7 @@ const BlogsSection = () => {
       <div className='max-w-[1396px] mx-auto flex flex-col px-4 md:px-8 items-center justify-center'>
         <SectionHeader name='Blogs' />
         <div className='space-y-8 mt-5'>
-          <h1 className='text-[28px] sm:text-4xl md:text-[60px] text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+          <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
             Keep your finger on the pulse of <br className='hidden sm:block' />
             <span className='gradient-color'> trends, tools</span> and
             <span className='gradient-color'> innovations.</span>

@@ -38,7 +38,7 @@ const WhySoftcolon = () => {
       <div className='max-w-[1156px] mx-auto w-11/12 xl:w-full flex-col justify-center items-center'>
         <SectionHeader name='Why Softcolon' className='mx-auto' />
         <div className='space-y-7.5 mt-5'>
-          <h1 className='text-[28px] sm:text-4xl md:text-[60px] text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+          <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
             “We&apos;re not just adopting{' '}
             <span className='gradient-color'> technology</span>{' '}
             <br className='hidden lg:block' />

@@ -115,7 +115,7 @@ const PartnersSection = () => {
       />
       <div className='max-w-[1396px] mx-auto space-y-5 px-4 md:px-8 flex flex-col items-center justify-center z-100'>
         <SectionHeader name='Platforms & Partners' />
-        <h1 className='text-[28px] sm:text-4xl md:text-[60px] text-center max-w-[800px] font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+        <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center max-w-[800px] font-normal font-hanuman text-white leading-tight transition-all duration-300'>
           Smart Tech. Strong Stack.
           <br className='hidden sm:block' />
           <span className='gradient-color'>&nbsp;Built to Scale.</span>

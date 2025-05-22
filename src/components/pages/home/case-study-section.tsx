@@ -38,7 +38,7 @@ const CaseStudySection = () => {
     <section className='min-h-[100vh] relative overflow-hidden w-full'>
       <div className='max-w-[1400px] mx-auto space-y-5 px-4 md:px-8 flex flex-col items-center justify-center'>
         <SectionHeader name='Case studies' />
-        <h1 className='text-[28px] sm:text-4xl md:text-[60px] text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+        <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
           Accelerating Business Growth
           <br />
           Powered with&nbsp;

@@ -173,3 +173,14 @@
     rgba(255, 255, 255, 0) 100%
   );
 }
+
+.workflow-transparent-text {
+  opacity: 0.3;
+  background: var(
+    --black-gradint,
+    linear-gradient(0deg, #0d0d0d 20.88%, #145778 100%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
