@@ -11,7 +11,6 @@ export default function Home() {
   return (
     <main className='relative overflow-x-hidden'>
       <AbstractBlobBackground className='top-0 left-1/2 -translate-x-1/2 -translate-y-1/2' />
-      <AbstractBlobBackground className='top-[6%] -left-20 -translate-x-1/2 -translate-y-1/2' />
       <HeroSection />
       <BrandShowcase />
       <ServicesSection />

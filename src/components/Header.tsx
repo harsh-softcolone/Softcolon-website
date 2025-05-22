@@ -93,7 +93,7 @@ export const Header = () => {
 
   const [lastScrollY, setLastScrollY] = useState<number>(0);
   const [isVisible, setIsVisible] = useState<boolean>(true);
-  const scrollThreshold = 250;
+  const scrollThreshold = 10;
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 

@@ -5,19 +5,19 @@ const OurJourneySection = () => {
   const ourJourney = [
     {
       title: 'Our Vision',
-      imageUrl: '/icons/eyeIcon.svg',
+      imageUrl: '/icons/industries/eyeIcon.svg',
       description:
         'Our goal is to become a global leader in AI-powered software development and IT consulting, focusing on quality, innovation, and talent acquisition to empower businesses in the digital era.',
     },
     {
       title: 'Our Mission',
-      imageUrl: '/icons/menuIcon.svg',
+      imageUrl: '/icons/industries/menuIcon.svg',
       description:
         'Softcolon specializes in transforming digital experiences into cost-effective, scalable, and intelligent solutions, delivering AI-driven technologies that enhance clients digital presence and competitive edge.',
     },
     {
       title: 'Our Values',
-      imageUrl: '/icons/diamond.svg',
+      imageUrl: '/icons/industries/diamond.svg',
       description:
         'We are committed to building long-term partnerships, empowering clients to streamline operations, enhance customer experiences, and achieve sustainable growth in an ever-evolving digital landscape.',
     },
