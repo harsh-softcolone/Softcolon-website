@@ -1,12 +1,16 @@
 import AchievementSection from '@/components/pages/aboutus/achievements-section';
 import IndustriesSection from '@/components/pages/aboutus/Industries-section';
 import OurJourneySection from '@/components/pages/aboutus/our-journey-section';
-import PhotoGallerySection from '@/components/pages/aboutus/photo-gallary-section';
 import WorkFlowSection from '@/components/pages/aboutus/workflow-section';
 import BlogsSection from '@/components/pages/general/blogs-section';
 import ContactFormSection from '@/components/pages/general/contact-form-section';
 import WhySoftcolon from '@/components/pages/home/why-softcolon';
 import PageHeader from '@/components/shared/page-header';
+import dynamic from 'next/dynamic';
+
+const PhotoGallerySection = dynamic(
+  () => import('@/components/pages/aboutus/photo-gallary-section'),
+);
 
 const page = () => {
   return (

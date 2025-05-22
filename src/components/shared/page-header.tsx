@@ -19,6 +19,7 @@ const PageHeader = ({ title, breadcrumbItems }: PageHeaderProps) => {
       <Image
         src='pages/about/keyboardBanner.svg'
         alt='about us banner'
+        loading='lazy'
         width={1920}
         height={1080}
         className='w-full object-cover min-h-[220px] max-h-[490px] h-full sm:h-[490px]'

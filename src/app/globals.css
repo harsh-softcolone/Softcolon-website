@@ -147,11 +147,6 @@
   background: linear-gradient(109deg, #050506 19.72%, #22272b 100.49%);
 }
 
-.text-responsive {
-  font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
-  line-height: clamp(2.5rem, 4vw + 1.5rem, 4rem);
-}
-
 .gradient-bg {
   background: var(
     --gradiant,
