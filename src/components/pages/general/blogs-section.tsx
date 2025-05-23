@@ -1,7 +1,10 @@
+'use client';
 import SectionHeader from '@/components/header/section-header';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { ArrowRight, ArrowRightIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRef } from 'react';
 
 const blogsContent = [
   {
@@ -28,10 +31,12 @@ const blogsContent = [
 ];
 
 const BlogsSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
   return (
     <section className='pt-16 pb-25 relative overflow-hidden bg-[#1b1b1b]'>
       <div className='max-w-[1396px] mx-auto flex flex-col px-4 md:px-8 items-center justify-center'>
-        <SectionHeader name='Blogs' />
+        <SectionHeader ref={sectionRef} name='Blogs' />
         <div className='space-y-8 mt-5'>
           <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
             Keep your finger on the pulse of <br className='hidden sm:block' />

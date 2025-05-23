@@ -116,6 +116,7 @@ export const Header = () => {
     },
     { label: 'industry', href: '#' },
     { label: 'our work', href: '#' },
+    { label: 'our team', href: 'out-team' },
     { label: 'about', href: 'about-us' },
   ];
 

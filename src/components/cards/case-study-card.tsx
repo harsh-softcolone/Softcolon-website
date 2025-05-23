@@ -11,6 +11,7 @@ interface CaseStudyCardProps {
   readMoreLink: string;
   cardNumber: number;
   imageOnLeft?: boolean;
+  ref?: React.RefObject<HTMLDivElement | null>;
 }
 
 export default function CaseStudyCard({
@@ -21,9 +22,10 @@ export default function CaseStudyCard({
   cardNumber,
   readMoreLink,
   imageOnLeft = true,
+  ref,
 }: CaseStudyCardProps) {
   return (
-    <div className='relative'>
+    <div ref={ref} className='relative'>
       {/* Pattern Image */}
       {cardNumber % 2 === 1 ? (
         <div className='hidden lg:block'>

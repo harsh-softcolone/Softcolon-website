@@ -12,7 +12,7 @@ export default function PhotoGallery() {
   ];
   return (
     <div className='container mx-auto px-4 py-8'>
-      <h1 className='text-3xl md:text-5xl font-bold text-center text-white mb-12'>
+      <h1 className='text-3xl md:text-5xl font-medium text-center text-white mb-12 font-ibm-plex-sans'>
         Timeless photos that evoke
         <br />
         emotion and memories.

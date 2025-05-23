@@ -5,9 +5,11 @@ import React from 'react';
 const SectionHeader = ({
   name = 'Dummy Section',
   className,
+  ref,
 }: {
   name: string;
   className?: string;
+  ref?: React.RefObject<HTMLDivElement | null>;
 }) => {
   return (
     <div
@@ -15,6 +17,7 @@ const SectionHeader = ({
         'w-fit border-[1px] rounded-full border-[#7B7B7B] px-4 py-2 flex items-center gap-2',
         className,
       )}
+      ref={ref}
     >
       <Image
         src='/icons/gradient-star.svg'

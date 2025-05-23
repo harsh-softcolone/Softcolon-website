@@ -1,8 +1,12 @@
+'use client';
 import SectionHeader from '@/components/header/section-header';
 import Link from 'next/link';
-import React from 'react';
+import React, { useRef } from 'react';
 import { ArrowRightIcon } from 'lucide-react';
 import CaseStudyCard from '@/components/cards/case-study-card';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
+import { useGsapScrollReveal } from '@/hooks/useGsapScrollReveal';
+
 const CaseStudySection = () => {
   const caseStudies = [
     {
@@ -33,11 +37,19 @@ const CaseStudySection = () => {
       imageOnLeft: true,
     },
   ];
+  const sectionRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
+
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+
+  useGsapScrollReveal(leftRef as React.RefObject<HTMLElement>, 'left');
+  useGsapScrollReveal(rightRef as React.RefObject<HTMLElement>, 'right');
 
   return (
     <section className='min-h-[100vh] relative overflow-hidden w-full'>
       <div className='max-w-[1400px] mx-auto space-y-5 px-4 md:px-8 flex flex-col items-center justify-center'>
-        <SectionHeader name='Case studies' />
+        <SectionHeader ref={sectionRef} name='Case studies' />
         <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
           Accelerating Business Growth
           <br />
@@ -56,7 +68,12 @@ const CaseStudySection = () => {
       </div>
       <div className='space-y-10 md:space-y-16 mt-20'>
         {caseStudies.map((card, index) => (
-          <CaseStudyCard cardNumber={index + 1} key={index} {...card} />
+          <CaseStudyCard
+            ref={index === 0 ? leftRef : rightRef}
+            cardNumber={index + 1}
+            key={index}
+            {...card}
+          />
         ))}
       </div>
     </section>

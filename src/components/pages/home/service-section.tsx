@@ -1,9 +1,16 @@
+'use client';
 import AbstractBlobBackground from '@/components/animated/abstract-blob-background';
 import RotateArrowButton from '@/components/buttons/rotate-arrow-button';
 import SectionHeader from '@/components/header/section-header';
-import React from 'react';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
+import { useScrollRevealList } from '@/hooks/useScrollRevealList';
+import React, { useRef } from 'react';
 
 const ServicesSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const serviceItemRefs = useRef<HTMLDivElement[]>([]);
+  useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
+  useScrollRevealList(serviceItemRefs, 'left');
   const services = [
     {
       title: 'Generative AI',
@@ -36,6 +43,7 @@ const ServicesSection = () => {
         'Think smarter, not harder, we craft AI roadmaps that fuel innovation and drive decisions with precision.',
     },
   ];
+
   return (
     <section
       className='mt-40 sm:mt-60 pt-14.5 sm:pt-32.5 min-h-[100vh] relative overflow-hidden'
@@ -46,7 +54,7 @@ const ServicesSection = () => {
         fill='#ED58C9'
       />
       <div className='max-w-[1250px] mx-auto space-y-5 px-4 md:px-8 flex flex-col items-center justify-center'>
-        <SectionHeader name='Services' />
+        <SectionHeader name='Services' ref={sectionRef} />
         <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
           The Way You Work with AI That <br className='hidden lg:block' />
           <span className='gradient-color'> Thinks</span>,
@@ -60,6 +68,9 @@ const ServicesSection = () => {
         <div className='mt-8 sm:mt-16.5'>
           {services.map((service, index) => (
             <div
+              ref={(el) => {
+                if (el) serviceItemRefs.current[index] = el;
+              }}
               key={index}
               className={`${services?.length === index ? '' : ''}border-b-[1px] group border-[#353535] hover:border-blue-500 transition-all duration-300 py-5 sm:py-7 grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-3 md:gap-8 items-center`}
             >
@@ -73,7 +84,7 @@ const ServicesSection = () => {
                 />
               </div>
               <p className='text-[16px] lg:text-xl text-paragraph font-normal leading-normal font-ibm-plex-sans'>
-                .{service.description}
+                {service.description}
               </p>
               <RotateArrowButton
                 buttonClassName='group-hover:bg-gradient-to-r group-hover:from-[#1f84fc] group-hover:to-[#c846e4] hidden md:flex'

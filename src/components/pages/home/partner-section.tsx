@@ -2,9 +2,11 @@
 import { PlatformButton } from '@/components/buttons/partner-section/platform-button';
 import { PlatformButtonMobile } from '@/components/buttons/partner-section/platform-button-mobile';
 import SectionHeader from '@/components/header/section-header';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
+import { useGsapScrollReveal } from '@/hooks/useGsapScrollReveal';
 import { Platform } from '@/interface';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 // Define platform types
 const platforms: Platform[] = [
@@ -89,9 +91,23 @@ const platforms: Platform[] = [
 
 const PartnersSection = () => {
   const [activePlatform, setActivePlatform] = useState<Platform>(platforms[0]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+
+  useGsapScrollReveal(leftRef as React.RefObject<HTMLElement>, 'left', {
+    start: 'top 50%',
+  });
+  useGsapScrollReveal(rightRef as React.RefObject<HTMLElement>, 'right', {
+    start: 'top 50%',
+  });
 
   return (
-    <section className='py-14.5 sm:py-32.5 relative overflow-hidden'>
+    <section
+      ref={sectionRef}
+      className='py-14.5 sm:py-32.5 relative overflow-hidden'
+    >
       <Image
         src='/icons/sparkle.svg'
         alt='partners-bg'
@@ -127,7 +143,7 @@ const PartnersSection = () => {
         </p>
         <div className='w-full mt-16 flex flex-col-reverse md:flex-row gap-8 lg:gap-16'>
           {/* Mobile view - stacked layout */}
-          <div className='md:hidden w-full space-y-4'>
+          <div className='md:hidden w-full space-y-4' ref={leftRef}>
             {platforms.map((platform) => (
               <PlatformButtonMobile
                 key={platform.id}
@@ -139,7 +155,10 @@ const PartnersSection = () => {
           </div>
 
           {/* Desktop view - side by side layout */}
-          <div className='hidden md:flex md:flex-col md:w-1/2 space-y-4'>
+          <div
+            className='hidden md:flex md:flex-col md:w-1/2 space-y-4'
+            ref={leftRef}
+          >
             {platforms.map((platform) => (
               <PlatformButton
                 key={platform.id}
@@ -150,7 +169,10 @@ const PartnersSection = () => {
             ))}
           </div>
 
-          <div className='w-full md:w-1/2 bg-[#1A1A1A] bg-[url("https://plus.unsplash.com/premium_photo-1678566111481-8e275550b700?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")] bg-cover bg-center rounded-xl p-2 sm:p-7.5 bg-no-repeat'>
+          <div
+            ref={rightRef}
+            className='w-full md:w-1/2 bg-[#1A1A1A] bg-[url("https://plus.unsplash.com/premium_photo-1678566111481-8e275550b700?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")] bg-cover bg-center rounded-xl p-2 sm:p-7.5 bg-no-repeat'
+          >
             <div className='space-y-4 border-[1px] backdrop-blur-[10px]  border-[#383838] bg-[#ffffff1a] h-full rounded-[20px] px-6 py-10'>
               <p className='text-white text-lg md:text-xl font-ibm-plex-sans'>
                 {activePlatform.description}

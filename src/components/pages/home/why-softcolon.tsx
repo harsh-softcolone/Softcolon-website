@@ -1,8 +1,12 @@
+'use client';
 import SectionHeader from '@/components/header/section-header';
+import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import Image from 'next/image';
-import React from 'react';
+import React, { useRef } from 'react';
 
 const WhySoftcolon = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
   const whySoftcolonContent = [
     {
       icon: 'images/general/human.svg',
@@ -36,7 +40,11 @@ const WhySoftcolon = () => {
   return (
     <section className='py-14.5 sm:py-22 relative overflow-hidden'>
       <div className='max-w-[1156px] mx-auto w-11/12 xl:w-full flex-col justify-center items-center'>
-        <SectionHeader name='Why Softcolon' className='mx-auto' />
+        <SectionHeader
+          ref={sectionRef}
+          name='Why Softcolon'
+          className='mx-auto'
+        />
         <div className='space-y-7.5 mt-5'>
           <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
             “We&apos;re not just adopting{' '}

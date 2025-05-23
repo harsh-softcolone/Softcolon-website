@@ -46,8 +46,9 @@ export default function BrandShowcase() {
     }, sliderRef);
     return () => ctx.revert();
   }, []);
+
   return (
-    <div className='overflow-hidden w-full max-w-[1400px] mx-auto px-4 md:px-8 relative'>
+    <section className='overflow-hidden w-full max-w-[1400px] mx-auto px-4 md:px-8 relative'>
       <div className='hidden xl:block absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-[#0d0d0d] to-transparent pointer-events-none z-10'></div>
       <div className='hidden xl:block absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-[#0d0d0d] to-transparent pointer-events-none z-10'></div>
 
@@ -67,6 +68,6 @@ export default function BrandShowcase() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
