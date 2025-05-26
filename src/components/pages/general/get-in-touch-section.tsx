@@ -1,14 +1,14 @@
-import ContactForm from '@/components/footer/contact-form';
 import Footer from '@/components/footer/footer';
 import React from 'react';
+import GetInTouchForm from '@/components/footer/get-in-touch-form';
 
-const ContactFormSection = () => {
+const GetInTouchSection = () => {
   return (
     <div className='bg-[#0D0D0D] pt-14.5 sm:pt-25 pb-4 sm:pb-14.5 space-y-10'>
-      <ContactForm />
+      <GetInTouchForm />
       <Footer />
     </div>
   );
 };
 
-export default ContactFormSection;
+export default GetInTouchSection;

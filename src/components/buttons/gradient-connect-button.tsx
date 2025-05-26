@@ -10,6 +10,7 @@ interface GradientButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   hoverTextColor?: string;
   particleCount?: number;
   className?: string;
+  handleClick?: () => void;
 }
 
 const GradientConnectButton = ({
@@ -20,6 +21,7 @@ const GradientConnectButton = ({
   hoverTextColor = 'text-white',
   particleCount = 6,
   className = '',
+  handleClick,
   ...props
 }: GradientButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -32,6 +34,7 @@ const GradientConnectButton = ({
         ${isHovered ? hoverTextColor : `${textColor} bg-white`}
         ${className}
       `}
+      onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       {...props}

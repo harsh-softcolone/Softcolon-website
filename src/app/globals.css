@@ -147,6 +147,10 @@
   background: linear-gradient(109deg, #050506 19.72%, #22272b 100.49%);
 }
 
+.left-shadow-gradient {
+  background: linear-gradient(289deg, #0d0d0d 19.23%, #22272b 100%);
+}
+
 .gradient-bg {
   background: var(
     --gradiant,

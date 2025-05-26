@@ -115,8 +115,8 @@ export const Header = () => {
       },
     },
     { label: 'industry', href: '#' },
-    { label: 'our work', href: '#' },
-    { label: 'our team', href: 'out-team' },
+    { label: 'case studies', href: '/case-studies' },
+    { label: 'our team', href: 'our-team' },
     { label: 'about', href: 'about-us' },
   ];
 
@@ -159,19 +159,31 @@ export const Header = () => {
         <ul className='items-center gap-6 xl:gap-10 hidden lg:flex'>
           {desktopNavigation.map((item) => (
             <li key={item.label}>
-              <Link
-                aria-label={`${item.label} link`}
-                href={item.href}
-                className='text-[18px] cursor-pointer font-ibm-plex-sans leading-normal font-normal text-white capitalize transition-all duration-300 hover:text-gray-400 hover:scale-105'
-              >
-                {item.label}
-              </Link>
+              {item.onClick ? (
+                <button
+                  aria-label={`${item.label} button`}
+                  onClick={item.onClick}
+                  className='text-[18px] cursor-pointer font-ibm-plex-sans leading-normal font-normal text-white capitalize transition-all duration-300 hover:text-gray-400 hover:scale-105'
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  aria-label={`${item.label} link`}
+                  href={item.href}
+                  className='text-[18px] cursor-pointer font-ibm-plex-sans leading-normal font-normal text-white capitalize transition-all duration-300 hover:text-gray-400 hover:scale-105'
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
         <div className='hidden items-center gap-2 xl:gap-4 lg:flex'>
           <AnimatedSearchButton />
-          <GradientConnectButton />
+          <GradientConnectButton
+            handleClick={() => router.push('/contact-us')}
+          />
         </div>
         <div className='flex items-center gap-4 lg:hidden'>
           <AnimatedSearchButton />

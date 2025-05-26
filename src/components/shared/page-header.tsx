@@ -17,7 +17,7 @@ const PageHeader = ({ title, breadcrumbItems }: PageHeaderProps) => {
         <PageBreadCrumbSection items={breadcrumbItems} />
       </div>
       <Image
-        src='pages/about/keyboardBanner.svg'
+        src='/pages/about/keyboardBanner.svg'
         alt='about us banner'
         loading='lazy'
         width={1920}

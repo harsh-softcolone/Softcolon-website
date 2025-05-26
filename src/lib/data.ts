@@ -56,3 +56,65 @@ export const teamMembers = [
     bgColor: 'bg-[#f0e6ef]', // Light pink
   },
 ];
+
+export const caseStudiesDummyData = [
+  {
+    id: 1,
+    imageUrl: 'pages/case-study/case-study-1.svg',
+    category: 'Healthcare',
+    title: 'Transforming Healthcare with an AI Health Assistant',
+    description: 'Enhance medical care with a sm',
+    badges: ['Image generate', 'AI support'],
+    readMoreLink: '/',
+  },
+  {
+    id: 2,
+    imageUrl: 'pages/case-study/case-study-2.svg',
+    category: 'Food & Travel',
+    title: 'Streamline Your Journey with an AI Trip Planner',
+    description:
+      'Let AI craft personalized itineraries based on your preferences, turning complex travel planning into a smooth, effortless experience. care.',
+    badges: ['Image generate', 'AI support'],
+    readMoreLink: '/',
+  },
+  {
+    id: 3,
+    imageUrl: 'pages/case-study/case-study-3.svg',
+    category: 'Travel',
+    title: 'Streamline Your Journey with an AI Trip Planner',
+    description:
+      'Let AI craft personalized itineraries based on your preferences, turning complex travel planning into a smooth, effortless experience.',
+    badges: ['Image generate', 'AI support'],
+    readMoreLink: '/',
+  },
+  {
+    id: 4,
+    imageUrl: 'pages/case-study/case-study-4.svg',
+    category: 'Food & Travel',
+    title: 'Streamline Your Journey with an AI Trip Planner',
+    description:
+      'Let AI craft personalized itineraries based on your preferences, turning complex travel planning into a smooth, effortless experience.',
+    badges: ['Image generate', 'AI support'],
+    readMoreLink: '/',
+  },
+  {
+    id: 5,
+    imageUrl: 'pages/case-study/case-study-5.svg',
+    category: 'Education',
+    title: 'Revolutionizing Learning with AI-Powered Education Platform',
+    description:
+      'Transform traditional education with an AI-driven platform that adapts to individual learning styles, provides real-time feedback, and creates personalized learning paths for students.',
+    badges: ['AI support', 'Personalization'],
+    readMoreLink: '/',
+  },
+  {
+    id: 6,
+    imageUrl: 'pages/case-study/case-study-6.svg',
+    category: 'Finance',
+    title: 'Smart Financial Management with AI Investment Advisor',
+    description:
+      'Empower investors with an intelligent AI system that analyzes market trends, provides personalized investment recommendations, and helps optimize portfolio performance.',
+    badges: ['AI support', 'Analytics'],
+    readMoreLink: '/',
+  },
+];

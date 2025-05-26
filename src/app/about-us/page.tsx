@@ -1,15 +1,15 @@
-import AchievementSection from '@/components/pages/aboutus/achievements-section';
-import IndustriesSection from '@/components/pages/aboutus/Industries-section';
-import OurJourneySection from '@/components/pages/aboutus/our-journey-section';
-import WorkFlowSection from '@/components/pages/aboutus/workflow-section';
+import AchievementSection from '@/components/pages/about-us/achievements-section';
+import IndustriesSection from '@/components/pages/about-us/Industries-section';
+import OurJourneySection from '@/components/pages/about-us/our-journey-section';
+import WorkFlowSection from '@/components/pages/about-us/workflow-section';
 import BlogsSection from '@/components/pages/general/blogs-section';
-import ContactFormSection from '@/components/pages/general/contact-form-section';
+import GetInTouchForm from '@/components/footer/get-in-touch-form';
 import WhySoftcolon from '@/components/pages/home/why-softcolon';
 import PageHeader from '@/components/shared/page-header';
 import dynamic from 'next/dynamic';
 
 const PhotoGallerySection = dynamic(
-  () => import('@/components/pages/aboutus/photo-gallary-section'),
+  () => import('@/components/pages/about-us/photo-gallary-section'),
 );
 
 const page = () => {
@@ -27,7 +27,7 @@ const page = () => {
       <PhotoGallerySection />
       <WhySoftcolon />
       <BlogsSection />
-      <ContactFormSection />
+      <GetInTouchForm />
     </div>
   );
 };

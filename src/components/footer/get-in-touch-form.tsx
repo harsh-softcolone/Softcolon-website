@@ -11,7 +11,7 @@ import { ArrowRight } from 'lucide-react';
 
 type FormData = z.infer<typeof contactFormSchema>;
 
-const ContactForm = () => {
+const GetInTouchForm = () => {
   const {
     register,
     handleSubmit,
@@ -32,7 +32,7 @@ const ContactForm = () => {
           <h1 className='text-white text-[30px] md:text-[40px] font-normal leading-[39px] sm:leading-[52px]'>
             Success is a Team Play
             <span className='text-[#6F6F70]'>
-              &nbsp;Right Let&apos;s works together!
+              &nbsp;Right Let&apos;s work together!
             </span>
           </h1>
           <Link
@@ -103,4 +103,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default GetInTouchForm;
