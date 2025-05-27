@@ -1,6 +1,6 @@
 import Footer from '@/components/footer/footer';
 import React from 'react';
-import GetInTouchForm from '@/components/footer/get-in-touch-form';
+import GetInTouchForm from '@/components/forms/get-in-touch-form';
 
 const GetInTouchSection = () => {
   return (

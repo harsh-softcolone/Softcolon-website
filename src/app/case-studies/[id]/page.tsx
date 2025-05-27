@@ -2,7 +2,7 @@ import BusinessBenefits from '@/components/pages/case-studies/details/business-b
 import FeatureHighlightGrid from '@/components/pages/case-studies/details/feature-highlight-grid';
 import TechStackShowcase from '@/components/pages/case-studies/details/tech-stack-showcase';
 import VirtualHealthAssistantOverview from '@/components/pages/case-studies/details/virtual-health-assistant-overview';
-import GetInTouchForm from '@/components/footer/get-in-touch-form';
+import GetInTouchForm from '@/components/forms/get-in-touch-form';
 import PageHeader from '@/components/shared/page-header';
 import React from 'react';
 

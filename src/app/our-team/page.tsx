@@ -1,4 +1,4 @@
-import GetInTouchForm from '@/components/footer/get-in-touch-form';
+import GetInTouchForm from '@/components/forms/get-in-touch-form';
 import AboutTeamSection from '@/components/pages/our-team/about-team-section';
 import FundamentalValuesSection from '@/components/pages/our-team/fundamental-values-section';
 import TeamGallerySection from '@/components/pages/our-team/team-gallery-section';

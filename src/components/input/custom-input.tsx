@@ -8,12 +8,13 @@ interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   required?: boolean;
+  parentClassName?: string;
 }
 
 const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
-  ({ label, error, required, className, ...props }, ref) => {
+  ({ label, error, required, className, parentClassName, ...props }, ref) => {
     return (
-      <div className='mb-6 w-full font-ibm-plex-sans'>
+      <div className={cn('mb-6 w-full font-ibm-plex-sans', parentClassName)}>
         {label && (
           <label className='block text-white text-base'>
             {label}

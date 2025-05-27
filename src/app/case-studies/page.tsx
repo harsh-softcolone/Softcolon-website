@@ -1,5 +1,5 @@
 import CaseStudyComponent from '@/components/pages/case-studies/case-study-component';
-import GetInTouchForm from '@/components/footer/get-in-touch-form';
+import GetInTouchForm from '@/components/forms/get-in-touch-form';
 import PageHeader from '@/components/shared/page-header';
 import React from 'react';
 

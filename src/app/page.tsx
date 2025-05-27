@@ -5,7 +5,7 @@ import PartnersSection from '@/components/pages/home/partner-section';
 import ServicesSection from '@/components/pages/home/service-section';
 import WhySoftcolon from '@/components/pages/home/why-softcolon';
 import BrandShowcase from '@/components/sliders/brand-showcase';
-import GetInTouchForm from '@/components/footer/get-in-touch-form';
+import GetInTouchForm from '@/components/forms/get-in-touch-form';
 import BlogsSection from '@/components/pages/general/blogs-section';
 export default function Home() {
   return (

@@ -158,6 +158,10 @@
   );
 }
 
+.address-icon-bg {
+  background: linear-gradient(289deg, #0d0d0d 19.23%, #22272b 100%);
+}
+
 #service-section {
   background-image: url('/pages/home/curved-border.svg');
   background-size: contain;

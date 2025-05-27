@@ -3,7 +3,7 @@ import IndustriesSection from '@/components/pages/about-us/Industries-section';
 import OurJourneySection from '@/components/pages/about-us/our-journey-section';
 import WorkFlowSection from '@/components/pages/about-us/workflow-section';
 import BlogsSection from '@/components/pages/general/blogs-section';
-import GetInTouchForm from '@/components/footer/get-in-touch-form';
+import GetInTouchForm from '@/components/forms/get-in-touch-form';
 import WhySoftcolon from '@/components/pages/home/why-softcolon';
 import PageHeader from '@/components/shared/page-header';
 import dynamic from 'next/dynamic';
