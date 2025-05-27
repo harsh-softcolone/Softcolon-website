@@ -59,7 +59,11 @@ export function MegaNav({
                 <ul className='space-y-2'>
                   {navItem.items.map((item, itemIndex) => (
                     <li key={itemIndex}>
-                      <a href='#' onClick={onClose} className={navLinkClass}>
+                      <a
+                        href={`/platform/${item.toLowerCase()}`}
+                        onClick={onClose}
+                        className={navLinkClass}
+                      >
                         {item}
                       </a>
                     </li>

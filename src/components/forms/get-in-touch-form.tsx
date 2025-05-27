@@ -26,7 +26,7 @@ const GetInTouchForm = () => {
   };
 
   return (
-    <div className='border-[1px] mt-10 md:mt-24.5 border-[#31383C] border-solid p-7.5 sm:py-18 px-5 sm:px-18 max-w-[1392px] w-11/12 2xl:w-full rounded-[30px] mx-auto nav-background font-ibm-plex-sans'>
+    <div className='border-[1px] mt-14.5 md:mt-25 border-[#31383C] border-solid p-7.5 sm:py-18 px-5 sm:px-18 max-w-[1392px] w-11/12 2xl:w-full rounded-[30px] mx-auto nav-background font-ibm-plex-sans'>
       <div className='grid grid-cols-1 xl:grid-cols-[1fr_2fr] gap-14.5'>
         <div className='flex flex-col justify-between items-start gap-7.5'>
           <h1 className='text-white text-[30px] md:text-[40px] font-normal leading-[39px] sm:leading-[52px]'>

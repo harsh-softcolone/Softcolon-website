@@ -5,8 +5,8 @@ import PartnersSection from '@/components/pages/home/partner-section';
 import ServicesSection from '@/components/pages/home/service-section';
 import WhySoftcolon from '@/components/pages/home/why-softcolon';
 import BrandShowcase from '@/components/sliders/brand-showcase';
-import GetInTouchForm from '@/components/forms/get-in-touch-form';
 import BlogsSection from '@/components/pages/general/blogs-section';
+import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
 export default function Home() {
   return (
     <main className='relative overflow-x-hidden'>
@@ -18,7 +18,7 @@ export default function Home() {
       <CaseStudySection />
       <WhySoftcolon />
       <BlogsSection />
-      <GetInTouchForm />
+      <GetInTouchSection />
     </main>
   );
 }

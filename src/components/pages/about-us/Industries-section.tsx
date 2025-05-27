@@ -52,7 +52,7 @@ const IndustriesSection = () => {
             FinTech to FoodTech, we build AI- <br className='hidden lg:block' />
             driven solutions{' '}
           </h1>
-          <div className='max-w-[950px] 2xl:max-w-[1389px] mx-auto font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-[24px] md:gap-y-[27px] gap-y-[20px] text-white'>
+          <div className='max-w-[1389px] mx-auto font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-[24px] md:gap-y-[27px] gap-y-[20px] text-white'>
             {industriesData.map((industries) => (
               <div
                 key={industries.name}

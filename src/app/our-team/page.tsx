@@ -1,4 +1,4 @@
-import GetInTouchForm from '@/components/forms/get-in-touch-form';
+import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
 import AboutTeamSection from '@/components/pages/our-team/about-team-section';
 import FundamentalValuesSection from '@/components/pages/our-team/fundamental-values-section';
 import TeamGallerySection from '@/components/pages/our-team/team-gallery-section';
@@ -17,7 +17,7 @@ const page = () => {
       <TeamGallerySection />
       <FundamentalValuesSection />
       <TrustSection />
-      <GetInTouchForm />
+      <GetInTouchSection />
     </div>
   );
 };

@@ -19,7 +19,7 @@ interface PageBreadCrumbSectionProps {
 
 const PageBreadCrumbSection = ({ items }: PageBreadCrumbSectionProps) => {
   return (
-    <Breadcrumb className='font-ibm-plex-sans text-sm sm:text-lg font-normal leading-normal'>
+    <Breadcrumb className='font-ibm-plex-sans text-sm sm:text-lg font-normal leading-normal flex justify-center items-center'>
       <BreadcrumbList>
         {items.map((item, idx) => (
           <React.Fragment key={item.label}>

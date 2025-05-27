@@ -1,5 +1,5 @@
 import CaseStudyComponent from '@/components/pages/case-studies/case-study-component';
-import GetInTouchForm from '@/components/forms/get-in-touch-form';
+import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
 import PageHeader from '@/components/shared/page-header';
 import React from 'react';
 
@@ -16,7 +16,7 @@ const CaseStudy = () => {
       />
       <CaseStudyComponent />
 
-      <GetInTouchForm />
+      <GetInTouchSection />
     </div>
   );
 };

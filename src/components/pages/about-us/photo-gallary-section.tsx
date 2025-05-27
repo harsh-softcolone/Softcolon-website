@@ -3,7 +3,12 @@
 import Image from 'next/image';
 import { photos } from '@/lib/photo.data';
 
-export default function PhotoGallery() {
+interface Props {
+  header?: React.ReactNode;
+  title?: React.ReactNode;
+}
+
+export default function PhotoGallery({ header, title }: Props) {
   const groupedPhotos = [
     [photos[0]],
     [photos[1], photos[2]],
@@ -12,11 +17,16 @@ export default function PhotoGallery() {
   ];
   return (
     <div className='container mx-auto px-4 py-8'>
-      <h1 className='text-3xl md:text-5xl font-medium text-center text-white mb-12 font-ibm-plex-sans'>
-        Timeless photos that evoke
-        <br />
-        emotion and memories.
-      </h1>
+      {header ? header : null}
+      {title ? (
+        title
+      ) : (
+        <h1 className='text-3xl md:text-5xl font-medium text-center text-white mb-12 font-ibm-plex-sans'>
+          Timeless photos that evoke
+          <br />
+          emotion and memories.
+        </h1>
+      )}
 
       <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
         {groupedPhotos.map((group, index) => (

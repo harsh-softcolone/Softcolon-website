@@ -6,7 +6,7 @@ import React from 'react';
 
 const ContactUsSection = () => {
   return (
-    <section className='pb-14.5 sm:pb-22 relative overflow-hidden'>
+    <section className='pb-14.5 sm:pb-22 relative overflow-hidden space-y-10 md:space-y-20'>
       <div className='max-w-[1391px] mx-auto w-11/12 xxl:w-full flex-col justify-center items-center'>
         <div className='grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-10 md:gap-24'>
           <div className='space-y-9'>
@@ -87,6 +87,18 @@ const ContactUsSection = () => {
           </div>
           <ContactUsForm />
         </div>
+      </div>
+      <div className='max-w-[1391px] mx-auto w-11/12 xxl:w-full flex-col justify-center items-center'>
+        <iframe
+          src='https://www.google.com/maps/embed/v1/place?q=SoftColon+Technology+Private+Limited,+Ahmedabad,+Gujarat&maptype=roadmap&zoom=15&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8'
+          width='600'
+          height='450'
+          style={{ border: 0 }}
+          allowFullScreen
+          loading='lazy'
+          className='grayscale w-full rounded-4xl'
+          referrerPolicy='no-referrer-when-downgrade'
+        ></iframe>
       </div>
     </section>
   );
