@@ -65,7 +65,7 @@ const platformData: PlatformData = {
     title: 'How does OpenAI handle data privacy?',
     subtitle:
       'Dive into our FAQ to better understand how OpenAI can support your goals.',
-    image: '/placeholder.svg?height=400&width=500',
+    image: '/images/platform/gptFaq.svg',
     faqs: [
       {
         id: '1',

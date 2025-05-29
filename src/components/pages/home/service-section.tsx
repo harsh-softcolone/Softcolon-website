@@ -3,14 +3,11 @@ import AbstractBlobBackground from '@/components/animated/abstract-blob-backgrou
 import RotateArrowButton from '@/components/buttons/rotate-arrow-button';
 import SectionHeader from '@/components/header/section-header';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
-import { useScrollRevealList } from '@/hooks/useScrollRevealList';
 import React, { useRef } from 'react';
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const serviceItemRefs = useRef<HTMLDivElement[]>([]);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
-  useScrollRevealList(serviceItemRefs, 'left');
   const services = [
     {
       title: 'Generative AI',
@@ -68,9 +65,6 @@ const ServicesSection = () => {
         <div className='mt-8 sm:mt-16.5'>
           {services.map((service, index) => (
             <div
-              ref={(el) => {
-                if (el) serviceItemRefs.current[index] = el;
-              }}
               key={index}
               className={`${services?.length === index ? '' : ''}border-b-[1px] group border-[#353535] hover:border-blue-500 transition-all duration-300 py-5 sm:py-7 grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-3 md:gap-8 items-center`}
             >

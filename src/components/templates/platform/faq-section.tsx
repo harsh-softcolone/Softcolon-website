@@ -26,46 +26,41 @@ interface Props {
 
 const FAQSection = ({ faqData }: Props) => {
   return (
-    <section
-      className='w-full py-16 lg:py-24'
-      style={{
-        background: 'linear-gradient(109deg, #050506 19.72%, #22272b 100.49%)',
-      }}
-    >
+    <section className='w-full py-16 lg:py-24'>
       <div className='mx-auto max-w-[1396px] px-4 sm:px-6 lg:px-8'>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start'>
+        <div className='grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-16 items-start'>
           {/* Content Section */}
           <div className='space-y-8'>
             {/* Header */}
-            <div className='space-y-4'>
-              <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight'>
+            <div className='space-y-2'>
+              <h2 className='text-3xl sm:text-4xl lg:text-[40px] text-white leading-normal font-normal font-hanuman'>
                 {faqData.title}
               </h2>
-              <p className='text-gray-400 text-lg leading-relaxed'>
+              <p className='text-paragraph font-normal font-ibm-plex-sans leading-normal text-base sm:text-lg'>
                 {faqData.subtitle}
               </p>
             </div>
 
             {/* Accordion */}
-            <div className='space-y-4'>
+            <div className='space-y-4py-4'>
               <Accordion
                 type='single'
                 collapsible
-                className='space-y-4'
+                className='space-y-0'
                 defaultValue='item-0'
               >
                 {faqData.faqs.map((faq, index) => (
                   <AccordionItem
                     key={faq.id}
                     value={`item-${index}`}
-                    className='border border-gray-700 rounded-lg bg-gray-800/30 backdrop-blur-sm'
+                    className='border-[1px] border-[#31383C] nav-background'
                   >
                     <AccordionTrigger className='px-6 py-4 text-left text-white hover:text-gray-300 transition-colors [&[data-state=open]>svg]:rotate-45'>
-                      <span className='text-base sm:text-lg font-medium pr-4'>
+                      <span className='text-base sm:text-[20px] font-semibold font-ibm-plex-sans leading-normal text-white'>
                         {faq.question}
                       </span>
                     </AccordionTrigger>
-                    <AccordionContent className='px-6 pb-4 text-gray-400 leading-relaxed'>
+                    <AccordionContent className='px-6 pb-4 text-paragraph font-normal font-ibm-plex-sans leading-normal text-base sm:text-lg'>
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
