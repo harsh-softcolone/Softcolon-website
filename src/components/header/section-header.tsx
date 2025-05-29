@@ -22,8 +22,8 @@ const SectionHeader = ({
       <Image
         src='/icons/gradient-star.svg'
         alt='gradient-star'
-        width={24}
-        height={24}
+        width={20}
+        height={20}
       />
       <span className='text-white text-lg sm:text-2xl font-medium font-ibm-plex-sans'>
         {name}
@@ -31,8 +31,8 @@ const SectionHeader = ({
       <Image
         src='/icons/gradient-star.svg'
         alt='gradient-star'
-        width={24}
-        height={24}
+        width={20}
+        height={20}
       />
     </div>
   );

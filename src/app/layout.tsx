@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Hanuman, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/Header';
+import { Navbar } from '@/components/nav/Navbar';
 
 const geistSans = Hanuman({
   variable: '--font-geist-hanuman',
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black-background`}
       >
-        <Header />
+        <Navbar />
         {/* <LenisProvider>{children}</LenisProvider> */}
         {children}
       </body>

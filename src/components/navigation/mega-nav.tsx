@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { NavItem } from '../../interface';
+import { FaRunning } from 'react-icons/fa';
 
 interface ReusableNavProps {
   isOpen: boolean;
@@ -43,7 +44,7 @@ export function MegaNav({
   if (!isOpen) return null;
 
   return (
-    <div className='fixed inset-0 z-50 flex items-start justify-center bg-black/60'>
+    <div className='fixed inset-0 z-50 flex items-start justify-center nav-background'>
       <div
         ref={modalRef}
         className='relative max-w-[1440px] top-[80px] sm:top-[100px] z-100 w-11/12 mt-2 nav-background rounded-2xl shadow-2xl border-[1px] border-[#31383C] overflow-hidden'
@@ -62,9 +63,14 @@ export function MegaNav({
                       <a
                         href={`/platform/${item.toLowerCase()}`}
                         onClick={onClose}
-                        className={navLinkClass}
+                        className={`${navLinkClass} group flex items-center justify-between transition-all duration-300`}
                       >
-                        {item}
+                        <span className='transition-transform duration-300 group-hover:translate-x-2'>
+                          {item}
+                        </span>
+                        <span className='ml-2 opacity-0 group-hover:opacity-100 -group-hover:translate-x-3 -translate-x-3 transition-all duration-300 text-white'>
+                          <FaRunning className='w-4 h-4' />
+                        </span>
                       </a>
                     </li>
                   ))}

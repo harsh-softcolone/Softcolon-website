@@ -19,7 +19,9 @@ export const useGsapScrollReveal = (
 ) => {
   useEffect(() => {
     const element = ref.current;
-    if (!element) return;
+    if (!element || element.dataset.animated === 'true') return;
+
+    element.dataset.animated = 'true'; // prevent reanimation
 
     const {
       offset = 100,

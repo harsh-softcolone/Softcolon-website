@@ -7,6 +7,7 @@ import WhySoftcolon from '@/components/pages/home/why-softcolon';
 import BrandShowcase from '@/components/sliders/brand-showcase';
 import BlogsSection from '@/components/pages/general/blogs-section';
 import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
+
 export default function Home() {
   return (
     <main className='relative overflow-x-hidden'>

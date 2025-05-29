@@ -1,3 +1,8 @@
+import { NavItem } from '@/interface';
+import { Paintbrush, HeadphonesIcon } from 'lucide-react';
+import { Bot, CloudCog, PanelTop, Smartphone } from 'lucide-react';
+import { Code } from 'lucide-react';
+
 export const teamMembers = [
   {
     id: 1,
@@ -319,4 +324,179 @@ export const countryOptions = [
   { label: 'United Kingdom', value: 'GB' },
   { label: 'Canada', value: 'CA' },
   { label: 'Australia', value: 'AU' },
+];
+
+export const desktopNavItems = ({
+  setIsServicesOpen,
+  setIsPlatformOpen,
+  isServicesOpen,
+  isPlatformOpen,
+}: {
+  setIsServicesOpen: (isServicesOpen: boolean) => void;
+  setIsPlatformOpen: (isPlatformOpen: boolean) => void;
+  isServicesOpen: boolean;
+  isPlatformOpen: boolean;
+}) => {
+  return [
+    {
+      label: 'services',
+      href: '#',
+      onClick: () => {
+        setIsServicesOpen(!isServicesOpen);
+        setIsPlatformOpen(false);
+      },
+    },
+    {
+      label: 'platform',
+      href: '#',
+      onClick: () => {
+        setIsPlatformOpen(!isPlatformOpen);
+        setIsServicesOpen(false);
+      },
+    },
+    {
+      label: 'industry',
+      href: '#',
+      onClick: () => {
+        setIsPlatformOpen(!isPlatformOpen);
+        setIsServicesOpen(false);
+      },
+    },
+    { label: 'case studies', href: '/case-studies' },
+    { label: 'our team', href: 'our-team' },
+    { label: 'about', href: 'about-us' },
+  ];
+};
+
+export const platformsData: NavItem[] = [
+  {
+    icon: <PanelTop className='w-10 h-10' />,
+    title: 'Web Applications',
+    items: [
+      'AI Agent',
+      'LLM Powered Chatbots',
+      'LLM Testing & Fine Tuning',
+      'GPT Integration',
+      'RAG (Data to LLMs)',
+      'Custom LLM for Enterprises',
+      'AI in Mobile Apps',
+      'AI in Software',
+    ],
+  },
+  {
+    icon: <Smartphone className='w-10 h-10' />,
+    title: 'Mobile Platforms',
+    items: ['UI/UX Design', 'Branding', 'Figma Development'],
+  },
+  {
+    icon: <CloudCog className='w-10 h-10' />,
+    title: 'Cloud Solutions',
+    items: [
+      'Software Development',
+      'Mobile App Development',
+      'Web Development',
+      'Backend Development',
+    ],
+  },
+  {
+    icon: <Code className='w-10 h-10' />,
+    title: 'Hybrid App Development',
+    items: ['Startup Consulting', 'MVP Development'],
+  },
+];
+
+export const servicesData: NavItem[] = [
+  {
+    icon: <Bot className='w-10 h-10' />,
+    title: 'Generative AI',
+    items: [
+      'AI Agent',
+      'LLM Powered Chatbots',
+      'LLM Testing & Fine Tuning',
+      'GPT Integration',
+      'RAG (Data to LLMs)',
+      'Custom LLM for Enterprises',
+      'AI in Mobile Apps',
+      'AI in Software',
+    ],
+  },
+  {
+    icon: <Paintbrush className='w-10 h-10' />,
+    title: 'Design',
+    items: ['UI/UX Design', 'Branding', 'Figma Development'],
+  },
+  {
+    icon: <Code className='w-10 h-10' />,
+    title: 'Development Services',
+    items: [
+      'Software Development',
+      'Mobile App Development',
+      'Web Development',
+      'Backend Development',
+    ],
+  },
+  {
+    icon: <HeadphonesIcon className='w-10 h-10' />,
+    title: 'Support',
+    items: ['Startup Consulting', 'MVP Development'],
+  },
+];
+
+export const industryData: NavItem[] = [
+  {
+    icon: <Bot className='w-10 h-10' />,
+    title: 'Healthcare',
+    items: [
+      'Medical Software Development',
+      'Healthcare Analytics',
+      'Telemedicine Solutions',
+      'Patient Management Systems',
+      'Medical Imaging AI',
+      'Healthcare IoT',
+      'Clinical Trial Management',
+      'Health Insurance Tech',
+    ],
+  },
+  {
+    icon: <Paintbrush className='w-10 h-10' />,
+    title: 'Finance',
+    items: [
+      'Fintech Solutions',
+      'Banking Software',
+      'Payment Processing',
+      'Investment Platforms',
+      'Insurance Technology',
+      'Wealth Management',
+      'Blockchain Solutions',
+      'Regulatory Compliance',
+    ],
+  },
+  {
+    icon: <Code className='w-10 h-10' />,
+    title: 'Education',
+    items: [
+      'Learning Management Systems',
+      'E-Learning Platforms',
+      'Student Information Systems',
+      'Educational Analytics',
+      'Virtual Classrooms',
+      'Assessment Tools',
+      'Educational Apps',
+      'Career Development Platforms',
+    ],
+  },
+  {
+    icon: <HeadphonesIcon className='w-10 h-10' />,
+    title: 'Retail',
+    items: [
+      'E-commerce Solutions',
+      'Inventory Management',
+      'Point of Sale Systems',
+      'Customer Analytics',
+      'Supply Chain Management',
+      'Retail Automation',
+      'Loyalty Programs',
+      'Omnichannel Solutions',
+    ],
+  },
 ];

@@ -97,10 +97,10 @@ const PartnersSection = () => {
   const rightRef = useRef<HTMLDivElement>(null);
 
   useGsapScrollReveal(leftRef as React.RefObject<HTMLElement>, 'left', {
-    start: 'top 50%',
+    start: 'top 85%',
   });
   useGsapScrollReveal(rightRef as React.RefObject<HTMLElement>, 'right', {
-    start: 'top 50%',
+    start: 'top 85%',
   });
 
   return (
