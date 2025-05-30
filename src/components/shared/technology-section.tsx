@@ -36,7 +36,9 @@ const TechnologySection = ({
               className='flex gap-5 lg:gap-8 items-center hover:bg-[#262626] transition-all duration-300 border border-[#435c69] rounded-full p-[11px] lg:px-5 lg:py-3'
             >
               <div className='bg-white w-[60px] h-[60px] lg:w-[84px] shrink-0 lg:h-[84px] rounded-full flex justify-center items-center'>
-                <tech.icon className='text-black text-2xl md:text-3xl lg:text-4xl' />
+                {tech.icon && (
+                  <tech.icon className='text-black text-2xl md:text-3xl lg:text-4xl' />
+                )}
               </div>
               <p className='text-white text-xl lg:text-2xl font-semibold'>
                 {tech.name}
