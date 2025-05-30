@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { industryData, platformsData, servicesData } from '@/lib/data';
 import { NavigationMegaMenu } from './navigation-mega-menu';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const DesktopNavigation = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-
+  const router = useRouter();
   const handleMenuEnter = (menuName: string) => {
     setActiveMenu(menuName);
   };
@@ -21,7 +22,7 @@ const DesktopNavigation = () => {
   ];
 
   return (
-    <div className='hidden lg:flex gap-10 items-center'>
+    <div className='hidden xl:flex gap-10 items-center'>
       <NavigationMegaMenu
         menuTitle='Services'
         navigationSections={servicesData}
@@ -40,6 +41,7 @@ const DesktopNavigation = () => {
         onMouseEnter={() => handleMenuEnter('platforms')}
         onMouseLeave={handleMenuLeave}
         onNavigationItemClick={(item) => {
+          router.push(`/platform/${item.toLowerCase()}`);
           console.log('Navigation item clicked:', item);
           setActiveMenu(null);
         }}
@@ -51,6 +53,8 @@ const DesktopNavigation = () => {
         onMouseEnter={() => handleMenuEnter('industry')}
         onMouseLeave={handleMenuLeave}
         onNavigationItemClick={(item) => {
+          console.log('item', item);
+          router.push(`/industry/${item.toLowerCase()}`);
           console.log('Navigation item clicked:', item);
           setActiveMenu(null);
         }}
@@ -59,7 +63,7 @@ const DesktopNavigation = () => {
         <Link
           key={item.label}
           aria-label={`${item.label} link`}
-          href={item.href}
+          href={`/${item.href}`}
           className='text-[18px] cursor-pointer font-ibm-plex-sans leading-normal font-normal text-white capitalize transition-all duration-300 hover:text-gray-400 hover:scale-105'
         >
           {item.label}

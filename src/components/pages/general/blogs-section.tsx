@@ -6,7 +6,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 
-const blogsContent = [
+interface blogsDummyContent {
+  image: string;
+  alt: string;
+  date: string;
+  title: string;
+  tag: string[];
+}
+
+const blogsDummyContent = [
   {
     image: '/images/blogs/robot.svg',
     alt: 'Robot',
@@ -30,19 +38,30 @@ const blogsContent = [
   },
 ];
 
-const BlogsSection = () => {
+interface Props {
+  title?: React.ReactNode;
+  blogsArray?: blogsDummyContent[];
+}
+
+const BlogsSection = ({ title, blogsArray }: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
+  const BlogsDynamicArray = blogsArray ? blogsArray : blogsDummyContent;
   return (
     <section className='pt-16 pb-25 relative overflow-hidden bg-[#1b1b1b]'>
       <div className='max-w-[1396px] mx-auto flex flex-col px-4 md:px-8 items-center justify-center'>
         <SectionHeader ref={sectionRef} name='Blogs' />
         <div className='space-y-8 mt-5'>
-          <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
-            Keep your finger on the pulse of <br className='hidden sm:block' />
-            <span className='gradient-color'> trends, tools</span> and
-            <span className='gradient-color'> innovations.</span>
-          </h1>
+          {title ? (
+            title
+          ) : (
+            <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+              Keep your finger on the pulse of{' '}
+              <br className='hidden sm:block' />
+              <span className='gradient-color'> trends, tools</span> and
+              <span className='gradient-color'> innovations.</span>
+            </h1>
+          )}
 
           <div className='flex justify-center'>
             <Link
@@ -57,7 +76,7 @@ const BlogsSection = () => {
           </div>
 
           <div className='font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] pt-2 md:pt-6'>
-            {blogsContent.map((blog, index) => (
+            {BlogsDynamicArray.map((blog, index) => (
               <div
                 key={index}
                 className='p-5 rounded-[20px] border border-[#464646] space-y-6 group hover:border-gray-500 transition-all duration-300'

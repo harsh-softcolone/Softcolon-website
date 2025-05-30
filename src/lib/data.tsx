@@ -1,7 +1,12 @@
 import { NavItem } from '@/interface';
 import { Paintbrush, HeadphonesIcon } from 'lucide-react';
-import { Bot, CloudCog, PanelTop, Smartphone } from 'lucide-react';
+import { Bot, PanelTop } from 'lucide-react';
 import { Code } from 'lucide-react';
+import { HiOutlineSpeakerphone } from 'react-icons/hi';
+import { HiOutlineUsers, HiOutlineBuildingOffice2 } from 'react-icons/hi2';
+import { FaUsersRays } from 'react-icons/fa6';
+import { TbBuildingPlus } from 'react-icons/tb';
+import { BiBuildingHouse } from 'react-icons/bi';
 
 export const teamMembers = [
   {
@@ -371,37 +376,15 @@ export const desktopNavItems = ({
 export const platformsData: NavItem[] = [
   {
     icon: <PanelTop className='w-10 h-10' />,
-    title: 'Web Applications',
+    title: 'AI Tools & Platforms',
     items: [
-      'AI Agent',
-      'LLM Powered Chatbots',
-      'LLM Testing & Fine Tuning',
-      'GPT Integration',
-      'RAG (Data to LLMs)',
-      'Custom LLM for Enterprises',
-      'AI in Mobile Apps',
-      'AI in Software',
+      'ChatGPT',
+      'Gemini',
+      'Claude AI',
+      'Perplexity AI',
+      'Bard',
+      'Copilot',
     ],
-  },
-  {
-    icon: <Smartphone className='w-10 h-10' />,
-    title: 'Mobile Platforms',
-    items: ['UI/UX Design', 'Branding', 'Figma Development'],
-  },
-  {
-    icon: <CloudCog className='w-10 h-10' />,
-    title: 'Cloud Solutions',
-    items: [
-      'Software Development',
-      'Mobile App Development',
-      'Web Development',
-      'Backend Development',
-    ],
-  },
-  {
-    icon: <Code className='w-10 h-10' />,
-    title: 'Hybrid App Development',
-    items: ['Startup Consulting', 'MVP Development'],
   },
 ];
 
@@ -498,5 +481,100 @@ export const industryData: NavItem[] = [
       'Loyalty Programs',
       'Omnichannel Solutions',
     ],
+  },
+];
+
+export const mobileNavItems = [
+  {
+    label: 'About us',
+    link: '/about-us',
+  },
+  {
+    label: 'Contact us',
+    link: '/contact-us',
+  },
+  {
+    label: 'Services',
+    links: [
+      {
+        icon: (
+          <HiOutlineSpeakerphone className='size-5 group-hover:text-[#E8FD95]' />
+        ),
+        label: 'Influencer marketing',
+        href: '/services/influencer-management',
+      },
+      {
+        icon: <HiOutlineUsers className='size-5 group-hover:text-[#E8FD95]' />,
+        label: 'Social Media Management',
+        href: '/services/social-media-management',
+      },
+      {
+        icon: <FaUsersRays className='size-5 group-hover:text-[#E8FD95]' />,
+        label: 'Talent Management',
+        href: '/services/talent-management',
+      },
+    ],
+  },
+  {
+    label: 'Platforms',
+    links: [
+      {
+        icon: (
+          <HiOutlineBuildingOffice2 className='size-5 group-hover:text-[#E8FD95]' />
+        ),
+        label: 'Enterprises',
+        href: '/solutions/enterprises',
+      },
+      {
+        icon: <TbBuildingPlus className='size-5 group-hover:text-[#E8FD95]' />,
+        label: 'Startups',
+        href: '/solutions/startups',
+      },
+      {
+        icon: <BiBuildingHouse className='size-5 group-hover:text-[#E8FD95]' />,
+        label: 'Local Sellers',
+        href: '/solutions/local-sellers',
+      },
+    ],
+  },
+  {
+    label: 'Industries',
+    links: [
+      {
+        icon: (
+          <HiOutlineBuildingOffice2 className='size-5 group-hover:text-[#E8FD95]' />
+        ),
+        label: 'Enterprises',
+        href: '/solutions/enterprises',
+      },
+    ],
+  },
+];
+
+export const mobileMenuItems = [
+  {
+    label: 'About us',
+    type: 'link' as const,
+    href: '/about-us',
+  },
+  {
+    label: 'Contact us',
+    type: 'link' as const,
+    href: '/contact-us',
+  },
+  {
+    label: 'Services',
+    type: 'button' as const,
+    onClickKey: 'Services',
+  },
+  {
+    label: 'Platforms',
+    type: 'button' as const,
+    onClickKey: 'Platforms',
+  },
+  {
+    label: 'Industry',
+    type: 'button' as const,
+    onClickKey: 'Industry',
   },
 ];

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import AnimatedSearchButton from '../buttons/animated-search-button';
 
 const HamburgerMenu = ({ toggleMenu }: { toggleMenu: () => void }) => (
-  <div className='flex items-center gap-4 lg:hidden'>
+  <div className='flex items-center gap-4 xl:hidden'>
     <AnimatedSearchButton />
     <button
       aria-label='toggle menu'

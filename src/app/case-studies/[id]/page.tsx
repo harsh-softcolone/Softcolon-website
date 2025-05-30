@@ -1,29 +1,20 @@
-import BusinessBenefits from '@/components/pages/case-studies/details/business-benefits';
-import FeatureHighlightGrid from '@/components/pages/case-studies/details/feature-highlight-grid';
-import TechStackShowcase from '@/components/pages/case-studies/details/tech-stack-showcase';
-import VirtualHealthAssistantOverview from '@/components/pages/case-studies/details/virtual-health-assistant-overview';
-import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
-import PageHeader from '@/components/shared/page-header';
+'use client';
+
+import CaseStudyTemplate from '@/templates/case-study-template';
+import { useParams } from 'next/navigation';
 import React from 'react';
+import { caseStudyData } from '@/data/case-study-data';
 
 const CaseStudyDetailPage = () => {
+  const params = useParams();
+  const rawId = params.id;
+  const caseStudyName = rawId ? decodeURIComponent(rawId as string) : '';
   return (
-    <div className='relative overflow-x-hidden'>
-      {/* Banner Section */}
-
-      <PageHeader
-        title='Case Studies'
-        breadcrumbItems={[
-          { label: 'Home', href: '/' },
-          { label: 'Case Studies', href: '/case-studies' },
-          { label: 'Health care' },
-        ]}
+    <div>
+      <CaseStudyTemplate
+        caseStudyName={caseStudyName}
+        caseStudyData={caseStudyData}
       />
-      <FeatureHighlightGrid />
-      <BusinessBenefits />
-      <VirtualHealthAssistantOverview />
-      <TechStackShowcase />
-      <GetInTouchSection />
     </div>
   );
 };

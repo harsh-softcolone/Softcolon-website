@@ -53,14 +53,8 @@ const FeatureSection = ({ featureData }: Props) => {
               <div key={feature.id} className='flex gap-4 group'>
                 {/* Icon Container */}
                 <div className='flex-shrink-0'>
-                  <div className='w-12 h-12 bg-[#D9D9D9] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200'>
-                    <Image
-                      src={feature.icon || '/placeholder.svg'}
-                      alt={feature.title}
-                      width={24}
-                      height={24}
-                      className='w-6 h-6'
-                    />
+                  <div className='w-10 h-10 sm:w-12 sm:h-12 bg-[#D9D9D9] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200'>
+                    <feature.icon className='text-xl sm:text-2xl text-black' />
                   </div>
                 </div>
 

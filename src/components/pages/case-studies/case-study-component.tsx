@@ -1,16 +1,21 @@
+'use client';
+
 import { Badge } from '@/components/ui/badge';
 import { caseStudiesDummyData } from '@/lib/data';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const CaseStudyComponent = () => {
+  const router = useRouter();
   return (
-    <div className='max-w-[1392px] w-11/12 2xl:w-full rounded-[30px] mx-auto font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 gap-6'>
+    <div className='max-w-[1392px] cursor-pointer w-11/12 2xl:w-full rounded-[30px] mx-auto font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 gap-6'>
       {caseStudiesDummyData.map((caseStudy, index) => (
         <div
           key={index}
+          onClick={() => router.push(`/case-studies/${caseStudy.title}`)}
           className='border-[1px] border-[#464646] border-solid p-5 rounded-[20px] font-ibm-plex-sans space-y-6 group hover:border-gray-500 transition-all duration-300'
         >
           <div className='relative overflow-hidden rounded-2xl'>
@@ -50,7 +55,7 @@ const CaseStudyComponent = () => {
           </div>
           <Link
             aria-label='read more'
-            href={`/case-studies/${caseStudy.id}`}
+            href={`/case-studies/${caseStudy.title}`}
             className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-[16px] sm:text-[18px] hover:text-white transition-all duration-300 group w-fit'
           >
             READ MORE

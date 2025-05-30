@@ -102,8 +102,7 @@ export const NavigationMegaMenu = ({
                 <ul className='space-y-2'>
                   {section.items.map((item, itemIndex) => (
                     <li key={itemIndex}>
-                      <a
-                        href={`/platform/${item.toLowerCase()}`}
+                      <div
                         onClick={() => onNavigationItemClick?.(item)}
                         className='text-paragraph hover:text-white text-[16px] font-ibm-plex-sans group flex items-center justify-between transition-all duration-300'
                       >
@@ -113,7 +112,7 @@ export const NavigationMegaMenu = ({
                         <span className='ml-2 opacity-0 group-hover:opacity-100 -group-hover:translate-x-3 -translate-x-3 transition-all duration-300 text-white'>
                           <FaRunning className='w-4 h-4' />
                         </span>
-                      </a>
+                      </div>
                     </li>
                   ))}
                 </ul>

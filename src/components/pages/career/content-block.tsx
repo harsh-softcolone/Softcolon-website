@@ -1,4 +1,3 @@
-// components/ContentBlock.tsx
 interface ContentBlockProps {
   title: string;
   description: string;
