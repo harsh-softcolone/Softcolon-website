@@ -106,7 +106,7 @@ export interface CaseStudyDataTypes {
     title: string;
     subtitle: string;
     technologies: Array<{
-      icon: IconType;
+      icon?: IconType;
       name: string;
       image?: string;
       alt?: string;
