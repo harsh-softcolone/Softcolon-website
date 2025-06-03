@@ -81,9 +81,9 @@ const Footer = () => {
 
           {/* Quick Links Section */}
           <div>
-            <h3 className='font-medium mb-6 text-xl leading-normal'>
+            <h2 className='font-medium mb-6 text-xl leading-normal'>
               Quick Links
-            </h3>
+            </h2>
             <ul className='space-y-2 text-sm'>
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -101,9 +101,9 @@ const Footer = () => {
 
           {/* Services Section */}
           <div>
-            <h3 className='font-medium mb-6 text-xl leading-normal'>
+            <h2 className='font-medium mb-6 text-xl leading-normal'>
               Services
-            </h3>
+            </h2>
             <ul className='space-y-2 text-sm'>
               {serviceLinks.map((link, index) => (
                 <li key={index}>
@@ -121,7 +121,7 @@ const Footer = () => {
 
           {/* Contact Section */}
           <div className='font-ibm-plex-sans'>
-            <h3 className='font-medium mb-6 text-xl leading-normal'>Contact</h3>
+            <h2 className='font-medium mb-6 text-xl leading-normal'>Contact</h2>
             <div className='space-y-3 text-sm'>
               <div className='flex items-start'>
                 <MapPin size={40} className='text-white mr-2' />
@@ -174,9 +174,9 @@ const Footer = () => {
 
           {/* Quick Links Section */}
           <div>
-            <h3 className='font-medium mb-4 text-xl leading-normal'>
+            <h2 className='font-medium mb-4 text-xl leading-normal'>
               Quick Links
-            </h3>
+            </h2>
             <ul className='space-y-2 text-sm'>
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -194,9 +194,9 @@ const Footer = () => {
 
           {/* Services Section */}
           <div>
-            <h3 className='font-medium mb-4 text-xl leading-normal'>
+            <h2 className='font-medium mb-4 text-xl leading-normal'>
               Services
-            </h3>
+            </h2>
             <ul className='space-y-2 text-sm'>
               {serviceLinks.map((link, index) => (
                 <li key={index}>
@@ -214,7 +214,7 @@ const Footer = () => {
 
           {/* Contact Section */}
           <div>
-            <h3 className='font-medium mb-4 text-xl leading-normal'>Contact</h3>
+            <h2 className='font-medium mb-4 text-xl leading-normal'>Contact</h2>
             <div className='space-y-3 text-sm'>
               <div className='flex items-start'>
                 <div className='mt-1 mr-2'>

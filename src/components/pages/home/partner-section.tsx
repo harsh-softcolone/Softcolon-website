@@ -141,7 +141,7 @@ const PartnersSection = () => {
           platforms to deliver scalable, secure, and intelligent digital
           products.
         </p>
-        <div className='w-full mt-16 flex flex-col-reverse md:flex-row gap-8 lg:gap-16'>
+        <div className='w-full mt-16 flex flex-col md:flex-row gap-8 lg:gap-16'>
           {/* Mobile view - stacked layout */}
           <div className='md:hidden w-full space-y-4' ref={leftRef}>
             {platforms.map((platform) => (

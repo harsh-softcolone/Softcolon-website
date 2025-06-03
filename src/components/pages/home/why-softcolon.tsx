@@ -70,9 +70,9 @@ const WhySoftcolon = () => {
                     className='w-[50px] h-[50px] xl:w-[80px] xl:h-[80px] object-contain'
                   />
                   <div className='flex flex-col gap-2 wrap-anywhere'>
-                    <h3 className='text-[20px] xl:text-[30px] font-medium leading-snug text-white'>
+                    <h2 className='text-[20px] xl:text-[30px] font-medium leading-snug text-white'>
                       {item.title}
-                    </h3>
+                    </h2>
                     <p className='text-[14px] xl:text-[18px] font-normal leading-snug text-[#c0c0c0]'>
                       {item.description}
                     </p>
