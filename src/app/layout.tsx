@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Hanuman, IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/nav/Navbar';
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Hanuman({
   variable: '--font-geist-hanuman',
@@ -84,6 +85,7 @@ export default function RootLayout({
         <Navbar />
         {/* <LenisProvider>{children}</LenisProvider> */}
         {children}
+        <Toaster />
       </body>
     </html>
   );

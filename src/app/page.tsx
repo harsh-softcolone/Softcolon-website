@@ -20,7 +20,7 @@ export default async function Home() {
       <PartnersSection />
       <CaseStudySection />
       <WhySoftcolon />
-      <BlogsSection blogsArray={posts.posts.slice(0, 3)} />
+      <BlogsSection blogsArray={posts.posts.slice(0, 3)} isMoreBlogs={true} />
       <GetInTouchSection />
     </main>
   );

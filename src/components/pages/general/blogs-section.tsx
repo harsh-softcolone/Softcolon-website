@@ -38,9 +38,15 @@ interface Props {
   title?: React.ReactNode;
   blogsArray?: HashnodePost[];
   sectionClassName?: string;
+  isMoreBlogs?: boolean;
 }
 
-const BlogsSection = ({ title, blogsArray, sectionClassName }: Props) => {
+const BlogsSection = ({
+  title,
+  blogsArray,
+  sectionClassName,
+  isMoreBlogs,
+}: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
   const BlogsDynamicArray = blogsArray ? blogsArray : blogsDummyContent;
@@ -65,23 +71,25 @@ const BlogsSection = ({ title, blogsArray, sectionClassName }: Props) => {
             </h1>
           )}
 
-          <div className='flex justify-center'>
-            <Link
-              aria-label='read more'
-              href='/blogs'
-              className='text-[#1BA1E3] font-medium uppercase text-[20px] hover:text-white transition-all duration-300 ease-in-out leading-normal font-ibm-plex-sans flex gap-2 items-center group relative'
-            >
-              Read More
-              <ArrowRightIcon className='w-6 h-6 text-[#1BA1E3] group-hover:translate-x-1  group-hover:text-white transition-all duration-300 ease-in-out' />
-              <span className='absolute -bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-300 ease-in-out group-hover:w-full'></span>
-            </Link>
-          </div>
-
           <div className='font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] pt-2 md:pt-6'>
             {BlogsDynamicArray?.map((blog, index) => (
               <BlogCard key={index} blog={blog} />
             ))}
           </div>
+
+          {isMoreBlogs && (
+            <div className='flex justify-center'>
+              <Link
+                aria-label='read more'
+                href='/blogs'
+                className='text-[#1BA1E3] font-medium uppercase text-[20px] hover:text-white transition-all duration-300 ease-in-out leading-normal font-ibm-plex-sans flex gap-2 items-center group relative'
+              >
+                Explore More Blogs
+                <ArrowRightIcon className='w-6 h-6 text-[#1BA1E3] group-hover:translate-x-1  group-hover:text-white transition-all duration-300 ease-in-out' />
+                <span className='absolute -bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-300 ease-in-out group-hover:w-full'></span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>
