@@ -14,11 +14,11 @@ import SocialLinks from './social-links';
 
 const quickLinks = [
   { name: 'Services', href: '#' },
-  { name: 'Blogs', href: '#' },
-  { name: 'Platform', href: '#' },
-  { name: 'Industry', href: '#' },
-  { name: 'Our Work', href: '#' },
-  { name: 'About', href: '#' },
+  { name: 'Blogs', href: '/blogs' },
+  { name: 'Platform', href: '/' },
+  { name: 'Industry', href: '/' },
+  { name: 'Our Work', href: '/case-studies' },
+  { name: 'About', href: '/about-us' },
 ];
 
 const serviceLinks = [
@@ -311,7 +311,7 @@ const Footer = () => {
               </Link>
               <Link
                 aria-label='contact us'
-                href='#'
+                href='/contact-us'
                 className='text-sm sm:text-lg hover:text-gray-300 transition-all duration-300'
               >
                 Contact Us

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import BlogsSection from '@/components/pages/general/blogs-section';
 import { getHashnodePosts } from '@/lib/hashnode';
 import Loader from '@/components/shared/loaders';
+import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
 
 export default function BlogsInfinitePage() {
   const [posts, setPosts] = useState<HashnodePost[]>([]);
@@ -47,12 +48,13 @@ export default function BlogsInfinitePage() {
 
   return (
     <div className='relative overflow-x-hidden'>
-      <BlogsSection sectionClassName='py-28' blogsArray={posts} />
+      <BlogsSection sectionClassName='pt-28' blogsArray={posts} />
       {hasNextPage && (
         <div ref={loaderRef}>
           <Loader />
         </div>
       )}
+      <GetInTouchSection />
     </div>
   );
 }

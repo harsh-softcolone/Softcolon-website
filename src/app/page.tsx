@@ -7,8 +7,10 @@ import WhySoftcolon from '@/components/pages/home/why-softcolon';
 import BrandShowcase from '@/components/sliders/brand-showcase';
 import BlogsSection from '@/components/pages/general/blogs-section';
 import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
+import { getHashnodePosts } from '@/lib/hashnode';
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getHashnodePosts();
   return (
     <main className='relative overflow-x-hidden'>
       <AbstractBlobBackground className='top-0 left-1/2 -translate-x-1/2 -translate-y-1/2' />
@@ -18,7 +20,7 @@ export default function Home() {
       <PartnersSection />
       <CaseStudySection />
       <WhySoftcolon />
-      <BlogsSection />
+      <BlogsSection blogsArray={posts.posts.slice(0, 3)} />
       <GetInTouchSection />
     </main>
   );
