@@ -207,33 +207,40 @@
   }
 }
 
-.mobile-nav-submenu::-webkit-scrollbar {
+/* .mobile-nav-submenu::-webkit-scrollbar {
   display: none;
-}
+} */
 
 /* Custom scrollbar styles for mobile navigation */
-#mobile-nav-submenu::-webkit-scrollbar {
+.custom-scrollbar::-webkit-scrollbar {
   width: 4px;
   display: block;
 }
 
-#mobile-nav-submenu::-webkit-scrollbar-track {
+.custom-scrollbar::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 
-#mobile-nav-submenu::-webkit-scrollbar-thumb {
+.custom-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
-#mobile-nav-submenu::-webkit-scrollbar-thumb:hover {
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
 /* For Firefox */
-#mobile-nav-submenu {
+.custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+/* Customize sidebar */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  display: block;
 }

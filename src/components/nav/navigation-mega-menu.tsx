@@ -101,7 +101,7 @@ export const NavigationMegaMenu = ({
                 </div>
                 <ul className='space-y-2'>
                   {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>
+                    <li key={itemIndex} className='cursor-pointer'>
                       <div
                         onClick={() => onNavigationItemClick?.(item)}
                         className='text-paragraph hover:text-white text-[16px] font-ibm-plex-sans group flex items-center justify-between transition-all duration-300'

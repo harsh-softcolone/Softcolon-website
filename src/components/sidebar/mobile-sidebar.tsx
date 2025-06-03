@@ -150,8 +150,7 @@ export function MobileSidebar({
                 ) : (
                   <motion.div
                     key='submenu'
-                    id='mobile-nav-submenu'
-                    className='absolute h-full w-full overflow-y-auto pb-8'
+                    className='absolute h-full w-full overflow-y-auto pb-8 custom-scrollbar'
                     initial={{ x: '100%', opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: '100%', opacity: 0 }}

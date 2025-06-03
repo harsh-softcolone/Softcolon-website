@@ -10,10 +10,16 @@ import { contactFormSchema } from '@/lib/schema';
 import React from 'react';
 import CustomDropdown from '../input/custom-dropdown';
 import { countryOptions } from '@/lib/data';
+import { cn } from '@/lib/utils';
 
 type FormData = z.infer<typeof contactFormSchema>;
 
-const ContactUsForm = () => {
+interface ContactUsFormProps {
+  title?: React.ReactNode;
+  className?: string;
+}
+
+const ContactUsForm = ({ title, className }: ContactUsFormProps) => {
   const {
     register,
     handleSubmit,
@@ -32,7 +38,13 @@ const ContactUsForm = () => {
   const selectedCountry = watch('country');
 
   return (
-    <div className='border-[1px] w-full border-[#31383C] border-solid p-7.5 sm:py-10 px-5 sm:px-10 max-w-[1392px] rounded-[30px] mx-auto nav-background font-ibm-plex-sans'>
+    <div
+      className={cn(
+        'border-[1px] w-full border-[#31383C] border-solid p-7.5 sm:py-10 px-5 sm:px-10 max-w-[1392px] rounded-[30px] mx-auto nav-background font-ibm-plex-sans',
+        className,
+      )}
+    >
+      {title && title}
       <div className='w-full'>
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-7.5'>
           <div className='grid grid-cols-1 xl:grid-cols-2 gap-3'>
