@@ -28,12 +28,13 @@ export default function BlogsInfinitePage() {
       },
       { threshold: 1 },
     );
-    if (loaderRef.current) observer.observe(loaderRef.current);
+    const currentLoader = loaderRef.current;
+    if (currentLoader) observer.observe(currentLoader);
     return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
+      if (currentLoader) observer.unobserve(currentLoader);
     };
     // eslint-disable-next-line
-  }, [loaderRef.current, hasNextPage, loading]);
+  }, [hasNextPage, loading]);
 
   async function loadMore() {
     setLoading(true);
