@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   // images: {
   //   unoptimized: true,
   // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.hashnode.com',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

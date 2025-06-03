@@ -1,54 +1,56 @@
 'use client';
 import SectionHeader from '@/components/header/section-header';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
-import { ArrowRight, ArrowRightIcon } from 'lucide-react';
-import Image from 'next/image';
+import { HashnodePost } from '@/interface';
+import { cn } from '@/lib/utils';
+import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRef } from 'react';
-
-interface blogsDummyContent {
-  image: string;
-  alt: string;
-  date: string;
-  title: string;
-  tag: string[];
-}
-
-const blogsDummyContent = [
+import BlogCard from '@/components/cards/blog-card';
+const blogsDummyContent: HashnodePost[] = [
   {
-    image: '/images/blogs/robot.svg',
-    alt: 'Robot',
-    date: 'August 6, 2022',
     title: 'Trends, Insights, and Innovations Shaping Tomorrow',
-    tag: ['Image generate', 'AI support'],
+    brief:
+      'Explore the latest trends and innovations that are shaping the future of technology and business.',
+    slug: 'trends-insights-innovations-shaping-tomorrow',
+    coverImage: { url: '/images/blogs/robot.svg' },
+    publishedAt: '2022-08-06T00:00:00.000Z',
   },
   {
-    image: '/images/blogs/ai-technology.svg',
-    alt: 'AI Technology',
-    date: 'August 6, 2022',
     title: 'Transforming Business Operations with AI Technology',
-    tag: ['Image generate', 'AI support'],
+    brief:
+      'Discover how AI technology is revolutionizing business operations and driving efficiency.',
+    slug: 'transforming-business-operations-with-ai-technology',
+    coverImage: { url: '/images/blogs/ai-technology.svg' },
+    publishedAt: '2022-08-06T00:00:00.000Z',
   },
   {
-    image: '/images/blogs/ai-solution.svg',
-    alt: 'AI Solution',
-    date: 'August 6, 2022',
     title: 'Revolutionizing Business Efficiency with AI Solutions',
-    tag: ['Image generate', 'AI support'],
+    brief:
+      'Learn how AI solutions are enhancing business efficiency and productivity across industries.',
+    slug: 'revolutionizing-business-efficiency-with-ai-solutions',
+    coverImage: { url: '/images/blogs/ai-solution.svg' },
+    publishedAt: '2022-08-06T00:00:00.000Z',
   },
 ];
 
 interface Props {
   title?: React.ReactNode;
-  blogsArray?: blogsDummyContent[];
+  blogsArray?: HashnodePost[];
+  sectionClassName?: string;
 }
 
-const BlogsSection = ({ title, blogsArray }: Props) => {
+const BlogsSection = ({ title, blogsArray, sectionClassName }: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
   const BlogsDynamicArray = blogsArray ? blogsArray : blogsDummyContent;
   return (
-    <section className='pt-16 pb-25 relative overflow-hidden bg-[#1b1b1b]'>
+    <section
+      className={
+        (cn('pt-16 pb-25 relative overflow-hidden bg-[#1b1b1b]'),
+        sectionClassName)
+      }
+    >
       <div className='max-w-[1396px] mx-auto flex flex-col px-4 md:px-8 items-center justify-center'>
         <SectionHeader ref={sectionRef} name='Blogs' />
         <div className='space-y-8 mt-5'>
@@ -56,7 +58,7 @@ const BlogsSection = ({ title, blogsArray }: Props) => {
             title
           ) : (
             <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
-              Keep your finger on the pulse of{' '}
+              Keep your finger on the pulse of
               <br className='hidden sm:block' />
               <span className='gradient-color'> trends, tools</span> and
               <span className='gradient-color'> innovations.</span>
@@ -66,7 +68,7 @@ const BlogsSection = ({ title, blogsArray }: Props) => {
           <div className='flex justify-center'>
             <Link
               aria-label='read more'
-              href='/'
+              href='/blogs'
               className='text-[#1BA1E3] font-medium uppercase text-[20px] hover:text-white transition-all duration-300 ease-in-out leading-normal font-ibm-plex-sans flex gap-2 items-center group relative'
             >
               Read More
@@ -76,53 +78,8 @@ const BlogsSection = ({ title, blogsArray }: Props) => {
           </div>
 
           <div className='font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] pt-2 md:pt-6'>
-            {BlogsDynamicArray.map((blog, index) => (
-              <div
-                key={index}
-                className='p-5 rounded-[20px] border border-[#464646] space-y-6 group hover:border-gray-500 transition-all duration-300'
-              >
-                <div className='relative overflow-hidden rounded-lg'>
-                  {/* Image container with hover effect */}
-                  <div className='relative aspect-video w-full h-[220px] sm:h-[292px] overflow-hidden'>
-                    <Image
-                      src={blog.image || '/placeholder.svg'}
-                      alt={blog.alt}
-                      width={250}
-                      height={292}
-                      className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'
-                    />
-                    {/* Overlay that appears on hover */}
-                    <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300 flex items-center justify-center'></div>
-                  </div>
-                </div>
-                <div className='text-white'>
-                  <p className='text-base leading-[21px] font-[500] text-[#c0c0c0]'>
-                    {blog.date}
-                  </p>
-                  <p className='pt-2 text-xl md:text-2xl leading-[25px] font-[500] text-white'>
-                    {blog.title}
-                  </p>
-                  <div className='py-4 flex flex-wrap gap-4'>
-                    {blog.tag.map((tag, tagIndex) => (
-                      <p
-                        key={tagIndex}
-                        className='px-3 py-[6px] bg-[#292929] rounded-full text-sm text-white'
-                      >
-                        {tag}
-                      </p>
-                    ))}
-                  </div>
-                  <Link
-                    aria-label='read more'
-                    href=''
-                    className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-md hover:text-white transition-all duration-300 group w-fit'
-                  >
-                    READ MORE
-                    <ArrowRight className='w-4 h-4 -rotate-45 group-hover:translate-x-1 transition-transform duration-300' />
-                    <span className='absolute -bottom-1 left-0 w-[84%] h-[1px] bg-[#1BA1E3] transition-all duration-300 ease-in-out group-hover:w-full group-hover:bg-white'></span>
-                  </Link>
-                </div>
-              </div>
+            {BlogsDynamicArray?.map((blog, index) => (
+              <BlogCard key={index} blog={blog} />
             ))}
           </div>
         </div>

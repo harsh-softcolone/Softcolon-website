@@ -164,3 +164,11 @@ export type NavigationSection = {
   title: string;
   items: string[];
 };
+
+export type HashnodePost = {
+  title: string;
+  brief: string;
+  slug: string;
+  coverImage: { url: string };
+  publishedAt: string;
+};

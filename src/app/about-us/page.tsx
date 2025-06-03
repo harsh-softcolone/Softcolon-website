@@ -12,7 +12,7 @@ const PhotoGallerySection = dynamic(
   () => import('@/components/pages/about-us/photo-gallary-section'),
 );
 
-const page = () => {
+const page = async () => {
   return (
     <div className='relative overflow-x-hidden'>
       {/* Banner Section */}
