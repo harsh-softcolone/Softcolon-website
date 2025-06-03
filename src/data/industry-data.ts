@@ -123,39 +123,28 @@ export const industryTemplateData: IndustryDataTypes = {
   },
   blogs: [
     {
-      image: '/images/blogs/robot.svg',
-      alt: 'Robot',
-      date: 'August 6, 2022',
-      title: 'The Future of AI: How Machine Learning is Reshaping Industries',
-      tag: ['AI', 'Machine Learning'],
+      title: 'Trends, Insights, and Innovations Shaping Tomorrow',
+      brief:
+        'Explore the latest trends and innovations that are shaping the future of technology and business.',
+      slug: 'trends-insights-innovations-shaping-tomorrow',
+      coverImage: { url: '/images/blogs/robot.svg' },
+      publishedAt: '2022-08-06T00:00:00.000Z',
     },
     {
-      image: '/images/blogs/ai-technology.svg',
-      alt: 'AI Technology',
-      date: 'August 6, 2022',
-      title: 'AI-Powered Automation: Streamlining Business Processes',
-      tag: ['Automation', 'Business'],
+      title: 'Transforming Business Operations with AI Technology',
+      brief:
+        'Discover how AI technology is revolutionizing business operations and driving efficiency.',
+      slug: 'transforming-business-operations-with-ai-technology',
+      coverImage: { url: '/images/blogs/ai-technology.svg' },
+      publishedAt: '2022-08-06T00:00:00.000Z',
     },
     {
-      image: '/images/blogs/ai-solution.svg',
-      alt: 'AI Solution',
-      date: 'August 6, 2022',
-      title: 'Natural Language Processing: Breaking Down Language Barriers',
-      tag: ['NLP', 'Innovation'],
-    },
-    {
-      image: '/images/blogs/ai-solution.svg',
-      alt: 'AI Solution',
-      date: 'August 6, 2022',
-      title: 'Computer Vision: Transforming Visual Data Analysis',
-      tag: ['Computer Vision', 'Data Analysis'],
-    },
-    {
-      image: '/images/blogs/ai-solution.svg',
-      alt: 'AI Solution',
-      date: 'August 6, 2022',
-      title: 'AI Ethics: Navigating the Future of Responsible Technology',
-      tag: ['Ethics', 'Responsible AI'],
+      title: 'Revolutionizing Business Efficiency with AI Solutions',
+      brief:
+        'Learn how AI solutions are enhancing business efficiency and productivity across industries.',
+      slug: 'revolutionizing-business-efficiency-with-ai-solutions',
+      coverImage: { url: '/images/blogs/ai-solution.svg' },
+      publishedAt: '2022-08-06T00:00:00.000Z',
     },
   ],
 };

@@ -156,7 +156,7 @@ export interface IndustryDataTypes {
   };
   techStack: TechStackSectionTypes;
   innovation: InnovationSectionTypes;
-  blogs: BlogsSectionTypes[];
+  blogs: HashnodePost[];
 }
 
 export type NavigationSection = {
