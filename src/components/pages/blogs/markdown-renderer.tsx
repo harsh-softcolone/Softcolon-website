@@ -37,7 +37,7 @@ const MarkdownRenderer = ({ markdown }: MarkdownRendererProps) => {
     };
 
     return (
-      <div className='relative group pt-6 sm:pt-[64px]'>
+      <div className='relative group'>
         <pre
           ref={preRef}
           className='relative bg-[#1a1a1a] border border-gray-700 rounded-lg overflow-x-auto my-8 p-6'
