@@ -5,6 +5,9 @@ import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
 import Loader from '@/components/shared/loaders';
 import { getHashnodePosts } from '@/lib/hashnode';
 import { useBlogStore } from '@/store/blogStore';
+import LazySection from '@/components/lazy/lazy-section';
+
+const POSTS_PER_BATCH = 6; // Reduced from showing all at once
 
 export default function BlogsInfinitePage() {
   const loaderRef = useRef<HTMLDivElement>(null);
@@ -54,13 +57,23 @@ export default function BlogsInfinitePage() {
 
   return (
     <div className='relative overflow-x-hidden pt-[64px]'>
-      <BlogsSection sectionClassName='pt-10' blogsArray={posts} />
+      <BlogsSection
+        sectionClassName='pt-10'
+        blogsArray={posts}
+        initialCount={POSTS_PER_BATCH}
+      />
+
       {hasNextPage && (
-        <div ref={loaderRef}>
-          <Loader />
-        </div>
+        <LazySection>
+          <div ref={loaderRef}>
+            <Loader />
+          </div>
+        </LazySection>
       )}
-      <GetInTouchSection />
+
+      <LazySection>
+        <GetInTouchSection />
+      </LazySection>
     </div>
   );
 }

@@ -47,11 +47,11 @@ const WhySoftcolon = () => {
         />
         <div className='space-y-7.5 mt-5'>
           <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
-            “We&apos;re not just adopting{' '}
+            &quot;We&apos;re not just adopting{' '}
             <span className='gradient-color'> technology</span>{' '}
             <br className='hidden lg:block' />
             we&apos;re embracing a new era of <br className='hidden lg:block' />
-            <span className='gradient-color'> business innovation</span>”
+            <span className='gradient-color'> business innovation</span>&quot;
           </h1>
           <p className='text-lg lg:text-xl text-center text-paragraph font-normal leading-normal font-ibm-plex-sans'>
             Collaborate with Softcolon&apos;s expert team to transform your

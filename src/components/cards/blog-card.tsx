@@ -30,12 +30,13 @@ const BlogCard = ({ blog }: { blog: HashnodePost }) => {
         </div>
       </div>
       <Link
-        aria-label='read more'
+        aria-label={`Read more about the blog: ${blog.title}`}
         // href={`https://coderg-tales.hashnode.dev/${blog.slug}`}
         href={`/blogs/${blog.slug}`}
         className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-md hover:text-white transition-all duration-300 group w-fit mt-auto'
       >
-        READ MORE
+        <span className='uppercase'>Read more about</span>
+        <span className='sr-only'>{blog.title}</span>
         <ArrowRight className='w-4 h-4 -rotate-45 group-hover:translate-x-1 transition-transform duration-300' />
         <span className='absolute -bottom-1 left-0 w-[84%] h-[1px] bg-[#1BA1E3] transition-all duration-300 ease-in-out group-hover:w-full group-hover:bg-white'></span>
       </Link>

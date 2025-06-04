@@ -5,7 +5,7 @@ import { HashnodePost } from '@/interface';
 import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import BlogCard from '@/components/cards/blog-card';
 const blogsDummyContent: HashnodePost[] = [
   {
@@ -41,6 +41,7 @@ interface Props {
   isMoreBlogs?: boolean;
   isRemoveHeader?: boolean;
   isRemoveExploreMore?: boolean;
+  initialCount?: number;
 }
 
 const BlogsSection = ({
@@ -49,10 +50,17 @@ const BlogsSection = ({
   sectionClassName,
   isMoreBlogs,
   isRemoveHeader,
+  initialCount = 6,
 }: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [showAll, setShowAll] = useState(false);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
+
   const BlogsDynamicArray = blogsArray ? blogsArray : blogsDummyContent;
+  const displayedBlogs = showAll
+    ? BlogsDynamicArray
+    : BlogsDynamicArray.slice(0, initialCount);
+
   return (
     <section
       className={
@@ -75,15 +83,26 @@ const BlogsSection = ({
           )}
 
           <div className='font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] pt-2 md:pt-6'>
-            {BlogsDynamicArray?.map((blog, index) => (
+            {displayedBlogs?.map((blog, index) => (
               <BlogCard key={index} blog={blog} />
             ))}
           </div>
 
+          {!showAll && BlogsDynamicArray.length > initialCount && (
+            <div className='flex justify-center pt-8'>
+              <button
+                onClick={() => setShowAll(true)}
+                className='px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 font-ibm-plex-sans'
+              >
+                Load More ({BlogsDynamicArray.length - initialCount} more)
+              </button>
+            </div>
+          )}
+
           {isMoreBlogs && (
             <div className='flex justify-center'>
               <Link
-                aria-label='read more'
+                aria-label='Explore More Blogs and Insights'
                 href='/blogs'
                 className='text-[#1BA1E3] font-medium uppercase text-[20px] hover:text-white transition-all duration-300 ease-in-out leading-normal font-ibm-plex-sans flex gap-2 items-center group relative'
               >

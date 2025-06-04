@@ -59,11 +59,6 @@ export const metadata: Metadata = {
   //     'Accelerate your business with Softcolon custom AI solutions, automation, and digital transformation services.',
   //   creator: '@softcolon', // Replace with your Twitter handle
   // },
-  // robots: {
-  //   index: true,
-  //   follow: true,
-  //   nocache: false,
-  // },
   // icons: {
   //   icon: '/favicon.ico',
   //   shortcut: '/favicon.ico',
