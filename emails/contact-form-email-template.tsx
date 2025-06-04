@@ -47,7 +47,7 @@ export const ContactFormEmailTemplate = ({
           {/* Centered Card */}
           <Container style={container}>
             <Section style={detailsContainer}>
-              <Text style={heading}>Customer Information</Text>
+              <Text style={heading}>Client Information</Text>
 
               <div style={pair}>
                 <Text style={labelFirst}>Name:</Text>

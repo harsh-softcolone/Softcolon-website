@@ -172,3 +172,20 @@ export type HashnodePost = {
   coverImage: { url: string };
   publishedAt: string;
 };
+
+export type HashNodeSinglePost = {
+  brief: string;
+  content: {
+    markdown: string;
+  };
+  coverImage: { url: string };
+  title: string;
+  slug: string;
+  publishedAt: string;
+};
+
+export type HashNodeGetSinglePostResponse = {
+  publication: {
+    post: HashNodeSinglePost;
+  };
+};

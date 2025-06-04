@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { render } from '@react-email/render';
-import { ContactFormEmailTemplate } from '../../../../emails/contact-form-email-template';
+import { ContactFormEmailTemplate } from '../../../../../emails/contact-form-email-template';
 
 export async function POST(req: Request) {
   try {

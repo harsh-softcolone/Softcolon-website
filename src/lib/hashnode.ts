@@ -1,4 +1,4 @@
-import { HashnodePost } from '@/interface';
+import { HashNodeGetSinglePostResponse, HashnodePost } from '@/interface';
 import { GraphQLClient, gql } from 'graphql-request';
 
 const endpoint = 'https://gql.hashnode.com';
@@ -57,4 +57,37 @@ export const getHashnodePosts = async (after?: string) => {
     posts: data.publication.posts.edges.map((edge) => edge.node),
     pageInfo: data.publication.posts.pageInfo,
   };
+};
+
+const getSingleHashnodePostQuery = gql`
+  query GetPost($host: String!, $slug: String!) {
+    publication(host: $host) {
+      post(slug: $slug) {
+        title
+        slug
+        content {
+          markdown
+        }
+        brief
+        coverImage {
+          url
+        }
+        publishedAt
+      }
+    }
+  }
+`;
+
+export const getSingleHashnodePost = async (slug: string) => {
+  const graphQLClient = new GraphQLClient(endpoint);
+
+  const data = await graphQLClient.request<HashNodeGetSinglePostResponse>(
+    getSingleHashnodePostQuery,
+    {
+      host: 'coderg-tales.hashnode.dev',
+      slug,
+    },
+  );
+
+  return data;
 };

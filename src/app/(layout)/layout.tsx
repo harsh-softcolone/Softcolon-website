@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Hanuman, IBM_Plex_Sans } from 'next/font/google';
-import './globals.css';
+import '@/app/globals.css';
 import { Navbar } from '@/components/nav/Navbar';
 import { Toaster } from 'react-hot-toast';
 

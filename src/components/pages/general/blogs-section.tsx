@@ -39,6 +39,8 @@ interface Props {
   blogsArray?: HashnodePost[];
   sectionClassName?: string;
   isMoreBlogs?: boolean;
+  isRemoveHeader?: boolean;
+  isRemoveExploreMore?: boolean;
 }
 
 const BlogsSection = ({
@@ -46,6 +48,7 @@ const BlogsSection = ({
   blogsArray,
   sectionClassName,
   isMoreBlogs,
+  isRemoveHeader,
 }: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
@@ -58,8 +61,8 @@ const BlogsSection = ({
       }
     >
       <div className='max-w-[1396px] mx-auto flex flex-col px-4 md:px-8 items-center justify-center'>
-        <SectionHeader ref={sectionRef} name='Blogs' />
-        <div className='space-y-8 mt-5'>
+        {!isRemoveHeader && <SectionHeader ref={sectionRef} name='Blogs' />}
+        <div className={cn('space-y-8 mt-5', isRemoveHeader && 'mt-0')}>
           {title ? (
             title
           ) : (

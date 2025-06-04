@@ -31,7 +31,8 @@ const BlogCard = ({ blog }: { blog: HashnodePost }) => {
       </div>
       <Link
         aria-label='read more'
-        href={`https://coderg-tales.hashnode.dev/${blog.slug}`}
+        // href={`https://coderg-tales.hashnode.dev/${blog.slug}`}
+        href={`/blogs/${blog.slug}`}
         className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-md hover:text-white transition-all duration-300 group w-fit mt-auto'
       >
         READ MORE

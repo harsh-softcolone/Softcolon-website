@@ -1,21 +1,27 @@
 'use client';
-import { HashnodePost } from '@/interface';
 import { useEffect, useRef, useState } from 'react';
 import BlogsSection from '@/components/pages/general/blogs-section';
-import { getHashnodePosts } from '@/lib/hashnode';
-import Loader from '@/components/shared/loaders';
 import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
+import Loader from '@/components/shared/loaders';
+import { getHashnodePosts } from '@/lib/hashnode';
+import { useBlogStore } from '@/store/blogStore';
 
 export default function BlogsInfinitePage() {
-  const [posts, setPosts] = useState<HashnodePost[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [hasNextPage, setHasNextPage] = useState(true);
-  const [endCursor, setEndCursor] = useState<string | null>(null);
   const loaderRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(false);
+
+  const {
+    posts,
+    appendPosts,
+    hasNextPage,
+    setHasNextPage,
+    endCursor,
+    setEndCursor,
+  } = useBlogStore();
 
   useEffect(() => {
     // Initial load
-    loadMore();
+    if (posts.length === 0) loadMore();
     // eslint-disable-next-line
   }, []);
 
@@ -40,15 +46,15 @@ export default function BlogsInfinitePage() {
   async function loadMore() {
     setLoading(true);
     const res = await getHashnodePosts(endCursor || undefined);
-    setPosts((prevPosts) => [...prevPosts, ...res.posts]);
+    appendPosts(res.posts);
     setHasNextPage(res.pageInfo.hasNextPage);
     setEndCursor(res.pageInfo.endCursor);
     setLoading(false);
   }
 
   return (
-    <div className='relative overflow-x-hidden'>
-      <BlogsSection sectionClassName='pt-28' blogsArray={posts} />
+    <div className='relative overflow-x-hidden pt-[64px]'>
+      <BlogsSection sectionClassName='pt-10' blogsArray={posts} />
       {hasNextPage && (
         <div ref={loaderRef}>
           <Loader />
