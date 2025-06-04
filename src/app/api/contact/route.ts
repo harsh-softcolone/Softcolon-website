@@ -1,14 +1,13 @@
 // app/api/contact/route.ts - SendGrid API
-
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { render } from '@react-email/render';
-import { EmailPreview } from '@/components/email-template/email-preview';
+import { ContactFormEmailTemplate } from '../../../../emails/contact-form-email-template';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { fullName, email, phone, subject, message, date } = body;
+    const { fullName, email, phone, subject, message } = body;
 
     const transporter = nodemailer.createTransport({
       host: 'smtp.sendgrid.net',
@@ -24,14 +23,13 @@ export async function POST(req: Request) {
       to: process.env.SENDGRID_TO,
       subject: `New Message from ${fullName}`,
       html: await render(
-        EmailPreview({
+        ContactFormEmailTemplate({
           fullName,
           email,
           phone,
           subject,
           message,
-          submittedAt: date,
-          companyName: 'TechCorp Solutions',
+          companyName: 'Softcolon Pvt. Ltd.',
         }),
       ),
     });
