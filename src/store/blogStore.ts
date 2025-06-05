@@ -5,7 +5,6 @@ interface BlogStore {
   posts: HashnodePost[];
   hasNextPage: boolean;
   endCursor: string | null;
-  setPosts: (posts: HashnodePost[]) => void;
   appendPosts: (posts: HashnodePost[]) => void;
   setHasNextPage: (value: boolean) => void;
   setEndCursor: (cursor: string | null) => void;
@@ -16,7 +15,6 @@ export const useBlogStore = create<BlogStore>((set) => ({
   posts: [],
   hasNextPage: true,
   endCursor: null,
-  setPosts: (posts) => set({ posts }),
   appendPosts: (posts) =>
     set((state) => ({ posts: [...state.posts, ...posts] })),
   setHasNextPage: (value) => set({ hasNextPage: value }),

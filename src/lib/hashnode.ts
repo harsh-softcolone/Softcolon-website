@@ -19,7 +19,7 @@ export const getHashnodePosts = async (after?: string) => {
   const query = gql`
     query PublicationPosts($host: String!, $after: String) {
       publication(host: $host) {
-        posts(first: 10, after: $after) {
+        posts(first: 6, after: $after) {
           pageInfo {
             hasNextPage
             endCursor

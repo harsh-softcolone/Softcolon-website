@@ -1,5 +1,5 @@
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
-import ContactUsForm from '../forms/contact-us-form';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import GetInTouchForm from '../forms/get-in-touch-form';
 
 interface ContactUsModalProps {
   open: boolean;
@@ -9,20 +9,16 @@ interface ContactUsModalProps {
 const ContactUsModal = ({ open, onOpenChange }: ContactUsModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className='w-[95%] max-w-[95vw] sm:max-w-[700px] xl:max-w-[1100px] p-0 border-none bg-transparent [&>button]:text-white [&>button]:cursor-pointer'>
-        <ContactUsForm
-          className='max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar'
-          title={
-            <DialogTitle
-              asChild
-              className='mb-6 sm:mb-10 md:mb-14 text-white text-xl sm:text-2xl md:text-3xl text-center font-normal'
-            >
-              <h1>
-                We don&apos;t bite—unless you&apos;re a spam bot. Drop us a line
-                and let&apos;s make internet magic together!
-              </h1>
-            </DialogTitle>
-          }
+      <DialogContent className='w-[95%] max-w-[95vw] sm:max-w-[700px] xl:max-w-[1100px] p-0 border-none bg-transparent max-h-[95vh] overflow-y-auto'>
+        <GetInTouchForm
+          isMobileOptimized={true}
+          containerClassName='mt-0 max-h-none'
+          showGetMoreInfo={false}
+          titleClassName='text-[20px] sm:text-[24px] md:text-[30px] leading-[26px] sm:leading-[30px] md:leading-[39px]'
+          formSpacingClassName='gap-3 sm:gap-6 lg:gap-8'
+          inputRowClassName='gap-2 sm:gap-3'
+          buttonContainerClassName='mt-3 sm:mt-6 justify-center sm:justify-start'
+          buttonClassName='w-full sm:w-auto'
         />
       </DialogContent>
     </Dialog>

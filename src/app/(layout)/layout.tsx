@@ -41,29 +41,9 @@ export const metadata: Metadata = {
     description:
       'Accelerate your business with Softcolon custom AI solutions, automation, and digital transformation services. Human-centric, innovative, and scalable technology for enterprises.',
     siteName: 'Softcolon',
-    // images: [
-    //   {
-    //     url: 'https://softcolon.com/og-image.jpg', // Replace with your actual OG image
-    //     width: 1200,
-    //     height: 630,
-    //     alt: 'Softcolon - AI-Powered Solutions',
-    //   },
-    // ],
     locale: 'en_US',
     type: 'website',
   },
-  // twitter: {
-  //   card: 'summary_large_image',
-  //   title: 'Softcolon | AI-Powered Solutions for Business Growth',
-  //   description:
-  //     'Accelerate your business with Softcolon custom AI solutions, automation, and digital transformation services.',
-  //   creator: '@softcolon', // Replace with your Twitter handle
-  // },
-  // icons: {
-  //   icon: '/favicon.ico',
-  //   shortcut: '/favicon.ico',
-  //   apple: '/apple-touch-icon.png',
-  // },
 };
 
 export default function RootLayout({

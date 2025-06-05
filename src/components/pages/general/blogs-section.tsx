@@ -5,8 +5,10 @@ import { HashnodePost } from '@/interface';
 import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import BlogCard from '@/components/cards/blog-card';
+import BlogSkeleton from '@/components/skeleton/blog-skeleton';
+
 const blogsDummyContent: HashnodePost[] = [
   {
     title: 'Trends, Insights, and Innovations Shaping Tomorrow',
@@ -40,8 +42,9 @@ interface Props {
   sectionClassName?: string;
   isMoreBlogs?: boolean;
   isRemoveHeader?: boolean;
-  isRemoveExploreMore?: boolean;
-  initialCount?: number;
+  hasNextPage?: boolean;
+  loading?: boolean;
+  onLoadMore?: () => Promise<void>;
 }
 
 const BlogsSection = ({
@@ -50,23 +53,25 @@ const BlogsSection = ({
   sectionClassName,
   isMoreBlogs,
   isRemoveHeader,
-  initialCount = 6,
+  hasNextPage,
+  loading,
+  onLoadMore,
 }: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [showAll, setShowAll] = useState(false);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
 
   const BlogsDynamicArray = blogsArray ? blogsArray : blogsDummyContent;
-  const displayedBlogs = showAll
-    ? BlogsDynamicArray
-    : BlogsDynamicArray.slice(0, initialCount);
+
+  // Show skeletons when loading and no blogs yet
+  const shouldShowSkeletons =
+    loading && (!blogsArray || blogsArray.length === 0);
 
   return (
     <section
-      className={
-        (cn('pt-16 pb-25 relative overflow-hidden bg-[#1b1b1b]'),
-        sectionClassName)
-      }
+      className={cn(
+        'pt-16 pb-25 relative overflow-hidden bg-[#1b1b1b]',
+        sectionClassName,
+      )}
     >
       <div className='max-w-[1396px] mx-auto flex flex-col px-4 md:px-8 items-center justify-center'>
         {!isRemoveHeader && <SectionHeader ref={sectionRef} name='Blogs' />}
@@ -83,22 +88,32 @@ const BlogsSection = ({
           )}
 
           <div className='font-ibm-plex-sans grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] pt-2 md:pt-6'>
-            {displayedBlogs?.map((blog, index) => (
-              <BlogCard key={index} blog={blog} />
-            ))}
+            {shouldShowSkeletons
+              ? Array.from({ length: 6 }).map((_, index) => (
+                  <BlogSkeleton key={`skeleton-${index}`} />
+                ))
+              : BlogsDynamicArray?.map((blog, index) => (
+                  <BlogCard key={index} blog={blog} />
+                ))}
           </div>
 
-          {!showAll && BlogsDynamicArray.length > initialCount && (
-            <div className='flex justify-center pt-8'>
-              <button
-                onClick={() => setShowAll(true)}
-                className='px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 font-ibm-plex-sans'
-              >
-                Load More ({BlogsDynamicArray.length - initialCount} more)
-              </button>
-            </div>
-          )}
+          {/* Load More Button - only show if we have onLoadMore function and there are more pages */}
+          {onLoadMore &&
+            hasNextPage &&
+            BlogsDynamicArray.length > 0 &&
+            !shouldShowSkeletons && (
+              <div className='flex justify-center pt-8'>
+                <button
+                  onClick={onLoadMore}
+                  disabled={loading}
+                  className='px-6 py-3 cursor-pointer bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors duration-300 font-ibm-plex-sans'
+                >
+                  {loading ? 'Loading...' : 'Load More Blogs'}
+                </button>
+              </div>
+            )}
 
+          {/* Explore More Blogs Link - for other pages */}
           {isMoreBlogs && (
             <div className='flex justify-center'>
               <Link

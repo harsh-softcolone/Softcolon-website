@@ -1,16 +1,10 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import BlogsSection from '@/components/pages/general/blogs-section';
 import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
-import Loader from '@/components/shared/loaders';
-import { getHashnodePosts } from '@/lib/hashnode';
 import { useBlogStore } from '@/store/blogStore';
-import LazySection from '@/components/lazy/lazy-section';
-
-const POSTS_PER_BATCH = 6; // Reduced from showing all at once
 
 export default function BlogsInfinitePage() {
-  const loaderRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -23,57 +17,47 @@ export default function BlogsInfinitePage() {
   } = useBlogStore();
 
   useEffect(() => {
-    // Initial load
-    if (posts.length === 0) loadMore();
-    // eslint-disable-next-line
+    // Initial load of first 6 blogs
+    if (posts.length === 0) {
+      loadMore();
+    }
   }, []);
 
-  useEffect(() => {
-    if (!hasNextPage) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !loading) {
-          loadMore();
-        }
-      },
-      { threshold: 1 },
-    );
-    const currentLoader = loaderRef.current;
-    if (currentLoader) observer.observe(currentLoader);
-    return () => {
-      if (currentLoader) observer.unobserve(currentLoader);
-    };
-    // eslint-disable-next-line
-  }, [hasNextPage, loading]);
-
-  async function loadMore() {
+  const loadMore = async () => {
     setLoading(true);
-    const res = await getHashnodePosts(endCursor || undefined);
-    appendPosts(res.posts);
-    setHasNextPage(res.pageInfo.hasNextPage);
-    setEndCursor(res.pageInfo.endCursor);
-    setLoading(false);
-  }
+    try {
+      // Call the server-side API route instead of direct hashnode call
+      const url = endCursor
+        ? `/api/blog-list?after=${encodeURIComponent(endCursor)}`
+        : '/api/blog-list';
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.success) {
+        appendPosts(data.posts);
+        setHasNextPage(data.pageInfo.hasNextPage);
+        setEndCursor(data.pageInfo.endCursor);
+      } else {
+        console.error('Error loading blogs:', data.error);
+      }
+    } catch (error) {
+      console.error('Error loading blogs:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className='relative overflow-x-hidden pt-[64px]'>
       <BlogsSection
         sectionClassName='pt-10'
         blogsArray={posts}
-        initialCount={POSTS_PER_BATCH}
+        hasNextPage={hasNextPage}
+        loading={loading}
+        onLoadMore={loadMore}
       />
-
-      {hasNextPage && (
-        <LazySection>
-          <div ref={loaderRef}>
-            <Loader />
-          </div>
-        </LazySection>
-      )}
-
-      <LazySection>
-        <GetInTouchSection />
-      </LazySection>
+      <GetInTouchSection />
     </div>
   );
 }
