@@ -28,28 +28,14 @@ export const metadata: Metadata = {
     'AI industry news',
     'Automation insights',
   ],
+  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
+  authors: [{ name: 'Softcolon' }],
   openGraph: {
     title: 'AI & Technology Insights Blog | Softcolon',
     description:
-      'Stay ahead with expert insights on AI, automation, and digital transformation. Read our latest articles on artificial intelligence trends, business solutions, and technology innovations.',
-    siteName: 'Softcolon Blog',
-    url: 'https://softcolon.com/blogs',
-    locale: 'en_US',
+      'Discover the latest AI trends, technology insights, and innovation stories from Softcolon.',
     type: 'website',
-  },
-  alternates: {
-    canonical: 'https://softcolon.com/blogs',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 };
 
@@ -72,7 +58,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <head>{/* Add any additional head elements here */}</head>
+      <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='robots' content='index, follow' />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black-background`}
       >

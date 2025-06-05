@@ -1,5 +1,3 @@
-import React from 'react';
-
 const BlogSkeleton = () => {
   return (
     <div className='p-5 rounded-[20px] border border-[#464646] animate-pulse flex flex-col h-full'>
@@ -27,17 +25,6 @@ const BlogSkeleton = () => {
         <div className='h-4 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-[length:200%_100%] animate-[shimmer_2s_infinite] rounded w-32'></div>
         <div className='w-4 h-4 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 bg-[length:200%_100%] animate-[shimmer_2s_infinite] rounded'></div>
       </div>
-
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            background-position: -200% 0;
-          }
-          100% {
-            background-position: 200% 0;
-          }
-        }
-      `}</style>
     </div>
   );
 };

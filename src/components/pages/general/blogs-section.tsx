@@ -1,11 +1,8 @@
-'use client';
 import SectionHeader from '@/components/header/section-header';
-import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import { HashnodePost } from '@/interface';
 import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useRef } from 'react';
 import BlogCard from '@/components/cards/blog-card';
 import BlogSkeleton from '@/components/skeleton/blog-skeleton';
 
@@ -57,9 +54,6 @@ const BlogsSection = ({
   loading,
   onLoadMore,
 }: Props) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
-
   const BlogsDynamicArray = blogsArray ? blogsArray : blogsDummyContent;
 
   // Show skeletons when loading and no blogs yet
@@ -74,7 +68,7 @@ const BlogsSection = ({
       )}
     >
       <div className='max-w-[1396px] mx-auto flex flex-col px-4 md:px-8 items-center justify-center'>
-        {!isRemoveHeader && <SectionHeader ref={sectionRef} name='Blogs' />}
+        {!isRemoveHeader && <SectionHeader name='Blogs' />}
         <div className={cn('space-y-8 mt-5', isRemoveHeader && 'mt-0')}>
           {title ? (
             title

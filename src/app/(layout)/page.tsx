@@ -38,11 +38,7 @@ export default async function Home() {
       </LazySection>
 
       <LazySection>
-        <BlogsSection
-          blogsArray={posts.posts.slice(0, 3)}
-          isMoreBlogs={true}
-          initialCount={3}
-        />
+        <BlogsSection blogsArray={posts.posts.slice(0, 3)} isMoreBlogs={true} />
       </LazySection>
 
       <LazySection>

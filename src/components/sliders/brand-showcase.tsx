@@ -7,27 +7,27 @@ export default function BrandShowcase() {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const sliderArray = [
     {
-      src: '/images/brand/brand-showcase1.svg',
+      src: '/images/brand/brand-showcase1.webp',
       alt: 'brand-1',
       height: 'h-6 sm:h-8',
     },
     {
-      src: '/images/brand/brand-showcase2.svg',
+      src: '/images/brand/brand-showcase2.webp',
       alt: 'brand-2',
       height: 'h-6 sm:h-8',
     },
     {
-      src: '/images/brand/brand-showcase3.svg',
+      src: '/images/brand/brand-showcase3.webp',
       alt: 'brand-3',
       height: 'h-8 sm:h-10',
     },
     {
-      src: '/images/brand/brand-showcase4.svg',
+      src: '/images/brand/brand-showcase4.webp',
       alt: 'brand-4',
       height: 'h-8 sm:h-10',
     },
     {
-      src: '/images/brand/brand-showcase5.svg',
+      src: '/images/brand/brand-showcase5.webp',
       alt: 'brand-5',
       height: 'h-8 sm:h-10',
     },
@@ -61,6 +61,7 @@ export default function BrandShowcase() {
             <Image
               src={brand.src}
               alt={brand.alt}
+              priority
               width={150}
               height={150}
               className={`w-full ${brand.height} object-contain transition-all duration-300`}

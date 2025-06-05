@@ -19,7 +19,7 @@ const RotateArrowButton = ({
       )}
     >
       <Image
-        src='/icons/arrow.svg'
+        src='/icons/arrow.webp'
         alt='arrow-right'
         width={24}
         height={24}
