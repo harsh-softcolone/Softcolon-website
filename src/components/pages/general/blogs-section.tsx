@@ -41,6 +41,7 @@ interface Props {
   isRemoveHeader?: boolean;
   hasNextPage?: boolean;
   loading?: boolean;
+  loadingMore?: boolean;
   onLoadMore?: () => Promise<void>;
 }
 
@@ -52,6 +53,7 @@ const BlogsSection = ({
   isRemoveHeader,
   hasNextPage,
   loading,
+  loadingMore,
   onLoadMore,
 }: Props) => {
   const BlogsDynamicArray = blogsArray ? blogsArray : blogsDummyContent;
@@ -89,6 +91,12 @@ const BlogsSection = ({
               : BlogsDynamicArray?.map((blog, index) => (
                   <BlogCard key={index} blog={blog} />
                 ))}
+
+            {/* Show additional skeletons while loading more posts */}
+            {loadingMore &&
+              Array.from({ length: 3 }).map((_, index) => (
+                <BlogSkeleton key={`loading-more-skeleton-${index}`} />
+              ))}
           </div>
 
           {/* Load More Button - only show if we have onLoadMore function and there are more pages */}
@@ -99,7 +107,7 @@ const BlogsSection = ({
               <div className='flex justify-center pt-4 sm:pt-6 md:pt-12'>
                 <button
                   onClick={onLoadMore}
-                  disabled={loading}
+                  disabled={loadingMore}
                   className='group relative cursor-pointer inline-flex items-center gap-2 px-8 py-3 text-sm font-medium text-gray-300 transition-all duration-300 ease-out hover:text-white disabled:text-gray-500 disabled:cursor-not-allowed'
                 >
                   {/* Subtle border that glows on hover */}
@@ -110,12 +118,12 @@ const BlogsSection = ({
 
                   {/* Button content */}
                   <span className='relative z-10 transition-transform duration-200 group-disabled:translate-y-0'>
-                    {loading ? 'Loading more blogs' : 'Load More Blogs'}
+                    {loadingMore ? 'Loading more blogs' : 'Load More Blogs'}
                   </span>
 
                   {/* Icon */}
                   <div className='relative z-10 transition-transform duration-300 group-hover:translate-y-0.5 group-disabled:translate-y-0'>
-                    {loading ? (
+                    {loadingMore ? (
                       <Loader2 className='h-4 w-4 animate-spin' />
                     ) : (
                       <ChevronDown className='h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5' />

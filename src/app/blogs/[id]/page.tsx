@@ -1,99 +1,76 @@
-'use client';
-
 import Footer from '@/components/footer/footer';
-import Loader from '@/components/shared/loaders';
 import { getSingleHashnodePost } from '@/lib/hashnode';
-import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import { HashNodeSinglePost } from '@/interface';
+import React from 'react';
 import BlogHeader from '@/components/pages/blogs/blog-header';
-import { codeBlockStyles } from './blog-style';
+import './blog-styles.css';
 import BlogsSection from '@/components/pages/general/blogs-section';
 import MarkdownRenderer from '@/components/pages/blogs/markdown-renderer';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-const BlogPage = () => {
-  const { id } = useParams();
-  const [post, setPost] = useState<HashNodeSinglePost | null>(null);
+interface BlogPageProps {
+  params: {
+    id: string;
+  };
+}
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      const post = await getSingleHashnodePost(id as string);
-      console.log(post.publication.post);
-      setPost(post.publication.post);
-    };
-    fetchPost();
-  }, [id]);
+// Generate metadata for SEO (server-side)
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  try {
+    const post = await getSingleHashnodePost(params.id);
 
-  // Update meta tags when post loads
-  useEffect(() => {
-    if (post) {
-      const cleanBrief =
-        post.brief?.replace(/<[^>]*>/g, '')?.substring(0, 160) ||
-        'Read this insightful article about AI, technology, and innovation from Softcolon.';
-
-      document.title = `${post.title} | Softcolon Blog`;
-
-      // Update meta description
-      let metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', cleanBrief);
-      } else {
-        metaDescription = document.createElement('meta');
-        metaDescription.setAttribute('name', 'description');
-        metaDescription.setAttribute('content', cleanBrief);
-        document.head.appendChild(metaDescription);
-      }
-
-      // Update Open Graph meta tags
-      const updateMetaTag = (property: string, content: string) => {
-        let metaTag = document.querySelector(`meta[property="${property}"]`);
-        if (metaTag) {
-          metaTag.setAttribute('content', content);
-        } else {
-          metaTag = document.createElement('meta');
-          metaTag.setAttribute('property', property);
-          metaTag.setAttribute('content', content);
-          document.head.appendChild(metaTag);
-        }
+    if (!post?.publication?.post) {
+      return {
+        title: 'Blog Not Found | Softcolon',
+        description: 'The requested blog post could not be found.',
       };
-
-      updateMetaTag('og:title', `${post.title} | Softcolon Blog`);
-      updateMetaTag('og:description', cleanBrief);
-      updateMetaTag('og:type', 'article');
-      if (post.coverImage?.url) {
-        updateMetaTag('og:image', post.coverImage.url);
-      }
-      updateMetaTag('og:url', `https://softcolon.com/blogs/${id}`);
-
-      // Update Twitter Card meta tags
-      const updateTwitterTag = (name: string, content: string) => {
-        let metaTag = document.querySelector(`meta[name="${name}"]`);
-        if (metaTag) {
-          metaTag.setAttribute('content', content);
-        } else {
-          metaTag = document.createElement('meta');
-          metaTag.setAttribute('name', name);
-          metaTag.setAttribute('content', content);
-          document.head.appendChild(metaTag);
-        }
-      };
-
-      updateTwitterTag('twitter:card', 'summary_large_image');
-      updateTwitterTag('twitter:title', `${post.title} | Softcolon Blog`);
-      updateTwitterTag('twitter:description', cleanBrief);
-      if (post.coverImage?.url) {
-        updateTwitterTag('twitter:image', post.coverImage.url);
-      }
     }
-  }, [post, id]);
 
-  return (
-    <div className='relative overflow-x-hidden bg-black text-white font-[family-name:var(--font-ibm-plex-sans)]'>
-      <style jsx global>{`
-        ${codeBlockStyles}
-      `}</style>
+    const blogPost = post.publication.post;
+    const cleanBrief =
+      blogPost.brief?.replace(/<[^>]*>/g, '')?.substring(0, 160) ||
+      'Read this insightful article about AI, technology, and innovation from Softcolon.';
 
-      {post ? (
+    return {
+      title: `${blogPost.title} | Softcolon Blog`,
+      description: cleanBrief,
+      openGraph: {
+        title: `${blogPost.title} | Softcolon Blog`,
+        description: cleanBrief,
+        type: 'article',
+        images: blogPost.coverImage?.url ? [blogPost.coverImage.url] : [],
+        url: `https://softcolon.com/blogs/${params.id}`,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${blogPost.title} | Softcolon Blog`,
+        description: cleanBrief,
+        images: blogPost.coverImage?.url ? [blogPost.coverImage.url] : [],
+      },
+    };
+  } catch {
+    return {
+      title: 'Blog Not Found | Softcolon',
+      description: 'The requested blog post could not be found.',
+    };
+  }
+}
+
+export default async function BlogPage({ params }: BlogPageProps) {
+  // Fetch post data on server-side
+  try {
+    const postData = await getSingleHashnodePost(params.id);
+
+    if (!postData?.publication?.post) {
+      notFound(); // This will show the 404 page
+    }
+
+    const post = postData.publication.post;
+
+    return (
+      <div className='relative overflow-x-hidden bg-black text-white font-[family-name:var(--font-ibm-plex-sans)] pt-[64px]'>
         <div className=''>
           <div className='max-w-7xl mx-auto'>
             <BlogHeader post={post} />
@@ -115,22 +92,20 @@ const BlogPage = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <div className='min-h-[50vh] flex items-center justify-center bg-black'>
-          <Loader />
-        </div>
-      )}
-      <BlogsSection
-        title={
-          <h3 className='text-white mb-1 text-2xl font-medium font-ibm-plex-sans text-center'></h3>
-        }
-        isRemoveHeader
-        isMoreBlogs={true}
-        sectionClassName='mt-0 mb-10'
-      />
-      <Footer />
-    </div>
-  );
-};
 
-export default BlogPage;
+        <BlogsSection
+          title={
+            <h3 className='text-white mb-1 text-2xl font-medium font-ibm-plex-sans text-center'></h3>
+          }
+          isRemoveHeader
+          isMoreBlogs={true}
+          sectionClassName='mt-0 mb-10'
+        />
+        <Footer />
+      </div>
+    );
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    notFound();
+  }
+}

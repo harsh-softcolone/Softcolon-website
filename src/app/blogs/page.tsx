@@ -1,78 +1,24 @@
-'use client';
-import { useEffect, useState } from 'react';
-import BlogsSection from '@/components/pages/general/blogs-section';
+import BlogsWithLoadMore from '@/components/pages/blogs/blogs-with-load-more';
 import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
-import { useBlogStore } from '@/store/blogStore';
+import { getHashnodePosts } from '@/lib/hashnode';
+import { Metadata } from 'next';
 
-export default function BlogsInfinitePage() {
-  const [loading, setLoading] = useState(false);
+export const metadata: Metadata = {
+  title: 'AI & Technology Blog | Latest Insights & Trends | Softcolon',
+  description:
+    'Explore our comprehensive blog covering AI innovations, technology trends, business automation, and digital transformation insights. Stay updated with the latest in artificial intelligence and tech industry developments.',
+};
 
-  const {
-    posts,
-    appendPosts,
-    hasNextPage,
-    setHasNextPage,
-    endCursor,
-    setEndCursor,
-  } = useBlogStore();
-
-  useEffect(() => {
-    // Set meta description for blogs page
-    document.title =
-      'AI & Technology Blog | Latest Insights & Trends | Softcolon';
-
-    let metaDescription = document.querySelector('meta[name="description"]');
-    const description =
-      'Explore our comprehensive blog covering AI innovations, technology trends, business automation, and digital transformation insights. Stay updated with the latest in artificial intelligence and tech industry developments.';
-
-    if (metaDescription) {
-      metaDescription.setAttribute('content', description);
-    } else {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      metaDescription.setAttribute('content', description);
-      document.head.appendChild(metaDescription);
-    }
-
-    // Initial load of first 6 blogs
-    if (posts.length === 0) {
-      loadMore();
-    }
-  }, []);
-
-  const loadMore = async () => {
-    setLoading(true);
-    try {
-      // Call the server-side API route instead of direct hashnode call
-      const url = endCursor
-        ? `/api/blog-list?after=${encodeURIComponent(endCursor)}`
-        : '/api/blog-list';
-
-      const response = await fetch(url);
-      const data = await response.json();
-
-      if (data.success) {
-        appendPosts(data.posts);
-        setHasNextPage(data.pageInfo.hasNextPage);
-        setEndCursor(data.pageInfo.endCursor);
-      } else {
-        console.error('Error loading blogs:', data.error);
-      }
-    } catch (error) {
-      console.error('Error loading blogs:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+export default async function BlogsPage() {
+  // Fetch initial posts on server-side
+  const { posts, pageInfo } = await getHashnodePosts();
 
   return (
     <div className='relative overflow-x-hidden pt-[64px]'>
-      <BlogsSection
-        sectionClassName='pt-10'
-        blogsArray={posts}
-        hasNextPage={hasNextPage}
-        loading={loading}
-        onLoadMore={loadMore}
+      <BlogsWithLoadMore
+        initialPosts={posts}
+        initialHasNextPage={pageInfo.hasNextPage}
+        initialEndCursor={pageInfo.endCursor}
       />
 
       <GetInTouchSection className='!pt-2 sm:!pt-4' />
