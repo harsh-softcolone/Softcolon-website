@@ -19,12 +19,12 @@ const RotateArrowButton = ({
       )}
     >
       <Image
-        src='/icons/arrow.webp'
+        src='/icons/arrow.svg'
         alt='arrow-right'
         width={24}
         height={24}
         className={cn(
-          'w- h-6 transition-transform duration-500 ease-in-out',
+          'w-6 h-6 transition-transform duration-500 ease-in-out',
           isActive ? 'rotate-45' : 'group-hover:rotate-45',
           imageClassName,
         )}

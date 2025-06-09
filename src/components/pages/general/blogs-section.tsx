@@ -1,7 +1,7 @@
 import SectionHeader from '@/components/header/section-header';
 import { HashnodePost } from '@/interface';
 import { cn } from '@/lib/utils';
-import { ArrowRightIcon } from 'lucide-react';
+import { ArrowRightIcon, ChevronDown, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import BlogCard from '@/components/cards/blog-card';
 import BlogSkeleton from '@/components/skeleton/blog-skeleton';
@@ -96,13 +96,31 @@ const BlogsSection = ({
             hasNextPage &&
             BlogsDynamicArray.length > 0 &&
             !shouldShowSkeletons && (
-              <div className='flex justify-center pt-8'>
+              <div className='flex justify-center pt-4 sm:pt-6 md:pt-12'>
                 <button
                   onClick={onLoadMore}
                   disabled={loading}
-                  className='px-6 py-3 cursor-pointer bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors duration-300 font-ibm-plex-sans'
+                  className='group relative cursor-pointer inline-flex items-center gap-2 px-8 py-3 text-sm font-medium text-gray-300 transition-all duration-300 ease-out hover:text-white disabled:text-gray-500 disabled:cursor-not-allowed'
                 >
-                  {loading ? 'Loading...' : 'Load More Blogs'}
+                  {/* Subtle border that glows on hover */}
+                  <div className='absolute inset-0 rounded-full border border-gray-700 transition-all duration-300 group-hover:border-gray-500 group-hover:shadow-sm group-disabled:border-gray-800' />
+
+                  {/* Background glow effect on hover */}
+                  <div className='absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-disabled:opacity-0' />
+
+                  {/* Button content */}
+                  <span className='relative z-10 transition-transform duration-200 group-disabled:translate-y-0'>
+                    {loading ? 'Loading more blogs' : 'Load More Blogs'}
+                  </span>
+
+                  {/* Icon */}
+                  <div className='relative z-10 transition-transform duration-300 group-hover:translate-y-0.5 group-disabled:translate-y-0'>
+                    {loading ? (
+                      <Loader2 className='h-4 w-4 animate-spin' />
+                    ) : (
+                      <ChevronDown className='h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5' />
+                    )}
+                  </div>
                 </button>
               </div>
             )}

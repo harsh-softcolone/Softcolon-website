@@ -29,7 +29,17 @@ export const metadata: Metadata = {
     'Automation insights',
   ],
   viewport: 'width=device-width, initial-scale=1',
-  robots: 'index, follow',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   authors: [{ name: 'Softcolon' }],
   openGraph: {
     title: 'AI & Technology Insights Blog | Softcolon',
@@ -61,9 +71,14 @@ export default function RootLayout({
       <head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='robots' content='index, follow' />
+        {/* Default meta description - will be updated by client-side code */}
+        <meta
+          name='description'
+          content='Discover the latest AI trends, technology insights, and innovation stories from Softcolon. Expert articles on artificial intelligence, business automation, and digital transformation.'
+        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black-background`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1b1b1b]`}
       >
         <BlogNav />
         {/* <LenisProvider>{children}</LenisProvider> */}

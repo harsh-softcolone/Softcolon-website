@@ -24,6 +24,69 @@ const BlogPage = () => {
     fetchPost();
   }, [id]);
 
+  // Update meta tags when post loads
+  useEffect(() => {
+    if (post) {
+      const cleanBrief =
+        post.brief?.replace(/<[^>]*>/g, '')?.substring(0, 160) ||
+        'Read this insightful article about AI, technology, and innovation from Softcolon.';
+
+      document.title = `${post.title} | Softcolon Blog`;
+
+      // Update meta description
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', cleanBrief);
+      } else {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        metaDescription.setAttribute('content', cleanBrief);
+        document.head.appendChild(metaDescription);
+      }
+
+      // Update Open Graph meta tags
+      const updateMetaTag = (property: string, content: string) => {
+        let metaTag = document.querySelector(`meta[property="${property}"]`);
+        if (metaTag) {
+          metaTag.setAttribute('content', content);
+        } else {
+          metaTag = document.createElement('meta');
+          metaTag.setAttribute('property', property);
+          metaTag.setAttribute('content', content);
+          document.head.appendChild(metaTag);
+        }
+      };
+
+      updateMetaTag('og:title', `${post.title} | Softcolon Blog`);
+      updateMetaTag('og:description', cleanBrief);
+      updateMetaTag('og:type', 'article');
+      if (post.coverImage?.url) {
+        updateMetaTag('og:image', post.coverImage.url);
+      }
+      updateMetaTag('og:url', `https://softcolon.com/blogs/${id}`);
+
+      // Update Twitter Card meta tags
+      const updateTwitterTag = (name: string, content: string) => {
+        let metaTag = document.querySelector(`meta[name="${name}"]`);
+        if (metaTag) {
+          metaTag.setAttribute('content', content);
+        } else {
+          metaTag = document.createElement('meta');
+          metaTag.setAttribute('name', name);
+          metaTag.setAttribute('content', content);
+          document.head.appendChild(metaTag);
+        }
+      };
+
+      updateTwitterTag('twitter:card', 'summary_large_image');
+      updateTwitterTag('twitter:title', `${post.title} | Softcolon Blog`);
+      updateTwitterTag('twitter:description', cleanBrief);
+      if (post.coverImage?.url) {
+        updateTwitterTag('twitter:image', post.coverImage.url);
+      }
+    }
+  }, [post, id]);
+
   return (
     <div className='relative overflow-x-hidden bg-black text-white font-[family-name:var(--font-ibm-plex-sans)]'>
       <style jsx global>{`

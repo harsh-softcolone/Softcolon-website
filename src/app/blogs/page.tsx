@@ -17,6 +17,23 @@ export default function BlogsInfinitePage() {
   } = useBlogStore();
 
   useEffect(() => {
+    // Set meta description for blogs page
+    document.title =
+      'AI & Technology Blog | Latest Insights & Trends | Softcolon';
+
+    let metaDescription = document.querySelector('meta[name="description"]');
+    const description =
+      'Explore our comprehensive blog covering AI innovations, technology trends, business automation, and digital transformation insights. Stay updated with the latest in artificial intelligence and tech industry developments.';
+
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    } else {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      metaDescription.setAttribute('content', description);
+      document.head.appendChild(metaDescription);
+    }
+
     // Initial load of first 6 blogs
     if (posts.length === 0) {
       loadMore();
@@ -57,7 +74,8 @@ export default function BlogsInfinitePage() {
         loading={loading}
         onLoadMore={loadMore}
       />
-      <GetInTouchSection />
+
+      <GetInTouchSection className='!pt-2 sm:!pt-4' />
     </div>
   );
 }
