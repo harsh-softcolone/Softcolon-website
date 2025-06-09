@@ -100,7 +100,7 @@ export function MobileSidebar({
                 <div className='absolute top-6 left-5 z-10'>
                   <Link href='/'>
                     <Image
-                      src='/logo.webp'
+                      src='/logo.svg'
                       alt='logo'
                       width={120}
                       height={100}

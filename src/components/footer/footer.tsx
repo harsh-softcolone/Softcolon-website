@@ -37,7 +37,7 @@ const Footer = () => {
           {/* Brand and Social Section */}
           <div className='space-y-5 max-w-[300px]'>
             <Image
-              src='/logo.webp'
+              src='/logo.svg'
               alt='logo'
               width={120}
               height={100}
@@ -159,7 +159,7 @@ const Footer = () => {
           {/* Brand and Social Section */}
           <div className='space-y-5'>
             <Image
-              src='/logo.webp'
+              src='/logo.svg'
               alt='logo'
               width={120}
               height={100}
