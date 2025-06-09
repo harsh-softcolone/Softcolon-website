@@ -9,9 +9,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // Generate metadata for SEO (server-side)
@@ -19,7 +19,8 @@ export async function generateMetadata({
   params,
 }: BlogPageProps): Promise<Metadata> {
   try {
-    const post = await getSingleHashnodePost(params.id);
+    const resolvedParams = await params;
+    const post = await getSingleHashnodePost(resolvedParams.id);
 
     if (!post?.publication?.post) {
       return {
@@ -41,7 +42,7 @@ export async function generateMetadata({
         description: cleanBrief,
         type: 'article',
         images: blogPost.coverImage?.url ? [blogPost.coverImage.url] : [],
-        url: `https://softcolon.com/blogs/${params.id}`,
+        url: `https://softcolon.com/blogs/${resolvedParams.id}`,
       },
       twitter: {
         card: 'summary_large_image',
@@ -61,7 +62,8 @@ export async function generateMetadata({
 export default async function BlogPage({ params }: BlogPageProps) {
   // Fetch post data on server-side
   try {
-    const postData = await getSingleHashnodePost(params.id);
+    const resolvedParams = await params;
+    const postData = await getSingleHashnodePost(resolvedParams.id);
 
     if (!postData?.publication?.post) {
       notFound(); // This will show the 404 page
