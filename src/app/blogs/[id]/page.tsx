@@ -1,5 +1,4 @@
 import Footer from '@/components/footer/footer';
-import { getSingleHashnodePost } from '@/lib/hashnode';
 import React from 'react';
 import BlogHeader from '@/components/pages/blogs/blog-header';
 import './blog-styles.css';
@@ -7,6 +6,13 @@ import BlogsSection from '@/components/pages/general/blogs-section';
 import MarkdownRenderer from '@/components/pages/blogs/markdown-renderer';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getServerSideBlogPost } from './actions';
+
+// Enable static generation and revalidation
+export const revalidate = 3600; // Revalidate every hour
+
+// Optimize for performance
+export const fetchCache = 'force-cache';
 
 interface BlogPageProps {
   params: Promise<{
@@ -20,7 +26,7 @@ export async function generateMetadata({
 }: BlogPageProps): Promise<Metadata> {
   try {
     const resolvedParams = await params;
-    const post = await getSingleHashnodePost(resolvedParams.id);
+    const post = await getServerSideBlogPost(resolvedParams.id);
 
     if (!post?.publication?.post) {
       return {
@@ -61,9 +67,10 @@ export async function generateMetadata({
 
 export default async function BlogPage({ params }: BlogPageProps) {
   // Fetch post data on server-side
+  const resolvedParams = await params;
+
   try {
-    const resolvedParams = await params;
-    const postData = await getSingleHashnodePost(resolvedParams.id);
+    const postData = await getServerSideBlogPost(resolvedParams.id);
 
     if (!postData?.publication?.post) {
       notFound(); // This will show the 404 page
