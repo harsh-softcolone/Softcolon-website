@@ -40,11 +40,18 @@ const CaseStudySection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
 
-  const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
+  // Create individual refs for each case study card
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+  const card3Ref = useRef<HTMLDivElement>(null);
 
-  useGsapScrollReveal(leftRef as React.RefObject<HTMLElement>, 'left');
-  useGsapScrollReveal(rightRef as React.RefObject<HTMLElement>, 'right');
+  // Apply animations to each card individually
+  useGsapScrollReveal(card1Ref as React.RefObject<HTMLElement>, 'left');
+  useGsapScrollReveal(card2Ref as React.RefObject<HTMLElement>, 'right');
+  useGsapScrollReveal(card3Ref as React.RefObject<HTMLElement>, 'left');
+
+  // Array of refs for easy mapping
+  const cardRefs = [card1Ref, card2Ref, card3Ref];
 
   return (
     <section className='min-h-[100vh] relative overflow-hidden w-full'>
@@ -69,7 +76,7 @@ const CaseStudySection = () => {
       <div className='space-y-10 md:space-y-16 mt-20'>
         {caseStudies.map((card, index) => (
           <CaseStudyCard
-            ref={index === 0 ? leftRef : rightRef}
+            ref={cardRefs[index]}
             cardNumber={index + 1}
             key={index}
             {...card}
