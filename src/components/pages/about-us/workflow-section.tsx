@@ -60,7 +60,7 @@ interface ProcessStep {
 }
 
 interface Props {
-  data: ProcessStep;
+  data?: ProcessStep;
 }
 
 const WorkFlowSection = ({ data }: Props) => {
@@ -70,12 +70,12 @@ const WorkFlowSection = ({ data }: Props) => {
       <div className='max-w-[1392px] mx-auto w-11/12 space-y-5 flex flex-col items-center justify-center'>
         <SectionHeader name='Workflow' />
         <h1 className='text-[22px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
-          {data.title ?? 'How We Turning Your Ideas Into Impactful Reality'}
+          {data?.title ?? 'How We Turning Your Ideas Into Impactful Reality'}
         </h1>
 
-        {data.description && (
+        {data?.description && (
           <p className='text-paragraph text-md lg:text-xl font-normal leading-normal text-center font-ibm-plex-sans max-w-[800px]'>
-            {data.description}
+            {data?.description}
           </p>
         )}
 
