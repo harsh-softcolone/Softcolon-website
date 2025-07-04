@@ -53,7 +53,7 @@ export const Navbar = () => {
         <Logo />
         <DesktopNavigation />
         <HeaderActions />
-        <MobileMenuButton toggleMenu={toggleMenu} />
+        <MobileMenuButton toggleMenu={toggleMenu} isOpen={isMenuOpen} />
       </div>
       <MobileSidebar
         open={isMenuOpen}

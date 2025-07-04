@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { FaRunning } from 'react-icons/fa';
+import Link from 'next/link';
 
 interface NavigationSection {
   icon: React.ReactNode;
@@ -19,6 +20,7 @@ interface NavigationMegaMenuProps {
   buttonClassName?: string;
   menuClassName?: string;
   onNavigationItemClick?: (item: string) => void;
+  getNavigationHref?: (item: string, menuTitle: string) => string;
 }
 
 export const NavigationMegaMenu = ({
@@ -30,6 +32,7 @@ export const NavigationMegaMenu = ({
   buttonClassName,
   menuClassName,
   onNavigationItemClick,
+  getNavigationHref,
 }: NavigationMegaMenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -100,21 +103,45 @@ export const NavigationMegaMenu = ({
                   </h3>
                 </div>
                 <ul className='space-y-2'>
-                  {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className='cursor-pointer'>
-                      <div
+                  {section.items.map((item, itemIndex) => {
+                    const href = getNavigationHref
+                      ? getNavigationHref(item, menuTitle)
+                      : `/${menuTitle.toLowerCase()}/${item.toLowerCase()}`;
+
+                    return (
+                      <li
+                        key={itemIndex}
+                        className='cursor-pointer'
                         onClick={() => onNavigationItemClick?.(item)}
-                        className='text-paragraph hover:text-white text-[16px] font-ibm-plex-sans group flex items-center justify-between transition-all duration-300'
                       >
-                        <span className='transition-transform duration-300 group-hover:translate-x-2'>
-                          {item}
-                        </span>
-                        <span className='ml-2 opacity-0 group-hover:opacity-100 -group-hover:translate-x-3 -translate-x-3 transition-all duration-300 text-white'>
-                          <FaRunning className='w-4 h-4' />
-                        </span>
-                      </div>
-                    </li>
-                  ))}
+                        {getNavigationHref ? (
+                          <Link
+                            href={href}
+                            className='text-paragraph hover:text-white text-[16px] font-ibm-plex-sans group flex items-center justify-between transition-all duration-300'
+                          >
+                            <span className='transition-transform duration-300 group-hover:translate-x-2'>
+                              {item}
+                            </span>
+                            <span className='ml-2 opacity-0 group-hover:opacity-100 -group-hover:translate-x-3 -translate-x-3 transition-all duration-300 text-white'>
+                              <FaRunning className='w-4 h-4' />
+                            </span>
+                          </Link>
+                        ) : (
+                          <div
+                            onClick={() => onNavigationItemClick?.(item)}
+                            className='text-paragraph hover:text-white text-[16px] font-ibm-plex-sans group flex items-center justify-between transition-all duration-300'
+                          >
+                            <span className='transition-transform duration-300 group-hover:translate-x-2'>
+                              {item}
+                            </span>
+                            <span className='ml-2 opacity-0 group-hover:opacity-100 -group-hover:translate-x-3 -translate-x-3 transition-all duration-300 text-white'>
+                              <FaRunning className='w-4 h-4' />
+                            </span>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

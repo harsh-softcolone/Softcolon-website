@@ -98,7 +98,7 @@ const ServicesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className='mt-40 sm:mt-60 pt-14.5 sm:pt-32.5 min-h-[100vh] relative overflow-hidden'
+      className='pt-14.5 sm:pt-32.5 min-h-[100vh] relative overflow-hidden'
       id='service-section'
     >
       <AbstractBlobBackground

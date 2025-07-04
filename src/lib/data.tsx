@@ -375,7 +375,7 @@ export const desktopNavItems = ({
 
 export const platformsData: NavItem[] = [
   {
-    icon: <PanelTop className='w-10 h-10' />,
+    icon: <PanelTop className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'AI Tools & Platforms',
     items: [
       'ChatGPT',
@@ -390,7 +390,7 @@ export const platformsData: NavItem[] = [
 
 export const servicesData: NavItem[] = [
   {
-    icon: <Bot className='w-10 h-10' />,
+    icon: <Bot className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'Generative AI',
     items: [
       'AI Agent',
@@ -404,12 +404,12 @@ export const servicesData: NavItem[] = [
     ],
   },
   {
-    icon: <Paintbrush className='w-10 h-10' />,
+    icon: <Paintbrush className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'Design',
     items: ['UI/UX Design', 'Branding', 'Figma Development'],
   },
   {
-    icon: <Code className='w-10 h-10' />,
+    icon: <Code className='w-8 h-8' />,
     title: 'Development Services',
     items: [
       'Software Development',
@@ -419,7 +419,7 @@ export const servicesData: NavItem[] = [
     ],
   },
   {
-    icon: <HeadphonesIcon className='w-10 h-10' />,
+    icon: <HeadphonesIcon className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'Support',
     items: ['Startup Consulting', 'MVP Development'],
   },
@@ -427,7 +427,7 @@ export const servicesData: NavItem[] = [
 
 export const industryData: NavItem[] = [
   {
-    icon: <Bot className='w-10 h-10' />,
+    icon: <Bot className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'Healthcare',
     items: [
       'Medical Software Development',
@@ -441,7 +441,7 @@ export const industryData: NavItem[] = [
     ],
   },
   {
-    icon: <Paintbrush className='w-10 h-10' />,
+    icon: <Paintbrush className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'Finance',
     items: [
       'Fintech Solutions',
@@ -455,7 +455,7 @@ export const industryData: NavItem[] = [
     ],
   },
   {
-    icon: <Code className='w-10 h-10' />,
+    icon: <Code className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'Education',
     items: [
       'Learning Management Systems',
@@ -469,7 +469,7 @@ export const industryData: NavItem[] = [
     ],
   },
   {
-    icon: <HeadphonesIcon className='w-10 h-10' />,
+    icon: <HeadphonesIcon className='w-8 h-8 lg:w-10 lg:h-10' />,
     title: 'Retail',
     items: [
       'E-commerce Solutions',

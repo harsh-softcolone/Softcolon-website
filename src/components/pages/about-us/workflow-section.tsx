@@ -48,18 +48,40 @@ const processSteps = [
   },
 ];
 
-const WorkFlowSection = () => {
+interface ProcessStep {
+  title: string;
+  description: string;
+  steps: {
+    id: number;
+    title: string;
+    description: string;
+    imageUrl: string;
+  }[];
+}
+
+interface Props {
+  data: ProcessStep;
+}
+
+const WorkFlowSection = ({ data }: Props) => {
+  const processStep = data?.steps ?? processSteps;
   return (
     <section className='pt-14.5 sm:pt-32.5 relative overflow-hidden'>
       <div className='max-w-[1392px] mx-auto w-11/12 space-y-5 flex flex-col items-center justify-center'>
         <SectionHeader name='Workflow' />
-        <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
-          How We Turning Your Ideas Into Impactful Reality
+        <h1 className='text-[22px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+          {data.title ?? 'How We Turning Your Ideas Into Impactful Reality'}
         </h1>
 
+        {data.description && (
+          <p className='text-paragraph text-md lg:text-xl font-normal leading-normal text-center font-ibm-plex-sans max-w-[800px]'>
+            {data.description}
+          </p>
+        )}
+
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14'>
-          {processSteps.map(({ id, title, description, imageUrl }, index) => {
-            const total = processSteps.length;
+          {processStep?.map(({ id, title, description, imageUrl }, index) => {
+            const total = processStep.length;
 
             const isLastColMd = (index + 1) % 2 === 0;
             const isLastRowMd = index >= total - 2;

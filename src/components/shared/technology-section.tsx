@@ -22,7 +22,7 @@ const TechnologySection = ({
     >
       <div className='max-w-[1389px] mx-auto w-11/12 xxl:w-full flex-col justify-center items-center space-y-6 sm:space-y-10'>
         <div className={cn('space-y-2 mt-5', headerClassName)}>
-          <h1 className='text-3xl lg:text-[40px] text-left font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+          <h1 className='text-[22px] sm:text-3xl lg:text-[40px] text-left md:text-center font-normal font-hanuman text-white leading-tight transition-all duration-300 break-words hyphens-auto tracking-wide'>
             {data.title}
           </h1>
           <p className='text-sm lg:text-base font-normal leading-[21px] text-[#c0c0c0]'>

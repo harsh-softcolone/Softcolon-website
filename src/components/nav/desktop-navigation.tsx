@@ -3,11 +3,9 @@ import { useState } from 'react';
 import { industryData, platformsData, servicesData } from '@/lib/data';
 import { NavigationMegaMenu } from './navigation-mega-menu';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 const DesktopNavigation = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const router = useRouter();
   const handleMenuEnter = (menuName: string) => {
     setActiveMenu(menuName);
   };
@@ -29,6 +27,7 @@ const DesktopNavigation = () => {
         isActive={activeMenu === 'services'}
         onMouseEnter={() => handleMenuEnter('services')}
         onMouseLeave={handleMenuLeave}
+        getNavigationHref={(item) => `/service/${item.toLowerCase()}`}
         onNavigationItemClick={(item) => {
           console.log('Navigation item clicked:', item);
           setActiveMenu(null);
@@ -40,8 +39,8 @@ const DesktopNavigation = () => {
         isActive={activeMenu === 'platforms'}
         onMouseEnter={() => handleMenuEnter('platforms')}
         onMouseLeave={handleMenuLeave}
+        getNavigationHref={(item) => `/platform/${item.toLowerCase()}`}
         onNavigationItemClick={(item) => {
-          router.push(`/platform/${item.toLowerCase()}`);
           console.log('Navigation item clicked:', item);
           setActiveMenu(null);
         }}
@@ -52,9 +51,8 @@ const DesktopNavigation = () => {
         isActive={activeMenu === 'industry'}
         onMouseEnter={() => handleMenuEnter('industry')}
         onMouseLeave={handleMenuLeave}
+        getNavigationHref={(item) => `/industry/${item.toLowerCase()}`}
         onNavigationItemClick={(item) => {
-          console.log('item', item);
-          router.push(`/industry/${item.toLowerCase()}`);
           console.log('Navigation item clicked:', item);
           setActiveMenu(null);
         }}

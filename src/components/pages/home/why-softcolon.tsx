@@ -4,25 +4,39 @@ import { useScrollReveal } from '@/hooks/use-scroll-reveal';
 import Image from 'next/image';
 import React, { useRef } from 'react';
 
-const WhySoftcolon = () => {
+const WhySoftcolon = ({
+  data,
+  title,
+  description,
+}: {
+  data?: {
+    icon: string;
+    alt: string;
+    title: string;
+    description: string;
+  }[];
+  title?: boolean;
+  description?: string;
+}) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollReveal(sectionRef as React.RefObject<HTMLElement>);
   const whySoftcolonContent = [
     {
-      icon: 'images/general/human.svg',
+      icon: '/images/general/human.svg',
       alt: 'Human-centric',
       title: 'Human-Centric Intelligence',
       description:
         'We design AI to amplify human expertise-not replace it. By focusing on UX, transparency, and ethical AI practices, we ensure technology empowers people.',
     },
     {
-      icon: 'images/general/building.svg',
+      icon: '/images/general/building.svg',
       alt: 'Future platform',
       title: 'Future-Ready Platforms',
       description:
         'Our AI architectures are built to evolve. With plug-and-play modules and cloud-native scaling, your solutions stay agile as your business grows.',
     },
   ];
+  const content = data ?? whySoftcolonContent;
   const softcolonStats = [
     {
       value: '07',
@@ -46,21 +60,41 @@ const WhySoftcolon = () => {
           className='mx-auto'
         />
         <div className='space-y-7.5 mt-5'>
-          <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
-            &quot;We&apos;re not just adopting{' '}
-            <span className='gradient-color'> technology</span>{' '}
-            <br className='hidden lg:block' />
-            we&apos;re embracing a new era of <br className='hidden lg:block' />
-            <span className='gradient-color'> business innovation</span>&quot;
-          </h1>
-          <p className='text-lg lg:text-xl text-center text-paragraph font-normal leading-normal font-ibm-plex-sans'>
-            Collaborate with Softcolon&apos;s expert team to transform your
-            vision into powerful, <br className='hidden lg:block' />
-            human-centered AI applications that drive real business impact.
-          </p>
+          {title && description ? (
+            <>
+              <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+                We are the prime choice for an
+                <span className='gradient-color'> AI</span>{' '}
+                <br className='hidden lg:block' />
+                <span className='gradient-color'>
+                  Agent development company
+                </span>
+              </h1>
+              <p className='text-md lg:text-lg text-center text-paragraph font-normal leading-normal font-ibm-plex-sans'>
+                {description}
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 className='text-[28px] sm:text-4xl md:text-5xl text-center font-normal font-hanuman text-white leading-tight transition-all duration-300'>
+                &quot;We&apos;re not just adopting{' '}
+                <span className='gradient-color'> technology</span>{' '}
+                <br className='hidden lg:block' />
+                we&apos;re embracing a new era of{' '}
+                <br className='hidden lg:block' />
+                <span className='gradient-color'> business innovation</span>
+                &quot;
+              </h1>
+              <p className='text-lg lg:text-xl text-center text-paragraph font-normal leading-normal font-ibm-plex-sans'>
+                Collaborate with Softcolon&apos;s expert team to transform your
+                vision into powerful, <br className='hidden lg:block' />
+                human-centered AI applications that drive real business impact.
+              </p>
+            </>
+          )}
           <div className='font-ibm-plex-sans flex gap-[60px] flex-col'>
             <div className='relative grid grid-cols-1 lg:grid-cols-2 gap-y-[30px] lg:gap-x-6'>
-              {whySoftcolonContent.map((item, index) => (
+              {content?.map((item, index) => (
                 <div key={index} className='relative flex gap-4 lg:p-4 w-full'>
                   <Image
                     src={item.icon}
@@ -78,7 +112,7 @@ const WhySoftcolon = () => {
                     </p>
                   </div>
 
-                  {index !== whySoftcolonContent.length - 1 &&
+                  {index !== content?.length - 1 &&
                     (index === 0 || index === 1) && (
                       <div className='hidden lg:block absolute right-[-12px] top-0 h-full w-[2px] bg-[#464646]' />
                     )}

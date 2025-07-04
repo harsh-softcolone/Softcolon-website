@@ -14,7 +14,7 @@ export const Logo = () => {
         alt='logo'
         width={120}
         height={100}
-        className='w-[120px] h-auto sm:w-[150px] md:w-[180px] lg:w-[200px] transition-all duration-300'
+        className='w-[150px] h-auto md:w-[180px] lg:w-[200px] transition-all duration-300'
       />
     </div>
   );

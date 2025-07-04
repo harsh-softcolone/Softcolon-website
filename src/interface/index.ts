@@ -30,6 +30,15 @@ export interface PlatformFeaturesSection {
   featureList: PlatformFeature[];
 }
 
+export interface ServiceFeaturesSection {
+  title: string;
+  description: string;
+  heroImage1: string;
+  heroImage2?: string;
+  heroImage3?: string;
+  featureList: PlatformFeature[];
+}
+
 export interface PlatformFaq {
   id: string;
   question: string;
@@ -56,6 +65,38 @@ export interface PlatformData {
   }[];
   features: PlatformFeaturesSection;
   faqData: PlatformFaqSection;
+}
+
+interface WorkflowStep {
+  title: string;
+  description: string;
+  steps: {
+    id: number;
+    title: string;
+    description: string;
+    imageUrl: string;
+  }[];
+}
+
+interface WhySoftcolon {
+  icon: string;
+  alt: string;
+  title: string;
+  description: string;
+}
+
+export interface ServiceData {
+  hero: {
+    imageUrl: string;
+    title: string;
+    description: string;
+    subDescription: string;
+  };
+  features: ServiceFeaturesSection;
+  techStack: TechStackSectionTypes;
+  blogs: HashnodePost[];
+  workflow: WorkflowStep;
+  whySoftcolon: WhySoftcolon[];
 }
 
 export interface TechStackSectionTypes {

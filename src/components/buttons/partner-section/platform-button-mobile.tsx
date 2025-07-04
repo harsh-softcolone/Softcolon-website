@@ -29,12 +29,12 @@ export const PlatformButtonMobile = ({
 
       {isActive ? (
         <RotateArrowButton
-          buttonClassName='bg-black/20 rotate-45'
+          buttonClassName='bg-black rotate-45'
           imageClassName='rotate-45'
         />
       ) : (
         <RotateArrowButton
-          buttonClassName='bg-black/20 group-hover:bg-gradient-to-r group-hover:from-[#1f84fc] group-hover:to-[#c846e4]'
+          buttonClassName='bg-[#1C1C1C] group-hover:bg-gradient-to-r group-hover:from-[#1f84fc] group-hover:to-[#c846e4]'
           imageClassName='group-hover:rotate-45'
         />
       )}
