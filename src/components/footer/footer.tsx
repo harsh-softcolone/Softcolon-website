@@ -1,31 +1,27 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Twitter,
-} from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import SocialLinks from './social-links';
 
 const quickLinks = [
-  { name: 'Services', href: '#' },
+  // { name: 'Services', href: '#' },
   { name: 'Blogs', href: '/blogs' },
-  { name: 'Platform', href: '/' },
-  { name: 'Industry', href: '/' },
+  // { name: 'Platform', href: '/' },
+  // { name: 'Industry', href: '/' },
   { name: 'Our Work', href: '/case-studies' },
   { name: 'About', href: '/about-us' },
+  { name: 'Contact Us', href: '/contact-us' },
 ];
 
 const serviceLinks = [
-  { name: 'Generative AI', href: '#' },
-  { name: 'Design', href: '#' },
-  { name: 'Development Services', href: '#' },
-  { name: 'Support', href: '#' },
+  { name: 'AI Agent', href: '/service/ai-agent' },
+  { name: 'LLM Powered Chatbots', href: '/service/llm-powered-chatbots' },
+  {
+    name: 'LLM Testing & Fine Tuning',
+    href: '/service/llm-testing-fine-tuning',
+  },
+  { name: 'GPT Integration', href: '/service/gpt-integration' },
 ];
 
 const Footer = () => {
@@ -47,36 +43,7 @@ const Footer = () => {
               It has long been known that a reader&apos;s attention will be
               diverted from
             </p>
-            <div className='flex space-x-4'>
-              <Link
-                aria-label='facebook'
-                href='#'
-                className='text-white hover:text-gray-300 transition'
-              >
-                <Facebook size={20} />
-              </Link>
-              <Link
-                aria-label='instagram'
-                href='#'
-                className='text-white hover:text-gray-300 transition'
-              >
-                <Instagram size={20} />
-              </Link>
-              <Link
-                aria-label='twitter'
-                href='#'
-                className='text-white hover:text-gray-300 transition'
-              >
-                <Twitter size={20} />
-              </Link>
-              <Link
-                aria-label='linkedin'
-                href='#'
-                className='text-white hover:text-gray-300 transition'
-              >
-                <Linkedin size={20} />
-              </Link>
-            </div>
+            <SocialLinks />
           </div>
 
           {/* Quick Links Section */}

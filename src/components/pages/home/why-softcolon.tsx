@@ -39,7 +39,7 @@ const WhySoftcolon = ({
   const content = data ?? whySoftcolonContent;
   const softcolonStats = [
     {
-      value: '07',
+      value: '05',
       label: 'Years of Excellence',
     },
     {

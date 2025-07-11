@@ -65,7 +65,7 @@ const CaseStudySection = () => {
         </h1>
         <Link
           aria-label='see more case studies'
-          href='/'
+          href='/case-studies'
           className='text-[#1BA1E3] font-medium uppercase text-[20px] hover:text-white transition-all duration-300 ease-in-out leading-normal font-ibm-plex-sans flex gap-2 items-center group relative'
         >
           See More Case Studies

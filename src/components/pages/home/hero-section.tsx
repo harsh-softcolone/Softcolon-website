@@ -13,6 +13,10 @@ const HeroSection = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     gsap.fromTo(
       sectionRef.current,
       { autoAlpha: 0, y: 50 },

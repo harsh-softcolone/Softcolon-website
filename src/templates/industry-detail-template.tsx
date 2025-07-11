@@ -20,7 +20,7 @@ const IndustryDetailTemplate = ({ industryName, industryData }: Props) => {
         title='Industry'
         breadcrumbItems={[
           { label: 'Home', href: '/' },
-          { label: 'Industry', href: '/industry' },
+          { label: 'Industry', href: '#' },
           { label: industryName },
         ]}
       />

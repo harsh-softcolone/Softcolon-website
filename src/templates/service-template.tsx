@@ -22,7 +22,7 @@ const ServiceTemplate = ({ serviceName }: props) => {
         title={serviceName ?? 'Service'}
         breadcrumbItems={[
           { label: 'Home', href: '/' },
-          { label: 'Service', href: '/service' },
+          { label: 'Service', href: '#' },
           { label: serviceName ?? 'Service Name' },
         ]}
       />

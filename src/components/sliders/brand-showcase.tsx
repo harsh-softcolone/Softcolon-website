@@ -33,18 +33,28 @@ export default function BrandShowcase() {
     },
   ];
 
+  // In BrandShowcase.tsx
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const width =
-        sliderRef.current !== null && sliderRef.current.scrollWidth / 2;
-      gsap.to(sliderRef.current, {
-        x: -width,
-        duration: 20,
-        repeat: -1,
-        ease: 'none',
-      });
-    }, sliderRef);
-    return () => ctx.revert();
+    let ctx: gsap.Context | null = null;
+
+    // Delay animation setup slightly to prioritize critical rendering
+    const timer = setTimeout(() => {
+      ctx = gsap.context(() => {
+        const width =
+          sliderRef.current !== null ? sliderRef.current.scrollWidth / 2 : 0;
+        gsap.to(sliderRef.current, {
+          x: -width,
+          duration: 20,
+          repeat: -1,
+          ease: 'none',
+        });
+      }, sliderRef);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      ctx?.revert();
+    };
   }, []);
 
   return (

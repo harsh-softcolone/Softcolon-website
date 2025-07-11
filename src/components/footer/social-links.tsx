@@ -1,16 +1,18 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedinIn,
-} from 'react-icons/fa';
+import { FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import Link from 'next/link';
 
 const socialLinks = [
-  { label: 'facebook', href: '#', icon: FaFacebookF },
-  { label: 'instagram', href: '#', icon: FaInstagram },
+  {
+    label: 'instagram',
+    href: 'https://www.instagram.com/softcolon?igsh=ZjJmODdveXU3aTdt',
+    icon: FaInstagram,
+  },
   { label: 'twitter', href: '#', icon: FaTwitter },
-  { label: 'linkedin', href: '#', icon: FaLinkedinIn },
+  {
+    label: 'linkedin',
+    href: 'https://www.linkedin.com/company/softcolon/',
+    icon: FaLinkedinIn,
+  },
 ];
 
 const SocialLinks = () => (
@@ -21,6 +23,7 @@ const SocialLinks = () => (
         aria-label={label}
         href={href}
         className='text-white hover:text-gray-300 transition'
+        target='_blank'
       >
         <Icon size={20} />
       </Link>

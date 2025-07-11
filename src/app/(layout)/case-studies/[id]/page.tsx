@@ -3,7 +3,6 @@
 import CaseStudyTemplate from '@/templates/case-study-template';
 import { useParams } from 'next/navigation';
 import React from 'react';
-import { caseStudyData } from '@/data/case-study-data';
 
 const CaseStudyDetailPage = () => {
   const params = useParams();
@@ -11,10 +10,7 @@ const CaseStudyDetailPage = () => {
   const caseStudyName = rawId ? decodeURIComponent(rawId as string) : '';
   return (
     <div>
-      <CaseStudyTemplate
-        caseStudyName={caseStudyName}
-        caseStudyData={caseStudyData}
-      />
+      <CaseStudyTemplate caseStudyName={caseStudyName} />
     </div>
   );
 };

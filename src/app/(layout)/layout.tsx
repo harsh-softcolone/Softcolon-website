@@ -2,7 +2,12 @@ import type { Metadata } from 'next';
 import { Hanuman, IBM_Plex_Sans } from 'next/font/google';
 import '@/app/globals.css';
 import { Navbar } from '@/components/nav/Navbar';
-import { Toaster } from 'react-hot-toast';
+import dynamic from 'next/dynamic';
+
+// Replace direct import with lazy loading
+const Toaster = dynamic(() =>
+  import('react-hot-toast').then((mod) => mod.Toaster),
+);
 
 const geistSans = Hanuman({
   variable: '--font-geist-hanuman',
@@ -53,7 +58,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <head>{/* Add any additional head elements here */}</head>
+      <head>
+        <link
+          rel='apple-touch-icon'
+          sizes='180x180'
+          href='/favicon_io/apple-touch-icon.png'
+        />
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='32x32'
+          href='/favicon_io/favicon-32x32.png'
+        />
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href='/favicon_io/favicon-16x16.png'
+        />
+        <link rel='manifest' href='/favicon_io/site.webmanifest' />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black-background`}
       >

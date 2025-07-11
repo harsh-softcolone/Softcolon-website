@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     'AI industry news',
     'Automation insights',
   ],
-  viewport: 'width=device-width, initial-scale=1',
+  // viewport: 'width=device-width, initial-scale=1',
   robots: {
     index: true,
     follow: true,

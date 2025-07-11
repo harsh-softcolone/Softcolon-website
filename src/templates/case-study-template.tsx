@@ -6,13 +6,15 @@ import VirtualHealthAssistantOverview from '@/components/pages/case-studies/deta
 import GetInTouchSection from '@/components/pages/general/get-in-touch-section';
 import PageHeader from '@/components/shared/page-header';
 import { CaseStudyDataTypes } from '@/interface';
+import { getCaseStudyData } from '@/data/case-study-data';
 
 interface Props {
   caseStudyName: string;
-  caseStudyData: CaseStudyDataTypes;
 }
 
-const CaseStudyTemplate = ({ caseStudyName, caseStudyData }: Props) => {
+const CaseStudyTemplate = ({ caseStudyName }: Props) => {
+  const caseStudyData: CaseStudyDataTypes = getCaseStudyData(caseStudyName);
+
   return (
     <div className='relative overflow-x-hidden'>
       <PageHeader

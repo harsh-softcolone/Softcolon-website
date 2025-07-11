@@ -50,6 +50,8 @@ export function MobileSidebar({
     } else if (menuType === 'Services') {
       router.push(`/service/${item.toLowerCase()}`);
     }
+    setExpandedMenu(null);
+    setExpandedSection(null);
     onClose();
   };
 
@@ -83,7 +85,7 @@ export function MobileSidebar({
 
               {/* Logo */}
               <div className='absolute top-6 left-5 z-10'>
-                <Link href='/'>
+                <Link href='/' rel='preload'>
                   <Image
                     src='/logo.svg'
                     alt='logo'

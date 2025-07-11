@@ -8,6 +8,7 @@ export const Logo = () => {
     <div
       className='flex items-center gap-4 cursor-pointer'
       onClick={() => router.push('/')}
+      rel='preload'
     >
       <Image
         src='/logo.svg'

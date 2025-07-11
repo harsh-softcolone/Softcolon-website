@@ -8,7 +8,6 @@ interface CaseStudyCardProps {
   description: string;
   imageSrc: string;
   imageAlt: string;
-  readMoreLink: string;
   cardNumber: number;
   imageOnLeft?: boolean;
   ref?: React.RefObject<HTMLDivElement | null>;
@@ -20,7 +19,6 @@ export default function CaseStudyCard({
   imageSrc,
   imageAlt,
   cardNumber,
-  readMoreLink,
   imageOnLeft = true,
   ref,
 }: CaseStudyCardProps) {
@@ -32,7 +30,7 @@ export default function CaseStudyCard({
           {cardNumber === 1 && (
             <AbstractBlobBackground className='top-0 right-0 translate-x-1/4 -translate-y-[20%]' />
           )}
-          <div className='absolute -top-50 -right-60 w-[800px] h-[800px] z-100'>
+          <div className='absolute -top-50 -right-60 w-[800px] h-[800px] -z-10 pointer-events-none'>
             <Image
               src='images/square-pattern.svg'
               alt='pattern-image'
@@ -42,7 +40,7 @@ export default function CaseStudyCard({
           </div>
         </div>
       ) : (
-        <div className='absolute -top-50 -left-60 w-[800px] h-[800px] hidden lg:block'>
+        <div className='absolute -top-50 -left-60 w-[800px] h-[800px] hidden lg:block -z-10 pointer-events-none'>
           <Image
             src='images/square-pattern.svg'
             alt='pattern-image'
@@ -86,8 +84,8 @@ export default function CaseStudyCard({
             </p>
             <Link
               aria-label={`Read more about the Case Study: ${title}`}
-              href={readMoreLink}
-              className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-[16px] sm:text-[20px] hover:text-white transition-all duration-300 group w-fit'
+              href={`/case-studies/${title}`}
+              className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-[16px] sm:text-[20px] hover:text-white transition-all duration-300 group w-fit z-50'
             >
               READ MORE
               <ArrowRight className='w-4 h-4 -rotate-45 group-hover:translate-x-1 transition-transform duration-300' />
