@@ -181,3 +181,127 @@ class ChatRateLimiter {
 
 // Export singleton instance
 export const rateLimiter = new ChatRateLimiter();
+
+// Ingest API Rate Limiter - 10 requests per second
+class IngestRateLimiter {
+  private readonly MAX_REQUESTS = 10;
+  private rateLimit: Ratelimit | null = null;
+
+  constructor() {
+    // Initialize Upstash rate limiter for ingest API
+    try {
+      if (redis) {
+        this.rateLimit = new Ratelimit({
+          redis: redis,
+          limiter: Ratelimit.slidingWindow(this.MAX_REQUESTS, '1 m'),
+          analytics: true,
+          prefix: 'ingest_limit',
+        });
+      } else {
+        console.error(
+          '❌ Cannot initialize ingest rate limiter: Redis connection failed',
+        );
+      }
+    } catch (error) {
+      console.error(
+        '❌ Failed to initialize Upstash ingest rate limiter:',
+        error,
+      );
+      this.rateLimit = null;
+    }
+  }
+
+  private getClientKey(ip: string, userAgent?: string): string {
+    // Create a unique key combining IP and user agent for better identification
+    return `${ip}_${userAgent?.slice(0, 100) || 'unknown'}`;
+  }
+
+  async checkLimit(ip: string, userAgent?: string): Promise<RateLimitStatus> {
+    const identifier = this.getClientKey(ip, userAgent);
+
+    // If Upstash rate limiter is not available, allow all requests
+    if (!this.rateLimit) {
+      console.warn('Ingest rate limiter not available - allowing request');
+      return {
+        allowed: true,
+        remaining: this.MAX_REQUESTS - 1,
+      };
+    }
+
+    try {
+      const result = await this.rateLimit.limit(identifier);
+
+      if (!result.success) {
+        const resetTime = result.reset
+          ? new Date(result.reset).getTime()
+          : undefined;
+
+        return {
+          allowed: false,
+          remaining: 0,
+          resetTime,
+          message: `You have exceeded the request limit (${this.MAX_REQUESTS} requests per minute). Please wait before making another request.`,
+        };
+      }
+
+      return {
+        allowed: true,
+        remaining: result.remaining,
+        resetTime: result.reset ? new Date(result.reset).getTime() : undefined,
+      };
+    } catch (error) {
+      console.error('Ingest rate limit check error:', error);
+
+      // In case of error, allow the request but log it
+      return {
+        allowed: true,
+        remaining: this.MAX_REQUESTS - 1,
+      };
+    }
+  }
+
+  async getStatus(
+    ip: string,
+    userAgent?: string,
+  ): Promise<{
+    requestCount: number;
+    remaining: number;
+    blocked: boolean;
+    resetTime?: number;
+  }> {
+    const identifier = this.getClientKey(ip, userAgent);
+
+    if (!this.rateLimit) {
+      return {
+        requestCount: 0,
+        remaining: this.MAX_REQUESTS,
+        blocked: false,
+      };
+    }
+
+    try {
+      const testResult = await this.rateLimit.limit(identifier);
+      const remaining = testResult.success ? testResult.remaining : 0;
+      const requestCount = this.MAX_REQUESTS - remaining;
+
+      return {
+        requestCount: Math.max(0, requestCount),
+        remaining: Math.max(0, remaining),
+        blocked: !testResult.success,
+        resetTime: testResult.reset
+          ? new Date(testResult.reset).getTime()
+          : undefined,
+      };
+    } catch (error) {
+      console.error('Get ingest status error:', error);
+      return {
+        requestCount: 0,
+        remaining: this.MAX_REQUESTS,
+        blocked: false,
+      };
+    }
+  }
+}
+
+// Export singleton instance for ingest API
+export const ingestRateLimiter = new IngestRateLimiter();

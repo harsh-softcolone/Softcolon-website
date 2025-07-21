@@ -9,6 +9,7 @@ const QDRANT_URL = process.env.QDRANT_URL;
 const QDRANT_API_KEY = process.env.QDRANT_API_KEY;
 const COLLECTION_NAME = 'blog-rag';
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
 async function ingestAllBlogs() {
   const client = new QdrantClient({ url: QDRANT_URL, apiKey: QDRANT_API_KEY });
   const embedder = new OpenAIEmbeddings({ openAIApiKey: OPENAI_API_KEY });
@@ -25,14 +26,38 @@ async function ingestAllBlogs() {
   const exists = collections.collections.some(
     (col: { name: string }) => col.name === COLLECTION_NAME,
   );
+
   if (!exists) {
+    // Create collection
     await client.createCollection(COLLECTION_NAME, {
       vectors: {
         size: embeddingDimension,
         distance: 'Cosine',
       },
     });
-    console.log(`Created Qdrant collection: ${COLLECTION_NAME}`);
+
+    // Create payload indexes for filtering
+    await client.createPayloadIndex(COLLECTION_NAME, {
+      field_name: 'slug',
+      field_schema: 'keyword',
+    });
+
+    await client.createPayloadIndex(COLLECTION_NAME, {
+      field_name: 'blogId',
+      field_schema: 'keyword',
+    });
+
+    await client.createPayloadIndex(COLLECTION_NAME, {
+      field_name: 'title',
+      field_schema: 'text',
+    });
+
+    await client.createPayloadIndex(COLLECTION_NAME, {
+      field_name: 'publishedAt',
+      field_schema: 'keyword',
+    });
+
+    console.log(`Created Qdrant collection: ${COLLECTION_NAME} with indexes`);
   } else {
     console.log(`Qdrant collection '${COLLECTION_NAME}' already exists.`);
   }
