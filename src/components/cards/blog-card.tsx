@@ -7,7 +7,11 @@ import React from 'react';
 
 const BlogCard = ({ blog }: { blog: HashnodePost }) => {
   return (
-    <div className='p-5 rounded-[20px] border border-[#464646] group hover:border-gray-500 transition-all duration-300 flex flex-col h-full'>
+    <Link
+      href={`/blogs/${blog.slug}`}
+      aria-label={`Read more about the blog: ${blog.title}`}
+      className='p-5 rounded-[20px] border border-[#464646] group hover:border-gray-500 transition-all duration-300 flex flex-col h-full cursor-pointer'
+    >
       <div>
         <div className='relative aspect-video w-full h-[220px] sm:h-[292px] overflow-hidden'>
           <Image
@@ -29,18 +33,13 @@ const BlogCard = ({ blog }: { blog: HashnodePost }) => {
           </p>
         </div>
       </div>
-      <Link
-        aria-label={`Read more about the blog: ${blog.title}`}
-        // href={`https://coderg-tales.hashnode.dev/${blog.slug}`}
-        href={`/blogs/${blog.slug}`}
-        className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-md hover:text-white transition-all duration-300 group w-fit mt-auto'
-      >
+      <div className='flex relative items-center gap-2 text-[#1BA1E3] font-medium text-md hover:text-white transition-all duration-300 group w-fit mt-auto'>
         <span className='uppercase'>Read more about</span>
         <span className='sr-only'>{blog.title}</span>
         <ArrowRight className='w-4 h-4 -rotate-45 group-hover:translate-x-1 transition-transform duration-300' />
         <span className='absolute -bottom-1 left-0 w-[84%] h-[1px] bg-[#1BA1E3] transition-all duration-300 ease-in-out group-hover:w-full group-hover:bg-white'></span>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

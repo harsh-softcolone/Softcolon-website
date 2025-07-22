@@ -118,6 +118,13 @@ const ChatPage = () => {
     scrollToBottom();
   }, [messages, streamingContent]);
 
+  // Auto-focus the textarea when component mounts or after sending a message
+  useEffect(() => {
+    if (textareaRef.current && !isStreaming && !rateLimitState.isRateLimited) {
+      textareaRef.current.focus();
+    }
+  }, [isStreaming, rateLimitState.isRateLimited]);
+
   const handleSendMessage = () => {
     if (!inputValue.trim() || isStreaming || rateLimitState.isRateLimited)
       return;
@@ -167,7 +174,7 @@ const ChatPage = () => {
       <div className='relative z-10 flex h-full w-full flex-col bg-black'>
         {/* Messages Area */}
         <div className='flex flex-1 flex-col overflow-hidden'>
-          <div className='h-full w-full flex-1 overflow-y-auto p-4 pt-24 sm:pt-28 pb-0 lg:px-8 scrollbar-hide'>
+          <div className='h-full w-full flex-1 overflow-y-auto p-4 pt-24 sm:pt-28 pb-0 lg:px-8 hide-scroll'>
             <div className='mx-auto w-full max-w-4xl space-y-6 pb-20'>
               {/* Welcome Header */}
               {messages.length === 0 &&
@@ -178,13 +185,16 @@ const ChatPage = () => {
                       <Sparkle className='h-8 w-8 text-white' />
                     </div>
                     <h1 className='text-2xl font-semibold text-white mb-2'>
-                      AI Strategy Assistant
+                      Softcolon AI Assistant
                     </h1>
-                    <p className='text-gray-400 max-w-md mx-auto'>
-                      Hi! I&apos;m your AI assistant powered by ChatGPT. I can
-                      help you develop business strategies, create project
-                      plans, and provide innovative solutions. What would you
-                      like to explore today?
+                    <p className='text-gray-400 max-w-lg mx-auto'>
+                      Hi! I&apos;m an AI-powered chat assistant created by{' '}
+                      <span className='text-blue-400 font-semibold'>
+                        Softcolon
+                      </span>
+                      . I&apos;m here to provide you with information about our
+                      company, our services, and guide you through your journey
+                      with us. Feel free to ask me anything about Softcolon!
                     </p>
                   </div>
                 )}

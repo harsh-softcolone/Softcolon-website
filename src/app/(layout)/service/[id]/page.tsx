@@ -1,15 +1,21 @@
-'use client';
 import ServiceTemplate from '@/templates/service-template';
-import { useParams } from 'next/navigation';
+import { getHashnodePosts } from '@/lib/hashnode';
 import React from 'react';
 
-const ServiceDetailPage = () => {
-  const params = useParams();
-  const rawId = params.id;
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+const ServiceDetailPage = async ({ params }: PageProps) => {
+  const resolvedParams = await params;
+  const rawId = resolvedParams.id;
   const serviceName = rawId ? decodeURIComponent(rawId as string) : '';
+
+  const posts = await getHashnodePosts();
+
   return (
     <div className='relative overflow-x-hidden '>
-      <ServiceTemplate serviceName={serviceName} />
+      <ServiceTemplate serviceName={serviceName} posts={posts} />
     </div>
   );
 };

@@ -5,15 +5,23 @@ import TechnologySection from '@/components/shared/technology-section';
 import UseCaseGridSection from '@/components/shared/use-case-grid-section';
 import IndustryHeroSection from '@/components/templates/industry/Industry-hero-section';
 import InnovationHightLightSection from '@/components/templates/industry/Innovation-hight-light-section';
-import { IndustryDataTypes } from '@/interface';
+import { IndustryDataTypes, HashnodePost } from '@/interface';
 import React from 'react';
 
 interface Props {
   industryName: string;
   industryData: IndustryDataTypes;
+  posts?: {
+    posts: HashnodePost[];
+    pageInfo: { hasNextPage: boolean; endCursor: string };
+  };
 }
 
-const IndustryDetailTemplate = ({ industryName, industryData }: Props) => {
+const IndustryDetailTemplate = ({
+  industryName,
+  industryData,
+  posts,
+}: Props) => {
   return (
     <div className='relative overflow-x-hidden'>
       <PageHeader
@@ -41,7 +49,7 @@ const IndustryDetailTemplate = ({ industryName, industryData }: Props) => {
           headerClassName='flex justify-center items-center flex-col'
           data={industryData.innovation}
         />
-        <BlogsSection blogsArray={industryData.blogs} />
+        <BlogsSection blogsArray={posts?.posts.slice(0, 3)} />
       </div>
 
       <GetInTouchSection />

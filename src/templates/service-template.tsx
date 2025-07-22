@@ -7,15 +7,20 @@ import TechnologySection from '@/components/shared/technology-section';
 import FeatureSection from '@/components/templates/service/feature-section';
 import ServiceHeroSection from '@/components/templates/service/service-hero-section';
 import { getServiceData } from '@/data/service-data';
-import { ServiceData } from '@/interface';
+import { ServiceData, HashnodePost } from '@/interface';
 import React from 'react';
 
 interface props {
   serviceName: string;
+  posts?: {
+    posts: HashnodePost[];
+    pageInfo: { hasNextPage: boolean; endCursor: string };
+  };
 }
 
-const ServiceTemplate = ({ serviceName }: props) => {
+const ServiceTemplate = ({ serviceName, posts }: props) => {
   const serviceData: ServiceData = getServiceData(serviceName);
+
   return (
     <div className='relative overflow-x-hidden'>
       <PageHeader
@@ -43,7 +48,7 @@ const ServiceTemplate = ({ serviceName }: props) => {
           title={true}
           description='Clients leverage our up-to-date infrastructure and experienced resources.'
         />
-        <BlogsSection blogsArray={serviceData.blogs} />
+        <BlogsSection blogsArray={posts?.posts.slice(0, 3)} />
       </div>
       <GetInTouchSection />
     </div>

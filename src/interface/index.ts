@@ -7,12 +7,17 @@ export interface NavItem {
   items: string[];
 }
 
+export interface PlatformSection {
+  name: string;
+  icons: { src: string; alt: string }[];
+}
+
 export interface Platform {
   id: string;
   number: string;
   title: string;
   description: string;
-  icons: { src: string; alt: string }[];
+  sections: PlatformSection[];
 }
 
 export interface PlatformFeature {

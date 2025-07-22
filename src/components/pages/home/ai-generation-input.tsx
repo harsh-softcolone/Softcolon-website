@@ -63,7 +63,6 @@ const AIGenerationInput = () => {
             {/* Animated placeholder with typing effect */}
             <AnimatedPlaceholder
               show={!value.trim()}
-              // defaultText='Describe your idea and get ready to make it live.'
               className='rounded-full'
             />
 
