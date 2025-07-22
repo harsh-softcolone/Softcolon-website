@@ -124,7 +124,7 @@ export function MobileSidebar({
                   {/* Services with dropdown */}
                   <div>
                     <button
-                      className='w-full flex items-center justify-between px-4 py-3 text-white text-lg font-medium hover:text-gray-300 transition-colors'
+                      className='w-full flex items-center justify-between px-4 py-3 text-white text-lg font-medium hover:text-gray-300 transition-colors cursor-pointer'
                       onClick={() => handleMenuToggle('Services')}
                     >
                       Services
@@ -211,7 +211,7 @@ export function MobileSidebar({
                   {/* Platforms with dropdown */}
                   <div>
                     <button
-                      className='w-full flex items-center justify-between px-4 py-3 text-white text-lg font-medium hover:text-gray-300 transition-colors'
+                      className='w-full flex items-center justify-between px-4 py-3 text-white text-lg font-medium hover:text-gray-300 transition-colors cursor-pointer'
                       onClick={() => handleMenuToggle('Platforms')}
                     >
                       Platforms
@@ -298,7 +298,7 @@ export function MobileSidebar({
                   {/* Industry with dropdown */}
                   <div>
                     <button
-                      className='w-full flex items-center justify-between px-4 py-3 text-white text-lg font-medium hover:text-gray-300 transition-colors'
+                      className='w-full flex items-center justify-between px-4 py-3 text-white text-lg font-medium hover:text-gray-300 transition-colors cursor-pointer'
                       onClick={() => handleMenuToggle('Industry')}
                     >
                       Industry
