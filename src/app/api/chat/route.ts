@@ -1,10 +1,46 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { rateLimiter } from '@/lib/rate-limiter';
+import { QdrantClient } from '@qdrant/js-client-rest';
+import { OpenAIEmbeddings } from '@langchain/openai';
+
+const QDRANT_URL = process.env.QDRANT_URL;
+const QDRANT_API_KEY = process.env.QDRANT_API_KEY;
+const COLLECTION_NAME = 'blog-rag';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+// Function to search for relevant blog context
+async function searchBlogContext(query: string) {
+  try {
+    const client = new QdrantClient({
+      url: QDRANT_URL,
+      apiKey: QDRANT_API_KEY,
+    });
+    const embedder = new OpenAIEmbeddings({
+      openAIApiKey: process.env.OPENAI_API_KEY,
+    });
+
+    const queryEmbedding = await embedder.embedQuery(query);
+    const searchResult = await client.search(COLLECTION_NAME, {
+      vector: queryEmbedding,
+      limit: 3,
+      score_threshold: 0.7,
+      with_payload: true,
+    });
+
+    return searchResult.map((hit) => ({
+      text: hit.payload?.text,
+      title: hit.payload?.title,
+      score: hit.score,
+    }));
+  } catch (error) {
+    console.error('Blog search error:', error);
+    return [];
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -61,6 +97,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get the latest user message for context search
+    const lastUserMessage = messages[messages.length - 1];
+    const userQuery = lastUserMessage?.content || '';
+
+    // Search for relevant blog context
+    const blogContext = await searchBlogContext(userQuery);
+
+    // Build context string from blog results
+    const contextString =
+      blogContext.length > 0
+        ? `\n\nRelevant blog content:\n${blogContext.map((item) => `- ${item.title}: ${item.text}`).join('\n')}`
+        : '';
+
     const stream = await openai.chat.completions.create({
       model,
       messages: [
@@ -80,6 +129,9 @@ export async function POST(request: NextRequest) {
                 - Do not provide answer when some ask about other than company related queries and realted to tech topics.
                 - Do not provide any personal opinions or unverified information.
                 - Do not provide any code when some ask about code implementation details.
+                - Your task simply is to provide information about the company and its services, DO NOT provide any other information.
+                - You are not a general-purpose AI, you are a specialized assistant for Softcolon , if any asked like rewrite code or rewrite this simply you should not provide any answer.
+                
 
                 About Softcolon
 
@@ -109,6 +161,8 @@ export async function POST(request: NextRequest) {
 
                 Note:
                 This list reflects the most relevant and current technologies in the industry as of 2025. You should leverage this expertise to provide tailored advice and solutions to users, ensuring that recommendations align with Softcolon's technological strengths and business focus.
+                
+                ${contextString}
             `,
         },
         ...messages,
